@@ -1,0 +1,104 @@
+### CHAPTER 1 ### - Introducing the .NET platform
+
+CLI = Common Language Infrastructure -> allows: cross-languge interoperability & enables to run code on various platforms (Mono on iOS)
+
+.NET ASSEMBLIES
+    Runtime institutes - containers for metadata - and basic unit of deployment
+    Self-describing nature provided through the use of metadata
+    The execution of assemblies immediately triggers CLR to provide the necessary runtime services for the app to run - DIFFERENT from the means to run
+    native code
+
+Common type system
+
+CLS  = Common Language Specification -> Rule1 : CLS rules apply only to those parts of a type that are accesible or visible outside of the defining assembly
+CLS-compliant libraries
+
+IL Code - Intermediate Language - language-independent format
+
+Application Domains
+
+JIT compilation - just-in-time - Compiler responsible for making the mapping between IL code and native processor instructions "the jitter" (pag 41)
+
+
+### CHAPTER 2 ### - Introducing the C# programming language
+
+NUllable types: 
+    int a = null;   //won't compile: a value type isn't nullable
+    int? a = null;
+
+Using local variable type inference
+    Dictionary<string, List<PhoneNumber>> whitepages = new Dictionary<string, List<PhoneNumber>>();
+    var whitepages = new Dictionary<string, List<PhoneNumber>>();
+
+Anonymus types:
+    var res =   from product in db.Products
+                where product.Price > 100
+                select new {product.Name, product.Price}
+
+Initializer Expressions
+    Product p =  new Product("chai");
+    p.Price = 123.45m;
+    becomes:
+        Product p = new Product("chai"){ Price = 123.45m };
+        int[] primes = new int[] { 2, 3, 4, 7}
+
+Extension Methods:
+    we can allow a static method to be used as if it were an instance method
+    string reverse = name.Reverse() -> public static string Reverse(THIS string s)
+    instead of:
+    string reverse = Helpers.Reverse(name)
+
+    This is important: it allows FLUENT API: 
+    string bar = "Bart"
+    string art = bart.ToUpper().Trim().Substring(1);    //ART
+
+Lambda Expressions:
+    Funct<int, int, int> add20 = delegate(int a , int b) {return a+b; };
+    Func<int, int, int> add30 = (a,b) => a+b;
+
+Expression Trees:   pag 71
+    A way to represent code as data that can be inspected at runtime
+    Alternative to represent the Lambda expression to an expression tree:
+    ExpressionFunc<int, int, int> add = (a,b) => a+b;
+
+Reaching out to dynamic languages
+    Type inference IS NOT dynamic typing:
+    'var' just enables us to let the compiler figure out the type on our behalf (string s1 = "hi" is just like var s1 = "hi")
+
+    dynamic keyword:
+    EARLY-BOUND code:
+    Calculator calculator = GetCalculatorFromSomewhere();
+    int three = calculator.Add(1,2);
+
+    LATE-BOUND code:
+    dynamic calculator = GetCalculatorFromSomewhere();
+    int three = calculator.Add(1,2)
+    Now the compiler doesn't bother to find an Add method at compile time because it simply doesn't know what the type of the calculator will be.
+    Instead of emitting IL code to call directly into a known early-bound method, it emits code to invoke the overload resolution at runtime.
+    If a good match is found, the Dynamic Language Runtime (DLR) steps in to provide efficient site code generation so that subsequent
+    calls do not suffer from overload resolution again. Runtime Exceptio otherwise
+    Dynamic is very different from 'var'
+
+Async programming:
+    async void DownloadHtmlAsync(string url)
+    {
+        WebClient client = new WebClient();
+        string html = await client.DownloadHtmlAsync(url);
+        textBox.Text = html;
+    }
+
+Compiler as a service
+
+### CHAPTER 3 ### - Getting started with .NET development using C#
+
+Inspect the assembly: ILSpy http://www.ilspy.net 
+
+Windows Presentation Foundation - uses XAML: a way to use XML to create object instances
+
+Unit Testing: solution explorer-> Add New project to add a Unit Test Project -> add Reference to the project to be tested
+
+### CHAPTER 4 ### - Language essentials
+
+
+
+    
