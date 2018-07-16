@@ -99,6 +99,100 @@ Unit Testing: solution explorer-> Add New project to add a Unit Test Project -> 
 
 ### CHAPTER 4 ### - Language essentials
 
+static int Main(string[] args)
+
+Contextual Keywords:
+    int value = discount.value; //value is a keywork in the property accessor context:
+    public int Age
+    {
+        get {return _age; }
+        set {_age = value}
+    }
+
+Constructors:  new keyword that acts like a factory producing a concrete object from a type (shape of obj)
+
+Decimal type 
+    decimal x = 0.12M   // or 0.12m
+
+"Banning" System.Object for generics, System.Object's methods:
+    -Equals
+    -GetHashCode
+    -ToString
+    For dynamic typing we use 'dynamic' which can be seen as a System.Object with some meta-data to tell the compiler  
+    to emit late-bound code and don't check the type at compile-time but at runtime.
+
+CLS-compliant page 208
+    [assembly: CLSCompliant(true)]
+    in Properties-> Assemblyinfo.cs 
+
+    IL directive dor declaration of local variables:
+    .locals init ([0] int32 x)
+
+The use of 'var'
+    //Required
+    var person = new {Name = 'Bart', Age = 26}
+    var expensive = LINQ query
+
+    //Good use
+    var lotteryNumbers = new Dictionary<string, List<int>>
+    var name = Person.ToString();
+
+    //BAD
+    var mystery = getSomething();
+
+Documentation Comments: /// -> Build-> XML Documentation file
+
+Arrays
+    int[] squares = new [] {0,1,4,9}
+    int[] squares = {0,1,4,9}
+    var squares = new [] {0,1,4,9}
+
+    byte[,] sudoku = new byte[9,9]
+
+Nullable Value types
+    Nullable<int> c = 42 equivalent to:     int? c = 42;
+    double? number = getNumber();
+    if(number.HasValue)
+    {
+        //do stuff
+    }
+
+    Nullable<T> provides a box around the original type with the HasValue and Value properties
 
 
-    
+### CHAPTER 5 ### - Expressions and Operators
+
+Expression: sequence of operators and operands
+ARITY: number of operands on which they operate.
+
+IL directives:
+    ldc loads a constant by pushing it onto the stack
+    stloc pop the top value from the stack and stores it in a local variable slot 
+
+Call stack and evaluation stack -  even though they together form the CLS stack
+
+Overflow Checking
+    checked
+    {
+        int max = int.MaxValue;
+        int res = max + 1;
+        //int res = checked(max+1)
+        Console.WriteLine(res);
+    }
+
+String Concatenation
+    string[] names = new[] {"bart", "john", "lisa" };
+
+    var peopleList = new StringBuilder();
+    foreach(string name in names)
+    {
+        peopleList.Append(name);
+        peopleList.Append(", ");
+    }
+    string people = peopleList.ToString();
+
+    OR: string people = string.Join(", ", names);
+
+If the IL code doesn't look as optimized as I expect to: leave room for optimization to the JIT compiler
+
+pag 284

@@ -1,1 +1,6 @@
 # Domande #
+
+1. Come trattate i dati numerici? Visto la precisione che immagino richiedano i calcoli finanziari
+    che il programma porta avanti, trattate le variabili numeriche come 'decimal'?
+
+    
