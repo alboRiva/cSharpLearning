@@ -27,15 +27,15 @@ namespace KnowledgeBaseUI
         {
             if (ValidateForm())
             {
-               var post = new Post(TitleTexBox.Text,DescriptionTextBox.Text);
+                var post = new Post(TitleTexBox.Text,DescriptionTextBox.Text);
 
                 //clean-up form
                 TitleTexBox.Text = "";
                 DescriptionTextBox.Text = "";
-               foreach (IDataConnection db in GlobalConfig.Connections)
-               {
+                foreach (IDataConnection db in GlobalConfig.Connections)
+                {
                     db.CreatePost(post);
-               }
+                }
             }
         }
         /// <summary>
