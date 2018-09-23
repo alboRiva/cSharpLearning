@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace knowledgeBaseLibrary
+namespace knowledgeBaseLibrary.DataAccessManager
 {
-    public class TextConnector : IDataConnection
+    class XmlConnector : IDataConnection
     {
         public Post CreatePost(Post submittedPost)
         {
-            return submittedPost;
+            throw new NotImplementedException();
         }
     }
 }

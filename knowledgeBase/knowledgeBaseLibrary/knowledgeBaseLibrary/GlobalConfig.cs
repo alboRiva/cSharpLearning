@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,22 +13,29 @@ namespace knowledgeBaseLibrary
         /// <summary>
         /// Possibility to save to one or many places
         /// </summary>
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();        //version 6.0
+        public static IDataConnection Connection { get; private set; }      //version 6.0
 
-        public static void InitiazileConnections(bool database, bool textFile)
+        public static void InitiazileConnections(Enums.DatabaseType db)
         {
-            if (database)
+            switch (db)
             {
-                SqlConnector sql = new SqlConnector();
-                //Add to a IDataConnection list
-                Connections.Add(sql);
-            }
+                case Enums.DatabaseType.Sql:
+                    SqlConnector sql = new SqlConnector();
+                    Connection = sql;
+                    break;
 
-            if (textFile)
-            {
-                TextConnector text = new TextConnector();
-                Connections.Add(text);
+                case Enums.DatabaseType.Xml:
+                    //TODO: implement Xml connector
+                    break;
+
+                default:
+                    throw new InvalidEnumArgumentException(); 
             }
+        }
+
+        public static string CnnString(string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }

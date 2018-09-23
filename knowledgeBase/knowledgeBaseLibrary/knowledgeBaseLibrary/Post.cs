@@ -10,9 +10,9 @@ namespace knowledgeBaseLibrary
     public class Post
     {
 
-        public static int Id { get; set; } 
+        public int Id { get; set; } 
         /// <summary>
-        /// Represents the last author who modified the post
+        /// Represents the LAST author who modified the post
         /// </summary>
         public String Author { get; set; }
 
@@ -34,6 +34,9 @@ namespace knowledgeBaseLibrary
         {
             Id = Id++;
             Author = Environment.UserName;
+            //Author = System.Security.Principal.WindowsIdentity.GetCurrent().Name; -> returns DomainName\UserName
+
+
             Title = title;
             Description = description;
             SubmitDate = LastModified = DateTime.Today;

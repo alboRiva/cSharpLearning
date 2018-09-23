@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using knowledgeBaseLibrary;
 
 namespace KnowledgeBaseUI
 {
@@ -18,7 +19,7 @@ namespace KnowledgeBaseUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Initialize the database connection
-            knowledgeBaseLibrary.GlobalConfig.InitiazileConnections(true,true);
+            knowledgeBaseLibrary.GlobalConfig.InitiazileConnections(Enums.DatabaseType.Sql);
 
             Application.Run(new SubmitPostPage());
             //Application.Run(new SearchPage());

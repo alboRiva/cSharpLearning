@@ -32,10 +32,8 @@ namespace KnowledgeBaseUI
                 //clean-up form
                 TitleTexBox.Text = "";
                 DescriptionTextBox.Text = "";
-                foreach (IDataConnection db in GlobalConfig.Connections)
-                {
-                    db.CreatePost(post);
-                }
+
+                GlobalConfig.Connection.CreatePost(post);
             }
         }
         /// <summary>
