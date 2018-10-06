@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBE3CD6C-F02A-42E0-81DA-69753E78AD30}</ProjectGuid>
+    <ProjectGuid>{EEEA6B41-4198-4A3C-8546-ACCB80BB44CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>knowledgeBaseLibrary</RootNamespace>
@@ -40,13 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalConfig.cs" />
-    <Compile Include="IDataConnection.cs" />
-    <Compile Include="Post.cs" />
+    <Compile Include="DataAccess\IDataConnection.cs" />
+    <Compile Include="DataAccess\SqlConnector.cs" />
+    <Compile Include="DataAccess\XmlConnector.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlConnector.cs" />
-    <Compile Include="Tag.cs" />
-    <Compile Include="TextConnector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\PostRepository.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

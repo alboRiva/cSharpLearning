@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using knowledgeBaseLibrary.DataAccess;
 
-namespace KnowledgeBaseUI
+namespace knowledgeBaseUI
 {
     static class Program
     {
@@ -15,13 +17,10 @@ namespace KnowledgeBaseUI
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);        
 
-            //Initialize the database connection
-            knowledgeBaseLibrary.GlobalConfig.InitiazileConnections(true,true);
-
-            Application.Run(new SubmitPostPage());
-            //Application.Run(new SearchPage());
+          
+            Application.Run(new Search());
         }
     }
 }

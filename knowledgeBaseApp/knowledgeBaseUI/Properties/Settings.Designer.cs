@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KnowledgeBaseUI.Properties
+namespace knowledgeBaseUI.Properties
 {
 
 

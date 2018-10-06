@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<posts>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-09-27T15:06:29.3015003+02:00">
+    <title><![CDATA[title test]]></title>
+    <description><![CDATA[Description test]]></description>
+    <tags>
+      <tag>title</tag>
+      <tag>test</tag>
+    </tags>
+  </post>
+  <post id="77e59e1b-d4a6-41e0-a692-20434081b7aa" author="rivaa" lastModificationTime="2018-10-06T22:44:12.1856825+02:00">
+    <title><![CDATA[]]></title>
+    <description><![CDATA[]]></description>
+    <tags>
+      <tag />
+    </tags>
+  </post>
+  <post id="22cfdc1d-cd59-49d5-88d6-7cf6e091de23" author="rivaa" lastModificationTime="2018-10-06T22:44:39.3877366+02:00">
+    <title><![CDATA[]]></title>
+    <description><![CDATA[]]></description>
+    <tags>
+      <tag />
+    </tags>
+  </post>
+  <post id="ab7d0d04-b8d5-4479-a9a8-6f05af7c41ab" author="rivaa" lastModificationTime="2018-10-06T20:44:55.8310665Z">
+    <title><![CDATA[]]></title>
+    <description><![CDATA[]]></description>
+    <tags>
+      <tag />
+    </tags>
+  </post>
+</posts>
