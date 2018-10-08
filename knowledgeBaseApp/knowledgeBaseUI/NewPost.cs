@@ -22,7 +22,7 @@ namespace knowledgeBaseUI
         private void AddButton_Click(object sender, EventArgs e)
         {
             Post post = new Post(Environment.UserName, TitleTextBox.Text, DescriptionRichTextBox.Text);
-            XmlConnector xmlC = new XmlConnector(@"C:\Users\rivaa\OneDrive\Desktop\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
+            XmlConnector xmlC = new XmlConnector(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
             try
             {
                 xmlC.AddPost(post);

@@ -15,7 +15,7 @@ namespace knowledgeBaseUI
     public partial class ShowPost : Form
     {
         private Post _post;
-        private IDataConnection _dataConnection  = new XmlConnector(@"C:\Users\rivaa\OneDrive\Desktop\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
+        private IDataConnection _dataConnection  = new XmlConnector(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
 
         public ShowPost(object selectedItem)
         {

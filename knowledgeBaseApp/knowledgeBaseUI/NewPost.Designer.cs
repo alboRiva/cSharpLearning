@@ -59,7 +59,7 @@
             // TitleTextBox
             // 
             this.TitleTextBox.Location = new System.Drawing.Point(138, 102);
-            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(76, 20);
             this.TitleTextBox.TabIndex = 2;
@@ -67,7 +67,7 @@
             // DescriptionRichTextBox
             // 
             this.DescriptionRichTextBox.Location = new System.Drawing.Point(138, 182);
-            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.DescriptionRichTextBox.Name = "DescriptionRichTextBox";
             this.DescriptionRichTextBox.Size = new System.Drawing.Size(361, 79);
             this.DescriptionRichTextBox.TabIndex = 3;
@@ -87,7 +87,7 @@
             // AddButton
             // 
             this.AddButton.Location = new System.Drawing.Point(442, 277);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(56, 19);
             this.AddButton.TabIndex = 5;
@@ -106,9 +106,9 @@
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.TitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewPost";
-            this.Text = "NewPost";
+            this.Text = "7";
             this.ResumeLayout(false);
             this.PerformLayout();
 

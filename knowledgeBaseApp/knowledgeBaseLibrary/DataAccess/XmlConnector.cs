@@ -19,7 +19,6 @@ namespace knowledgeBaseLibrary.DataAccess
     public class XmlConnector : IDataConnection
     {
         public readonly string _fileName;
-        // filePath = C:\Users\rivaa\source\repos\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostsRepository.xml
         private List<Post> _repository;
         
         public XmlConnector(string fileName)
