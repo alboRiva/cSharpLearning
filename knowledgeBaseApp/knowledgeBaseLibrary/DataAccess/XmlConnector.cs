@@ -1,16 +1,9 @@
 ﻿using knowledgeBaseLibrary.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Media;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -18,12 +11,12 @@ namespace knowledgeBaseLibrary.DataAccess
 {
     public class XmlConnector : IDataConnection
     {
-        public readonly string _fileName;
         private List<Post> _repository;
+        public string FileName { private set; get; }
         
         public XmlConnector(string fileName)
         {
-            _fileName = fileName;
+            FileName = fileName;
         }
         public void AddPost(Post submittedPost)
         {
@@ -39,7 +32,7 @@ namespace knowledgeBaseLibrary.DataAccess
             //Loads repository of posts in memory
             LoadRepository();
 
-            using (FileStream file = new FileStream(_fileName, FileMode.Create, FileAccess.Write, FileShare.Read))
+            using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 //checks if the submitted post is new or the user wants to edit an existing one
                 bool newPost = submittedPost.Id.Equals(Guid.Empty) &&
@@ -118,7 +111,7 @@ namespace knowledgeBaseLibrary.DataAccess
         private void LoadRepository()
         {
             _repository = new List<Post>();
-            XElement xele = XElement.Load(_fileName);
+            XElement xele = XElement.Load(FileName);
             foreach (XElement item in (xele.Elements("post")))
             {
                 _repository.Add(DecodePostFromXmlElement(item));
@@ -175,7 +168,7 @@ namespace knowledgeBaseLibrary.DataAccess
             _repository.Remove(post);
            
             //TODO: delete from xml file
-            using (FileStream file = new FileStream(_fileName, FileMode.Create, FileAccess.Write, FileShare.Read))
+            using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 foreach (var item in _repository)
                 {

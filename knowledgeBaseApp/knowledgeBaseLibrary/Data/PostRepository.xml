@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="89e5ff97-db4c-4c32-8854-0b04dcb7193d" author="rivaa" lastModificationTime="2018-10-08T15:14:37.4084329+02:00">
-    <title><![CDATA[gatto]]></title>
-    <description><![CDATA[gattini]]></description>
-    <tags>
-      <tag>gatto</tag>
-    </tags>
-  </post>
   <post id="5b0ae5d1-9770-4784-8718-a1bc0c4b7e28" author="rivaa" lastModificationTime="2018-10-08T15:14:59.3814974+02:00">
     <title><![CDATA[gatto berde]]></title>
     <description><![CDATA[verdein]]></description>
@@ -15,19 +8,25 @@
       <tag>berde</tag>
     </tags>
   </post>
-  <post id="79025ccd-2430-4506-b9c4-15c0b2be097a" author="rivaa" lastModificationTime="2018-10-08T15:15:43.2300393+02:00">
-    <title><![CDATA[cane verdfe`]]></title>
-    <description><![CDATA[verde cane]]></description>
-    <tags>
-      <tag>cane</tag>
-      <tag>verdfe`</tag>
-    </tags>
-  </post>
   <post id="706d8f08-c1d4-47a5-ac4a-551fc66be549" author="rivaa" lastModificationTime="2018-10-08T15:19:20.0153012+02:00">
     <title><![CDATA[topo]]></title>
     <description><![CDATA[gatto]]></description>
     <tags>
       <tag>topo</tag>
+    </tags>
+  </post>
+  <post id="d07a2270-bbcc-435d-9301-741d11ff632f" author="rivaa" lastModificationTime="2018-10-08T17:20:18.8031301+02:00">
+    <title><![CDATA[Ciao]]></title>
+    <description><![CDATA[Ciao]]></description>
+    <tags>
+      <tag>Ciao</tag>
+    </tags>
+  </post>
+  <post id="89e1e76c-4bef-4ff3-9711-e3f019b9feb9" author="rivaa" lastModificationTime="2018-10-08T15:34:46.1893698Z">
+    <title><![CDATA[add]]></title>
+    <description><![CDATA[added]]></description>
+    <tags>
+      <tag>add</tag>
     </tags>
   </post>
 </posts>

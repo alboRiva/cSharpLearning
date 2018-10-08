@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using knowledgeBaseLibrary.Models;
 
 namespace knowledgeBaseLibrary.DataAccess
@@ -11,7 +12,6 @@ namespace knowledgeBaseLibrary.DataAccess
         /// </summary>
         /// <param name="sumbittedPost"></param>
         /// <returns></returns>
-
         //TODO: should it throw an Exception or a bool?
         void AddPost(Post sumbittedPost);
 
@@ -20,5 +20,6 @@ namespace knowledgeBaseLibrary.DataAccess
         Post GetPost(Guid id);
 
         IEnumerable<Post> GetPostList(IEnumerable<string> tags);
+
     }
 }

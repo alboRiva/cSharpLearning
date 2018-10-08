@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\IDataConnection.cs" />
-    <Compile Include="DataAccess\SqlConnector.cs" />
     <Compile Include="DataAccess\XmlConnector.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

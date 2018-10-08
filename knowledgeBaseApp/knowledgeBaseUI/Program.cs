@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autofac;
 using knowledgeBaseLibrary.DataAccess;
 
 namespace knowledgeBaseUI
@@ -17,10 +18,17 @@ namespace knowledgeBaseUI
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);        
+            Application.SetCompatibleTextRenderingDefault(false);
 
-          
-            Application.Run(new Search());
+            var container = ContainerConfig.Configure();
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IApplicationInjection>();
+                app.Run();
+            }
+
+            //Application.Run(new Search());
         }
     }
 }
