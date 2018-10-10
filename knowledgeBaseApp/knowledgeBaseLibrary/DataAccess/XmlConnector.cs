@@ -31,7 +31,7 @@ namespace knowledgeBaseLibrary.DataAccess
 
             //Loads repository of posts in memory
             LoadRepository();
-
+            //TODO: gestione di accesso concorrente - gestione di IOException
             using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 //checks if the submitted post is new or the user wants to edit an existing one
@@ -167,7 +167,6 @@ namespace knowledgeBaseLibrary.DataAccess
             LoadRepository();
             _repository.Remove(post);
            
-            //TODO: delete from xml file
             using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
                 foreach (var item in _repository)
