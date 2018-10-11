@@ -28,27 +28,17 @@ namespace knowledgeBaseUI
 
         private void MouseDoubleClickOnItem(object sender, MouseEventArgs e)
         {
-          //ShowPost showPost = new ShowPost(_dataConnection.GetPost(Guid.Parse((GridControlResults.SelectedValue).ToString())));
-          //showPost.Show();
-            
+            //ShowPost showPost = new ShowPost(_dataConnection.GetPost(Guid.Parse((GridControlResults.SelectedValue).ToString())));
+            //showPost.Show();
+
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var newPost = new NewPost(_dataConnection);
-            newPost.Show();
+            var showPost = new ShowPost(null,_dataConnection);
+            showPost.Show();
         }
 
-        /// <summary>
-        /// Updates the list -  but in an unoptimized way
-        /// TODO: change DataBinding implementation in order to speed up refresh
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Refresh_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void searchGridControl_DoubleClick(object sender, EventArgs e)
         {
@@ -57,7 +47,7 @@ namespace knowledgeBaseUI
             if (post == null)
                 return;
 
-            ShowPost showPost = new ShowPost(post);
+            ShowPost showPost = new ShowPost(post,_dataConnection);
             showPost.Show();
         }
     }

@@ -2,6 +2,7 @@
 using System.Reflection;
 using Autofac;
 using knowledgeBaseLibrary.DataAccess;
+using System.Configuration;
 
 namespace knowledgeBaseUI
 {
@@ -9,11 +10,13 @@ namespace knowledgeBaseUI
     {
         public static IContainer Configure()
         {
+            //Needed to add a reference to System.Configuration.dll in project
+            var connectionString = ConfigurationManager.AppSettings["connectionString"];
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ApplicationInjection>().As<IApplicationInjection>();
             builder.RegisterInstance(new XmlConnector(
-                    @"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml"))
+                    connectionString))
                 .As<IDataConnection>();
 
             //ConfigurationManager

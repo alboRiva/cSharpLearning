@@ -15,23 +15,42 @@ namespace knowledgeBaseUI
     public partial class ShowPost : Form
     {
         private Post _post;
-        private IDataConnection _dataConnection  = new XmlConnector(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
-
-        public ShowPost(object selectedItem)
+        private readonly IDataConnection _dataConnection;
+        
+        public ShowPost(object selectedItem, IDataConnection dataConnection)
         {
             InitializeComponent();
+            _dataConnection = dataConnection;
             _post = (Post) selectedItem;
-            TitleTextBox.Enabled = false;
+            //Se post e' null -> l'utente vuole inserire un nuovo post da zero
+            //if (_post == null)
+            //{
+            //    SpawnNewPostForm();
+            //}
+            //else
+            //{
+            //    SpawnShowPostForm();
+            //}
+            //TitleTextBox.Enabled = false;
             DescriptionRichTextBox.Enabled = false;
             SubmitEdited.Enabled = false;
             TitleTextBox.Text = _post.Title;
             DescriptionRichTextBox.Text = _post.Description;
         }
 
+        private void SpawnShowPostForm()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SpawnNewPostForm()
+        {
+            throw new NotImplementedException();
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             _dataConnection.DeletePost(_post);
-            //TODO: Come posso controllare la correttezza delle operazioni sul db
             MessageBox.Show("Post eliminato dal database");
             this.Close();
         }
