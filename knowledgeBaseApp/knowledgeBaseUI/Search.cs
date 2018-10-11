@@ -50,6 +50,8 @@ namespace knowledgeBaseUI
             ShowPost showPost = new ShowPost(post,_dataConnection);
             showPost.Show();
         }
+
+    
     }
 
 }

@@ -39,32 +39,41 @@ namespace knowledgeBaseUI
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.titleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SearchBarControl.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
+            this.tableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // SearchBarControl
             // 
             this.SearchBarControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBarControl.Location = new System.Drawing.Point(319, 113);
+            this.tableLayout.SetColumnSpan(this.SearchBarControl, 3);
+            this.SearchBarControl.EditValue = "";
+            this.SearchBarControl.Location = new System.Drawing.Point(283, 103);
             this.SearchBarControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchBarControl.Name = "SearchBarControl";
+            this.SearchBarControl.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.SearchBarControl.Properties.Appearance.Options.UseBackColor = true;
+            this.SearchBarControl.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.SearchBarControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.SearchBarControl.Size = new System.Drawing.Size(224, 22);
+            this.SearchBarControl.Size = new System.Drawing.Size(255, 20);
             this.SearchBarControl.TabIndex = 2;
             // 
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddButton.Location = new System.Drawing.Point(359, 164);
+            this.AddButton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddButton.Location = new System.Drawing.Point(326, 165);
             this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(157, 27);
+            this.AddButton.Size = new System.Drawing.Size(169, 27);
             this.AddButton.TabIndex = 3;
             this.AddButton.Text = "AddKnowledge";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -74,20 +83,24 @@ namespace knowledgeBaseUI
             // 
             this.Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Refresh.Location = new System.Drawing.Point(525, 439);
+            this.Refresh.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Refresh.Location = new System.Drawing.Point(327, 502);
             this.Refresh.Margin = new System.Windows.Forms.Padding(4);
             this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(127, 28);
+            this.Refresh.Size = new System.Drawing.Size(167, 29);
             this.Refresh.TabIndex = 4;
             this.Refresh.Text = "Refresh";
             this.Refresh.UseVisualStyleBackColor = true;
             // 
             // GridControlResults
             // 
-            this.GridControlResults.Location = new System.Drawing.Point(239, 216);
+            this.GridControlResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayout.SetColumnSpan(this.GridControlResults, 5);
+            this.GridControlResults.Location = new System.Drawing.Point(178, 234);
             this.GridControlResults.MainView = this.searchGridControl;
             this.GridControlResults.Name = "GridControlResults";
-            this.GridControlResults.Size = new System.Drawing.Size(400, 200);
+            this.GridControlResults.Size = new System.Drawing.Size(465, 259);
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.searchGridControl});
@@ -134,22 +147,67 @@ namespace knowledgeBaseUI
             this.colId.Name = "colId";
             this.colId.Width = 94;
             // 
+            // tableLayout
+            // 
+            this.tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayout.ColumnCount = 7;
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.2766F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.76596F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.319149F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.27659F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.319149F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.76596F));
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.27659F));
+            this.tableLayout.Controls.Add(this.AddButton, 3, 5);
+            this.tableLayout.Controls.Add(this.GridControlResults, 1, 7);
+            this.tableLayout.Controls.Add(this.SearchBarControl, 2, 3);
+            this.tableLayout.Controls.Add(this.Refresh, 3, 8);
+            this.tableLayout.Controls.Add(this.titleLabel, 3, 1);
+            this.tableLayout.Location = new System.Drawing.Point(2, 0);
+            this.tableLayout.Name = "tableLayout";
+            this.tableLayout.RowCount = 10;
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.585586F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.945946F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.694827F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.601834F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.712509F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.566471F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.85527F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.34709F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayout.Size = new System.Drawing.Size(826, 575);
+            this.tableLayout.TabIndex = 6;
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.titleLabel.Location = new System.Drawing.Point(326, 31);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(169, 28);
+            this.titleLabel.TabIndex = 6;
+            this.titleLabel.Text = "KnowledgeBase";
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(827, 578);
-            this.Controls.Add(this.GridControlResults);
-            this.Controls.Add(this.Refresh);
-            this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.SearchBarControl);
+            this.ClientSize = new System.Drawing.Size(825, 578);
+            this.Controls.Add(this.tableLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Search";
             this.Text = "Search";
             ((System.ComponentModel.ISupportInitialize)(this.SearchBarControl.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
+            this.tableLayout.ResumeLayout(false);
+            this.tableLayout.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +221,7 @@ namespace knowledgeBaseUI
         private DevExpress.XtraGrid.Columns.GridColumn colTitle;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private System.Windows.Forms.TableLayoutPanel tableLayout;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
