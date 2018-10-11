@@ -64,12 +64,12 @@ namespace knowledgeBaseUI
             {
                 _dataConnection.AddPost(_post);
                 MessageBox.Show("Post modificato e aggiunto con successo al database");
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Fallimento nell'inserimento del post");
             }
-            this.Close();
         }
     }
 }

@@ -1,32 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="5b0ae5d1-9770-4784-8718-a1bc0c4b7e28" author="rivaa" lastModificationTime="2018-10-08T15:14:59.3814974+02:00">
-    <title><![CDATA[gatto berde]]></title>
-    <description><![CDATA[verdein]]></description>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T09:58:49.1639207Z">
+    <title><![CDATA[title ]]></title>
+    <description><![CDATA[edited]]></description>
     <tags>
-      <tag>gatto</tag>
-      <tag>berde</tag>
+      <tag>title</tag>
+      <tag />
     </tags>
   </post>
-  <post id="706d8f08-c1d4-47a5-ac4a-551fc66be549" author="rivaa" lastModificationTime="2018-10-08T15:19:20.0153012+02:00">
-    <title><![CDATA[topo]]></title>
-    <description><![CDATA[gatto]]></description>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T09:59:53.9081916Z">
+    <title><![CDATA[title new]]></title>
+    <description><![CDATA[edited]]></description>
     <tags>
-      <tag>topo</tag>
+      <tag>title</tag>
+      <tag>new</tag>
     </tags>
   </post>
-  <post id="d07a2270-bbcc-435d-9301-741d11ff632f" author="rivaa" lastModificationTime="2018-10-08T17:20:18.8031301+02:00">
-    <title><![CDATA[Ciao]]></title>
-    <description><![CDATA[Ciao]]></description>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:12:02.5811412Z">
+    <title><![CDATA[title ]]></title>
+    <description><![CDATA[asdsada]]></description>
     <tags>
-      <tag>Ciao</tag>
+      <tag>title</tag>
+      <tag />
     </tags>
   </post>
-  <post id="89e1e76c-4bef-4ff3-9711-e3f019b9feb9" author="rivaa" lastModificationTime="2018-10-08T15:34:46.1893698Z">
-    <title><![CDATA[add]]></title>
-    <description><![CDATA[added]]></description>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:14:18.3239967Z">
+    <title><![CDATA[asd]]></title>
+    <description><![CDATA[Description edit]]></description>
     <tags>
-      <tag>add</tag>
+      <tag>asd</tag>
+    </tags>
+  </post>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:15:05.5821950Z">
+    <title><![CDATA[title testasd]]></title>
+    <description><![CDATA[Description test]]></description>
+    <tags>
+      <tag>title</tag>
+      <tag>testasd</tag>
+    </tags>
+  </post>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:16:45.9237640Z">
+    <title><![CDATA[edited]]></title>
+    <description><![CDATA[Description edit]]></description>
+    <tags>
+      <tag>edited</tag>
     </tags>
   </post>
 </posts>

@@ -31,48 +31,40 @@ namespace knowledgeBaseUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.SearchListControl = new DevExpress.XtraEditors.ListBoxControl();
             this.SearchBarControl = new DevExpress.XtraEditors.SearchControl();
             this.AddButton = new System.Windows.Forms.Button();
             this.Refresh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchListControl)).BeginInit();
+            this.GridControlResults = new DevExpress.XtraGrid.GridControl();
+            this.searchGridControl = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SearchBarControl.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
             this.SuspendLayout();
-            // 
-            // SearchListControl
-            // 
-            this.SearchListControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchListControl.DisplayMember = "title";
-            this.SearchListControl.Location = new System.Drawing.Point(162, 181);
-            this.SearchListControl.Margin = new System.Windows.Forms.Padding(2);
-            this.SearchListControl.Name = "SearchListControl";
-            this.SearchListControl.Size = new System.Drawing.Size(327, 155);
-            this.SearchListControl.TabIndex = 1;
-            this.SearchListControl.ValueMember = "id";
-            this.SearchListControl.DataSourceChanged += new System.EventHandler(this.SearchListControl_DataSourceChanged);
             // 
             // SearchBarControl
             // 
             this.SearchBarControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBarControl.Location = new System.Drawing.Point(239, 92);
-            this.SearchBarControl.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchBarControl.Location = new System.Drawing.Point(319, 113);
+            this.SearchBarControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchBarControl.Name = "SearchBarControl";
             this.SearchBarControl.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.SearchBarControl.Size = new System.Drawing.Size(168, 20);
+            this.SearchBarControl.Size = new System.Drawing.Size(224, 22);
             this.SearchBarControl.TabIndex = 2;
             // 
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddButton.Location = new System.Drawing.Point(269, 133);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddButton.Location = new System.Drawing.Point(359, 164);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(118, 22);
+            this.AddButton.Size = new System.Drawing.Size(157, 27);
             this.AddButton.TabIndex = 3;
             this.AddButton.Text = "AddKnowledge";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -82,37 +74,95 @@ namespace knowledgeBaseUI
             // 
             this.Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Refresh.Location = new System.Drawing.Point(394, 357);
+            this.Refresh.Location = new System.Drawing.Point(525, 439);
+            this.Refresh.Margin = new System.Windows.Forms.Padding(4);
             this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(95, 23);
+            this.Refresh.Size = new System.Drawing.Size(127, 28);
             this.Refresh.TabIndex = 4;
             this.Refresh.Text = "Refresh";
             this.Refresh.UseVisualStyleBackColor = true;
             this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
+            // GridControlResults
+            // 
+            this.GridControlResults.Location = new System.Drawing.Point(239, 216);
+            this.GridControlResults.MainView = this.searchGridControl;
+            this.GridControlResults.Name = "GridControlResults";
+            this.GridControlResults.Size = new System.Drawing.Size(400, 200);
+            this.GridControlResults.TabIndex = 5;
+            this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.searchGridControl});
+            // 
+            // searchGridControl
+            // 
+            this.searchGridControl.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colTitle,
+            this.colDescription,
+            this.colId});
+            this.searchGridControl.GridControl = this.GridControlResults;
+            this.searchGridControl.Name = "searchGridControl";
+            this.searchGridControl.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.searchGridControl.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.searchGridControl.OptionsBehavior.Editable = false;
+            this.searchGridControl.OptionsBehavior.ReadOnly = true;
+            this.searchGridControl.DoubleClick += new System.EventHandler(this.searchGridControl_DoubleClick);
+            // 
+            // colTitle
+            // 
+            this.colTitle.Caption = "Title";
+            this.colTitle.FieldName = "Title";
+            this.colTitle.MinWidth = 25;
+            this.colTitle.Name = "colTitle";
+            this.colTitle.Visible = true;
+            this.colTitle.VisibleIndex = 0;
+            this.colTitle.Width = 94;
+            // 
+            // colDescription
+            // 
+            this.colDescription.Caption = "Description";
+            this.colDescription.FieldName = "Description";
+            this.colDescription.MinWidth = 25;
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 1;
+            this.colDescription.Width = 94;
+            // 
+            // colId
+            // 
+            this.colId.Caption = "Id";
+            this.colId.FieldName = "Id";
+            this.colId.MinWidth = 25;
+            this.colId.Name = "colId";
+            this.colId.Width = 94;
+            // 
             // Search
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(620, 470);
+            this.ClientSize = new System.Drawing.Size(827, 578);
+            this.Controls.Add(this.GridControlResults);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.SearchBarControl);
-            this.Controls.Add(this.SearchListControl);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Search";
             this.Text = "Search";
-            ((System.ComponentModel.ISupportInitialize)(this.SearchListControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchBarControl.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DevExpress.XtraEditors.ListBoxControl SearchListControl;
         private DevExpress.XtraEditors.SearchControl SearchBarControl;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button Refresh;
+        private DevExpress.XtraGrid.GridControl GridControlResults;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchGridControl;
+        private DevExpress.XtraGrid.Columns.GridColumn colTitle;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
     }
 }

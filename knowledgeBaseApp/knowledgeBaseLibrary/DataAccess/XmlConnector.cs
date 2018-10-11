@@ -1,6 +1,7 @@
 ﻿using knowledgeBaseLibrary.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -17,6 +18,7 @@ namespace knowledgeBaseLibrary.DataAccess
         public XmlConnector(string fileName)
         {
             FileName = fileName;
+            LoadRepository();
         }
         public void AddPost(Post submittedPost)
         {
@@ -30,10 +32,13 @@ namespace knowledgeBaseLibrary.DataAccess
             //      a DateTime.MinValue
 
             //Loads repository of posts in memory
-            LoadRepository();
             //TODO: gestione di accesso concorrente - gestione di IOException
-            using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
+            using (FileStream file = new FileStream(FileName,FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read))
             {
+                LoadRepository(file);
+                //Riposiziona il file all'inizio
+                file.Seek(0, SeekOrigin.Begin);
+
                 //checks if the submitted post is new or the user wants to edit an existing one
                 bool newPost = submittedPost.Id.Equals(Guid.Empty) &&
                                submittedPost.LastModifiedTime.Equals(DateTime.MinValue);
@@ -44,18 +49,18 @@ namespace knowledgeBaseLibrary.DataAccess
                 }
                 else
                 {
-                    //TODO: solve edit -- IOException
                     //Check if submittedPost is effectively the last modified - if so, add it to the db 
-                    //if(GetPostFromRepo(submittedPost.Id).LastModifiedTime < submittedPost.LastModifiedTime DateTime.C)
-                    if(DateTime.Compare(GetPostFromRepo(submittedPost.Id).LastModifiedTime,submittedPost.LastModifiedTime) > 0)
+                    if(DateTime.Compare(GetPostFromRepo(submittedPost.Id).LastModifiedTime,submittedPost.LastModifiedTime) < 0)
                     //Removes the old copy of the post based on guid comparison
-                    _repository.Remove(submittedPost);
+                        _repository.Remove(submittedPost);
                     //Adds the new submitted post with the same Guid
                     _repository.Add(submittedPost);
                 }
                 XDocument docx = DecodeXDocFromPosts(_repository);
                 docx.Save(file);
-                
+                //tronca il resto del file
+                var length = file.Position;
+                file.SetLength(length);
             }
         }
 
@@ -77,7 +82,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     writer.WriteAttributeString("id", post.Id.ToString());
                     writer.WriteAttributeString("author", post.Author);
                     //<![CDATA[title test]]>
-                    writer.WriteAttributeString("lastModificationTime", post.LastModifiedTime.ToString("O"));
+                    writer.WriteAttributeString("lastModificationTime", post.LastModifiedTime.ToString("o"));
                     writer.WriteStartElement("title");
                     writer.WriteCData(post.Title);
                     writer.WriteEndElement();
@@ -102,6 +107,8 @@ namespace knowledgeBaseLibrary.DataAccess
             //Loads Posts in memory 
             LoadRepository();
 
+            if (tags == null || !tags.Any())
+                return _repository;
             //Return all the posts which contain at least 
             return _repository.Where(post => {
                 return post.Tags.Any(t => tags.Any(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
@@ -110,16 +117,19 @@ namespace knowledgeBaseLibrary.DataAccess
 
         private void LoadRepository()
         {
+            using (FileStream file = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                LoadRepository(file);
+            }
+        }
+
+        private void LoadRepository(FileStream stream)
+        {
             _repository = new List<Post>();
-            XElement xele = XElement.Load(FileName);
+            XElement xele = XElement.Load(stream);
             foreach (XElement item in (xele.Elements("post")))
             {
                 _repository.Add(DecodePostFromXmlElement(item));
-            }
-            //TODO: delete this 
-            foreach (var p in _repository)
-            {
-                p.printPost();
             }
             System.Diagnostics.Debug.WriteLine("Repo Loaded  ----");
         }
@@ -130,7 +140,7 @@ namespace knowledgeBaseLibrary.DataAccess
             string dateTime = item.Attribute("lastModificationTime").Value;
             // lastModificationTime="2018-10-06T20:08:54.4375781Z"
             //DateTime lastModificationDate = DateTime.ParseExact(dateTime, "yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.fffffffK", CultureInfo.InvariantCulture);
-            DateTime lastModificationDate = DateTime.Parse(dateTime);
+            DateTime lastModificationDate = DateTime.Parse(dateTime,CultureInfo.InvariantCulture,DateTimeStyles.AdjustToUniversal);
 
             return new Post(id
                     , item.Attribute("author").Value
@@ -151,6 +161,7 @@ namespace knowledgeBaseLibrary.DataAccess
             return null;
         }
 
+        //Gets a post without calling LoadRepository() - which would cause IOException
         public Post GetPostFromRepo(Guid Id)
         {
             foreach(var post in _repository)
@@ -169,10 +180,6 @@ namespace knowledgeBaseLibrary.DataAccess
            
             using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
             {
-                foreach (var item in _repository)
-                {
-                    item.printPost();
-                }
                 XDocument docx = DecodeXDocFromPosts(_repository);
                 docx.Save(file);
             }

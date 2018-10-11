@@ -14,25 +14,27 @@ namespace knowledgeBaseUI
 {
     public partial class NewPost : Form
     {
-        public NewPost()
+        private IDataConnection _dataConnection;
+        public NewPost(IDataConnection dataConnection)
         {
             InitializeComponent();
+            _dataConnection = dataConnection;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             Post post = new Post(Environment.UserName, TitleTextBox.Text, DescriptionRichTextBox.Text);
-            XmlConnector xmlC = new XmlConnector(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml");
             try
             {
-                xmlC.AddPost(post);
+                _dataConnection.AddPost(post);
                 MessageBox.Show("Post aggiunto con successo al database");
+                this.Close();
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Fallimento nell'inserimento del post");
+                MessageBox.Show($"Fallimento nell'inserimento del post: <{ex}>");
             }
-            this.Close();
+            
         }
     }
 }

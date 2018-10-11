@@ -66,9 +66,15 @@ namespace knowledgeBaseLibrary.Models
             return Title.Split(' ', '\t', '\r', '\n' /*, ...*/);
         }
 
+        //DEBUG
         public void printPost()
         {
             System.Diagnostics.Debug.WriteLine("titolo - {0} - descrizione: {1} tag: {2} ", Title, Description, Tags.First());
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
         }
 
         public override bool Equals(object obj)

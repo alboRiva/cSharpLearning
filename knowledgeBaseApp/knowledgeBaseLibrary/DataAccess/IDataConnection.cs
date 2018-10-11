@@ -12,7 +12,7 @@ namespace knowledgeBaseLibrary.DataAccess
         /// </summary>
         /// <param name="sumbittedPost"></param>
         /// <returns></returns>
-        //TODO: should it throw an Exception or a bool?
+        //TODO: should it throw an Exception or a bool? EXCEPTION
         void AddPost(Post sumbittedPost);
 
         void DeletePost(Post post);

@@ -16,6 +16,8 @@ namespace knowledgeBaseUI
                     @"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseLibrary\Data\PostRepository.xml"))
                 .As<IDataConnection>();
 
+            //ConfigurationManager
+
             return builder.Build();
         }
     }
