@@ -1,54 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:14:18.3239967Z">
-    <title><![CDATA[asd]]></title>
-    <description><![CDATA[Description edit]]></description>
+  <post id="3ae827f5-176b-46fb-8ac2-8ca9bf8b574d" author="rivaa" lastModificationTime="2018-10-15T12:54:04.0620751Z">
+    <title><![CDATA[decri]]></title>
+    <description><![CDATA[a]]></description>
     <tags>
-      <tag>asd</tag>
-    </tags>
-  </post>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:15:05.5821950Z">
-    <title><![CDATA[title testasd]]></title>
-    <description><![CDATA[Description test]]></description>
-    <tags>
-      <tag>title</tag>
-      <tag>testasd</tag>
-    </tags>
-  </post>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:16:45.9237640Z">
-    <title><![CDATA[edited]]></title>
-    <description><![CDATA[Description edit]]></description>
-    <tags>
-      <tag>edited</tag>
-    </tags>
-  </post>
-  <post id="d9c7b2bc-f125-4f20-a884-b337972ea5a7" author="rivaa" lastModificationTime="2018-10-11T19:01:20.2394508Z">
-    <title><![CDATA[new]]></title>
-    <description><![CDATA[new]]></description>
-    <tags>
-      <tag>new</tag>
-    </tags>
-  </post>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-15T11:53:47.1942760Z">
-    <title><![CDATA[title new non c'e' piu']]></title>
-    <description><![CDATA[edited]]></description>
-    <tags>
-      <tag>title</tag>
-      <tag>new</tag>
-      <tag>non</tag>
-      <tag>c'e'</tag>
-      <tag>piu'</tag>
-    </tags>
-  </post>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-15T11:54:03.2171940Z">
-    <title><![CDATA[title new non ce piu]]></title>
-    <description><![CDATA[edited]]></description>
-    <tags>
-      <tag>title</tag>
-      <tag>new</tag>
-      <tag>non</tag>
-      <tag>ce</tag>
-      <tag>piu</tag>
+      <tag>decri</tag>
     </tags>
   </post>
 </posts>

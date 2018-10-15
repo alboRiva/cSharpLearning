@@ -41,7 +41,10 @@ namespace knowledgeBaseUI
             showPost.Show();
         }
 
-    
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+        }
     }
 
 }

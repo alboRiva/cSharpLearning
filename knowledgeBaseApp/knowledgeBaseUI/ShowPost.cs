@@ -23,35 +23,43 @@ namespace knowledgeBaseUI
             _dataConnection = dataConnection;
             _post = (Post) selectedItem;
             //Se post e' null -> l'utente vuole inserire un nuovo post da zero
-            //if (_post == null)
-            //{
-            //    SpawnNewPostForm();
-            //}
-            //else
-            //{
-            //    SpawnShowPostForm();
-            //}
-            //TitleTextBox.Enabled = false;
-            DescriptionRichTextBox.Enabled = false;
-            SubmitEdited.Enabled = false;
-            TitleTextBox.Text = _post.Title;
-            DescriptionRichTextBox.Text = _post.Description;
+            if (_post == null)
+            {
+                SpawnNewPostForm();
+            }
+            else
+            {
+                SpawnShowPostForm();
+            }            
         }
 
         private void SpawnShowPostForm()
         {
-            throw new NotImplementedException();
+            TitleTextBox.Enabled = false;
+            DescriptionRichTextBox.Enabled = false;
+            SubmitButton.Enabled = false;          
+            TitleTextBox.Text = _post.Title;
+            DescriptionRichTextBox.Text = _post.Description;
         }
 
         private void SpawnNewPostForm()
         {
-            throw new NotImplementedException();
+            DeleteButton.Hide();
+            EditButton.Hide();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            _dataConnection.DeletePost(_post);
-            MessageBox.Show("Post eliminato dal database");
+            try
+            {
+                _dataConnection.DeletePost(_post);
+                MessageBox.Show("Post eliminato dal database");
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+                throw;
+            }
             this.Close();
         }
 
@@ -59,26 +67,18 @@ namespace knowledgeBaseUI
         {
             DescriptionRichTextBox.Enabled = true;
             TitleTextBox.Enabled = true;
-        }
-
-        private void TitleTextBox_TextChanged(object sender, EventArgs e)
-        {
-            SubmitEdited.Enabled = true;
-        }
-
-        private void DescriptionRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            SubmitEdited.Enabled = true;
-        }
-
-        private void SubmitEdited_EnabledChanged(object sender, EventArgs e)
-        {
-            SubmitEdited.BackColor = Color.LightBlue;
+            SubmitButton.Enabled = true;
         }
 
         private void SubmitEdited_Click(object sender, EventArgs e)
         {
-            _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,DateTime.UtcNow);
+            if (!FormValidation())
+                return;
+
+            if(_post == null)
+                _post = new Post(Environment.UserName,TitleTextBox.Text,DescriptionRichTextBox.Text);
+            else
+                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,DateTime.UtcNow);
             try
             {
                 _dataConnection.AddOrUpdatePost(_post);
@@ -87,8 +87,24 @@ namespace knowledgeBaseUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fallimento nell'inserimento del post");
+                MessageBox.Show("Fallimento nell'inserimento del post: " + " {0} ", ex.Message);
             }
         }
+        /// <summary>
+        /// Returns true if form is valid
+        /// </summary>
+        /// <returns></returns>
+        private bool FormValidation()
+        {
+            if (TitleTextBox.Text.Equals("") || DescriptionRichTextBox.Text.Equals(""))
+            {
+                MessageBox.Show("Inserire un titolo e una descrizione");
+                return false;
+            }
+
+            return true;
+        }
+
+  
     }
 }
