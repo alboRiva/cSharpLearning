@@ -26,7 +26,7 @@ namespace knowledgeBaseUI
             Post post = new Post(Environment.UserName, TitleTextBox.Text, DescriptionRichTextBox.Text);
             try
             {
-                _dataConnection.AddPost(post);
+                _dataConnection.AddOrUpdatePost(post);
                 MessageBox.Show("Post aggiunto con successo al database");
                 this.Close();
             }

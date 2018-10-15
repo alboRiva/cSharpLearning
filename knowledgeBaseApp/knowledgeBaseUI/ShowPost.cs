@@ -81,7 +81,7 @@ namespace knowledgeBaseUI
             _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,DateTime.UtcNow);
             try
             {
-                _dataConnection.AddPost(_post);
+                _dataConnection.AddOrUpdatePost(_post);
                 MessageBox.Show("Post modificato e aggiunto con successo al database");
                 this.Close();
             }

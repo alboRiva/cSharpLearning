@@ -19,8 +19,6 @@ namespace knowledgeBaseUI
                     connectionString))
                 .As<IDataConnection>();
 
-            //ConfigurationManager
-
             return builder.Build();
         }
     }

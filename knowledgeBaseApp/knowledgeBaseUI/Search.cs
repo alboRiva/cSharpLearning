@@ -18,19 +18,9 @@ namespace knowledgeBaseUI
         public Search(IDataConnection dataConnection)
         {
             InitializeComponent();
-            _dataConnection = dataConnection;
-            //TODO: come posso generalizzare questo codice in modo che funzioni anche per SQL?
-     
+            _dataConnection = dataConnection;     
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
             SearchBarControl.Client = GridControlResults;
-            GridControlResults.MouseDoubleClick += new MouseEventHandler(this.MouseDoubleClickOnItem);
-        }
-
-        private void MouseDoubleClickOnItem(object sender, MouseEventArgs e)
-        {
-            //ShowPost showPost = new ShowPost(_dataConnection.GetPost(Guid.Parse((GridControlResults.SelectedValue).ToString())));
-            //showPost.Show();
-
         }
 
         private void AddButton_Click(object sender, EventArgs e)

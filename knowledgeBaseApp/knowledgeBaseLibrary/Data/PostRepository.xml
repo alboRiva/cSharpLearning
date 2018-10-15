@@ -1,21 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T09:59:53.9081916Z">
-    <title><![CDATA[title new]]></title>
-    <description><![CDATA[edited]]></description>
-    <tags>
-      <tag>title</tag>
-      <tag>new</tag>
-    </tags>
-  </post>
-  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:12:02.5811412Z">
-    <title><![CDATA[title ]]></title>
-    <description><![CDATA[asdsada]]></description>
-    <tags>
-      <tag>title</tag>
-      <tag />
-    </tags>
-  </post>
   <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-11T10:14:18.3239967Z">
     <title><![CDATA[asd]]></title>
     <description><![CDATA[Description edit]]></description>
@@ -43,6 +27,28 @@
     <description><![CDATA[new]]></description>
     <tags>
       <tag>new</tag>
+    </tags>
+  </post>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-15T11:53:47.1942760Z">
+    <title><![CDATA[title new non c'e' piu']]></title>
+    <description><![CDATA[edited]]></description>
+    <tags>
+      <tag>title</tag>
+      <tag>new</tag>
+      <tag>non</tag>
+      <tag>c'e'</tag>
+      <tag>piu'</tag>
+    </tags>
+  </post>
+  <post id="2108a693-6ee1-4976-b326-b0556480e73b" author="pippo" lastModificationTime="2018-10-15T11:54:03.2171940Z">
+    <title><![CDATA[title new non ce piu]]></title>
+    <description><![CDATA[edited]]></description>
+    <tags>
+      <tag>title</tag>
+      <tag>new</tag>
+      <tag>non</tag>
+      <tag>ce</tag>
+      <tag>piu</tag>
     </tags>
   </post>
 </posts>

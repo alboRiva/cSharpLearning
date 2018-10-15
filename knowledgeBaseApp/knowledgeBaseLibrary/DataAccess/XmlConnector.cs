@@ -20,7 +20,7 @@ namespace knowledgeBaseLibrary.DataAccess
             FileName = fileName;
             LoadRepository();
         }
-        public void AddPost(Post submittedPost)
+        public void AddOrUpdatePost(Post submittedPost)
         {
             // verifiche e azioni da eseguire
             //  lock in scrittura (il file può essere condiviso da più client e l'applicazione non è client server)
@@ -32,7 +32,6 @@ namespace knowledgeBaseLibrary.DataAccess
             //      a DateTime.MinValue
 
             //Loads repository of posts in memory
-            //TODO: gestione di accesso concorrente - gestione di IOException
             using (FileStream file = new FileStream(FileName,FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read))
             {
                 LoadRepository(file);
