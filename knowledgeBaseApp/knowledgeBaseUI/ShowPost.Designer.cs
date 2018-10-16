@@ -57,6 +57,8 @@
             // 
             // DescriptionRichTextBox
             // 
+            this.DescriptionRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.SetColumnSpan(this.DescriptionRichTextBox, 5);
             this.DescriptionRichTextBox.Location = new System.Drawing.Point(172, 181);
             this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
@@ -68,10 +70,13 @@
             // 
             // TitleTextBox
             // 
+            this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.SetColumnSpan(this.TitleTextBox, 5);
             this.TitleTextBox.Location = new System.Drawing.Point(172, 109);
             this.TitleTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TitleTextBox.Size = new System.Drawing.Size(453, 20);
             this.TitleTextBox.TabIndex = 8;
             // 

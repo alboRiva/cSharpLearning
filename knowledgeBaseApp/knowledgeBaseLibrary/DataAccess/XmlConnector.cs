@@ -22,15 +22,6 @@ namespace knowledgeBaseLibrary.DataAccess
         }
         public void AddOrUpdatePost(Post submittedPost)
         {
-            // verifiche e azioni da eseguire
-            //  lock in scrittura (il file può essere condiviso da più client e l'applicazione non è client server)
-            //  se il lock non funziona attendere un tempo ragionevole trascorso il quale dare errore
-            //  se il lock ha esito positivo verificare che il lastModifiedTime della riga di cui stai facendo il post sul file
-            //      (se la riga esiste già e quindi si tratta di modifica) non sia superiore al valore presente nell'oggetto che si sta passando
-            //      questa verifica deve essere fatta matchando l'id della riga di cui si sta facendo il post con l'id della riga sul file
-            //      se l'id della riga corrente è pari a Guid.Empty significa che si tratta di un post nuovo e dovrebbe avere lastrModifiedTimer pari
-            //      a DateTime.MinValue
-
             //Loads repository of posts in memory
             using (FileStream file = new FileStream(FileName,FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read))
             {
@@ -100,15 +91,20 @@ namespace knowledgeBaseLibrary.DataAccess
                 return doc;
             }
         }
-
+        /// <summary>
+        /// Returns first 100 entries of repository if tags == null, returns matching tags if tags != null
+        /// </summary>
+        /// <param name="tags"></param>
+        /// <returns></returns>
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags)
         {
             //Loads Posts in memory 
             LoadRepository();
 
+            //if arguments is null -> display first 100 elements of repository
             if (tags == null || !tags.Any())
-                return _repository;
-            //Return all the posts which contain at least 
+                return _repository.Take(100);
+            //Return all the posts which contain at least one tag
             return _repository.Where(post => {
                 return post.Tags.Any(t => tags.Any(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
                 });
@@ -130,15 +126,12 @@ namespace knowledgeBaseLibrary.DataAccess
             {
                 _repository.Add(DecodePostFromXmlElement(item));
             }
-            System.Diagnostics.Debug.WriteLine("Repo Loaded  ----");
         }
 
         private Post DecodePostFromXmlElement(XElement item)
         {
             Guid id = new Guid(item.Attribute("id").Value);
-            string dateTime = item.Attribute("lastModificationTime").Value;
-            // lastModificationTime="2018-10-06T20:08:54.4375781Z"
-            //DateTime lastModificationDate = DateTime.ParseExact(dateTime, "yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.fffffffK", CultureInfo.InvariantCulture);
+            string dateTime = item.Attribute("lastModificationTime")?.Value;
             DateTime lastModificationDate = DateTime.Parse(dateTime,CultureInfo.InvariantCulture,DateTimeStyles.AdjustToUniversal);
 
             return new Post(id
@@ -160,7 +153,7 @@ namespace knowledgeBaseLibrary.DataAccess
             return null;
         }
 
-        //Gets a post without calling LoadRepository() - which would cause IOException
+        //Gets a post without calling LoadRepository() 
         public Post GetPostFromRepo(Guid Id)
         {
             foreach(var post in _repository)

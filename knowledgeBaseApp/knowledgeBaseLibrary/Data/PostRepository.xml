@@ -1,10 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="3ae827f5-176b-46fb-8ac2-8ca9bf8b574d" author="rivaa" lastModificationTime="2018-10-15T12:54:04.0620751Z">
-    <title><![CDATA[decri]]></title>
-    <description><![CDATA[a]]></description>
+  <post id="6012d358-8f19-4f3e-b71c-9e9abe5820b6" author="rivaa" lastModificationTime="2018-10-16T05:56:10.3736574Z">
+    <title><![CDATA[cane gatto]]></title>
+    <description><![CDATA[gatto]]></description>
     <tags>
-      <tag>decri</tag>
+      <tag>cane</tag>
+      <tag>gatto</tag>
+    </tags>
+  </post>
+  <post id="85f84dfa-8804-4b6e-889f-b42aaa073983" author="rivaa" lastModificationTime="2018-10-16T10:03:44.2661715Z">
+    <title><![CDATA[Nuovo post edited ciao]]></title>
+    <description><![CDATA[nuovo post ]]></description>
+    <tags>
+      <tag>Nuovo</tag>
+      <tag>post</tag>
+      <tag>edited</tag>
+      <tag>ciao</tag>
+    </tags>
+  </post>
+  <post id="42f14ecf-ad0b-4340-9d89-171a44393141" author="rivaa" lastModificationTime="2018-10-16T10:04:21.9434263Z">
+    <title><![CDATA[new]]></title>
+    <description><![CDATA[new description]]></description>
+    <tags>
+      <tag>new</tag>
+    </tags>
+  </post>
+  <post id="133ad276-e51a-4093-83a0-fb8ed6a3221f" author="rivaa" lastModificationTime="2018-10-16T10:04:34.0650314Z">
+    <title><![CDATA[nuova]]></title>
+    <description><![CDATA[nuovaq]]></description>
+    <tags>
+      <tag>nuova</tag>
     </tags>
   </post>
 </posts>

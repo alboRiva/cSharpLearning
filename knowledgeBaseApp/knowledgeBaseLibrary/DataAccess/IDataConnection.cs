@@ -7,12 +7,7 @@ namespace knowledgeBaseLibrary.DataAccess
 {
     public interface IDataConnection
     {
-        /// <summary>
-        /// Allows different ways of storing data, based on the class implementing it
-        /// </summary>
-        /// <param name="sumbittedPost"></param>
-        /// <returns></returns>
-        //TODO: should it throw an Exception or a bool? EXCEPTION
+
         void AddOrUpdatePost(Post sumbittedPost);
 
         void DeletePost(Post post);

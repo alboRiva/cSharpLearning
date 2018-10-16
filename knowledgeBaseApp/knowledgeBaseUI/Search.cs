@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Base;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
 
@@ -19,8 +20,9 @@ namespace knowledgeBaseUI
         {
             InitializeComponent();
             _dataConnection = dataConnection;     
+            //TODO: don't load all records - make display of records fast -> done: I display first 100 entries of db
+            //TODO: Unit Testing?
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
-            SearchBarControl.Client = GridControlResults;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace knowledgeBaseUI
         }
 
 
-        private void searchGridControl_DoubleClick(object sender, EventArgs e)
+        private void SearchGridControl_DoubleClick(object sender, EventArgs e)
         {
             var view = (DevExpress.XtraGrid.Views.Grid.GridView) sender;
             Post post = view.GetFocusedRow() as Post;
@@ -44,6 +46,24 @@ namespace knowledgeBaseUI
         private void Refresh_Click(object sender, EventArgs e)
         {
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+        }
+
+        //TODO: is it necessary?
+        private void tableLayout_MouseHover(object sender, EventArgs e)
+        {
+          //  GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+        }
+
+        private void searchBarInput_TextChanged(object sender, EventArgs e)
+        {
+            var filtered = _dataConnection.GetPostList(GetTagsFromTitle(searchBarInput.Text));
+            GridControlResults.DataSource = filtered;          
+        }
+
+        //TODO: improve tag extraction
+        private IEnumerable<string> GetTagsFromTitle(string searchText)
+        {
+            return searchText.Split(' ', '\t', '\r', '\n' /*, ...*/);
         }
     }
 
