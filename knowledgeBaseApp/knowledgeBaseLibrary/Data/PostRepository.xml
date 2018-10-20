@@ -1,35 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="6012d358-8f19-4f3e-b71c-9e9abe5820b6" author="rivaa" lastModificationTime="2018-10-16T05:56:10.3736574Z">
-    <title><![CDATA[cane gatto]]></title>
-    <description><![CDATA[gatto]]></description>
-    <tags>
-      <tag>cane</tag>
-      <tag>gatto</tag>
-    </tags>
-  </post>
-  <post id="85f84dfa-8804-4b6e-889f-b42aaa073983" author="rivaa" lastModificationTime="2018-10-16T10:03:44.2661715Z">
-    <title><![CDATA[Nuovo post edited ciao]]></title>
-    <description><![CDATA[nuovo post ]]></description>
-    <tags>
-      <tag>Nuovo</tag>
-      <tag>post</tag>
-      <tag>edited</tag>
-      <tag>ciao</tag>
-    </tags>
-  </post>
-  <post id="42f14ecf-ad0b-4340-9d89-171a44393141" author="rivaa" lastModificationTime="2018-10-16T10:04:21.9434263Z">
-    <title><![CDATA[new]]></title>
-    <description><![CDATA[new description]]></description>
-    <tags>
-      <tag>new</tag>
-    </tags>
-  </post>
-  <post id="133ad276-e51a-4093-83a0-fb8ed6a3221f" author="rivaa" lastModificationTime="2018-10-16T10:04:34.0650314Z">
+  <post id="86c87116-7181-4df7-ae81-638ac3bacbc0" author="rivaa" lastModificationTime="2018-10-17T08:18:54.2675530Z">
     <title><![CDATA[nuova]]></title>
-    <description><![CDATA[nuovaq]]></description>
+    <description><![CDATA[nuova]]></description>
     <tags>
       <tag>nuova</tag>
+      <tag>nuov</tag>
+      <tag>nuo</tag>
+      <tag>nu</tag>
+    </tags>
+  </post>
+  <post id="0917f9bb-5bc9-4c73-8ca8-9d0be17f5a33" author="rivaa" lastModificationTime="2018-10-17T08:35:28.0542060Z">
+    <title><![CDATA[prova ]]></title>
+    <description><![CDATA[test]]></description>
+    <tags>
+      <tag>prova</tag>
+      <tag>prov</tag>
+      <tag>pro</tag>
+      <tag>pr</tag>
+    </tags>
+  </post>
+  <post id="4c64adac-8912-4855-afdc-6905b6faf402" author="rivaa" lastModificationTime="2018-10-18T13:25:12.0197825Z">
+    <title><![CDATA[Titolo nuovo]]></title>
+    <description><![CDATA[descrizione]]></description>
+    <tags>
+      <tag>Titolo</tag>
+      <tag>nuovo</tag>
+      <tag>Titol</tag>
+      <tag>Tito</tag>
+      <tag>Tit</tag>
+      <tag>Ti</tag>
+      <tag>nuov</tag>
+      <tag>nuo</tag>
+      <tag>nu</tag>
     </tags>
   </post>
 </posts>

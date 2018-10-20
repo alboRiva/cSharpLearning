@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "knowledgeBaseUI", "knowledg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "knowledgeBaseLibrary", "knowledgeBaseLibrary\knowledgeBaseLibrary.csproj", "{EEEA6B41-4198-4A3C-8546-ACCB80BB44CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBaseTest", "KnowledgeBaseTest\KnowledgeBaseTest.csproj", "{1C22CC35-F574-40F6-B9D6-3ADC2E4185B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EEEA6B41-4198-4A3C-8546-ACCB80BB44CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEEA6B41-4198-4A3C-8546-ACCB80BB44CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEEA6B41-4198-4A3C-8546-ACCB80BB44CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C22CC35-F574-40F6-B9D6-3ADC2E4185B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C22CC35-F574-40F6-B9D6-3ADC2E4185B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C22CC35-F574-40F6-B9D6-3ADC2E4185B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C22CC35-F574-40F6-B9D6-3ADC2E4185B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

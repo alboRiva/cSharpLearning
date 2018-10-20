@@ -27,8 +27,6 @@ namespace knowledgeBaseUI
                 var app = scope.Resolve<IApplicationInjection>();
                 app.Run();
             }
-
-            //Application.Run(new Search());
         }
     }
 }

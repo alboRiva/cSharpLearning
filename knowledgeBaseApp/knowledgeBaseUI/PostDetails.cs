@@ -12,16 +12,16 @@ using knowledgeBaseLibrary.Models;
 
 namespace knowledgeBaseUI
 {
-    public partial class ShowPost : Form
+    public partial class PostDetails : Form
     {
         private Post _post;
         private readonly IDataConnection _dataConnection;
         
-        public ShowPost(object selectedItem, IDataConnection dataConnection)
+        public PostDetails(Post selectedItem, IDataConnection dataConnection)
         {
             InitializeComponent();
             _dataConnection = dataConnection;
-            _post = (Post) selectedItem;
+            _post = selectedItem;
             //Se post e' null -> l'utente vuole inserire un nuovo post da zero
             if (_post == null)
             {
@@ -35,6 +35,7 @@ namespace knowledgeBaseUI
 
         private void SpawnShowPostForm()
         {
+            this.Text = "Show/edit post";
             TitleTextBox.Enabled = false;
             DescriptionRichTextBox.Enabled = false;
             SubmitButton.Enabled = false;          
@@ -44,6 +45,7 @@ namespace knowledgeBaseUI
 
         private void SpawnNewPostForm()
         {
+            this.Text = "New post";
             DeleteButton.Hide();
             EditButton.Hide();
         }
@@ -53,7 +55,7 @@ namespace knowledgeBaseUI
             try
             {
                 _dataConnection.DeletePost(_post);
-                MessageBox.Show("Post eliminato dal database");
+                MessageBox.Show(this,"Post eliminato dal database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception exception)
             {
@@ -82,12 +84,12 @@ namespace knowledgeBaseUI
             try
             {
                 _dataConnection.AddOrUpdatePost(_post);
-                MessageBox.Show("Post modificato e aggiunto con successo al database");
+                MessageBox.Show(this,"Post modificato e aggiunto con successo al database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fallimento nell'inserimento del post: " + " {0} ", ex.Message);
+                MessageBox.Show(this,$"Fallimento nell'inserimento del post: {ex.Message}",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         /// <summary>
@@ -98,7 +100,7 @@ namespace knowledgeBaseUI
         {
             if (TitleTextBox.Text.Equals("") || DescriptionRichTextBox.Text.Equals(""))
             {
-                MessageBox.Show("Inserire un titolo e una descrizione");
+                MessageBox.Show(this,"Inserire un titolo e una descrizione",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
 

@@ -27,20 +27,10 @@ namespace knowledgeBaseLibrary.Models
         /// </summary>
         /// <param name="title"></param>
         /// <param name="description"></param>
-        public Post(Guid id, string author, string title, string description, DateTime lastModifiedTime)
+        public Post(Guid id, string author, string title, string description, DateTime lastModifiedTime) : this(author,title,description)
         {
             Id = id;
-
-            Author = author;
-
-            //Author = Environment.UserName;
-            //Author = System.Security.Principal.WindowsIdentity.GetCurrent().Name; -> returns DomainName\UserName
-
-            Title = title;
-            Description = description;
             LastModifiedTime = lastModifiedTime;
-
-            Tags = GetTagsFromTitle();
         }
 
         /// <summary>
@@ -57,14 +47,9 @@ namespace knowledgeBaseLibrary.Models
             Description = description;
             //LastModifiedTime = DateTime.UtcNow;
             LastModifiedTime = DateTime.MinValue;
-            Tags = GetTagsFromTitle();
+            Tags = Utilities.GetTagsListFromString(title,true);
         }
 
-        private IEnumerable<string> GetTagsFromTitle()
-        {
-            // make it more complex
-            return Title.Split(' ', '\t', '\r', '\n' /*, ...*/);
-        }
 
         public override int GetHashCode()
         {

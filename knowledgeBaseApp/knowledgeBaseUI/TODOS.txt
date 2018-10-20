@@ -1,7 +1,5 @@
-﻿-NewForm and ShowPost insieme nella stessa Form --done
--DataConnection ignora connection string e filePath -- done
--LoadRepository() in using con lock -- done
--gestire AddPost -> cambio nome in AddOrUpdate() e gestione edit che deve eliminare il post originale --done
--togliere tutti i warning -- done
--mettere in appConfig il path del file xml o della stringa di connessione -- done
--author colonna e lastModifiedTime --done
+﻿-GUI search stile google - 2 icone per refresh e add ()
+-valori sensati per provare il programma
+-unit test
+-Distinct per i tags
+-SQL dopo tutto

@@ -1,6 +1,6 @@
 ﻿namespace knowledgeBaseUI
 {
-    partial class ShowPost
+    partial class PostDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EditButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.EditButton.Location = new System.Drawing.Point(527, 80);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EditButton.Location = new System.Drawing.Point(702, 97);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(98, 25);
+            this.EditButton.Size = new System.Drawing.Size(129, 31);
             this.EditButton.TabIndex = 11;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
@@ -60,11 +60,11 @@
             this.DescriptionRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.SetColumnSpan(this.DescriptionRichTextBox, 5);
-            this.DescriptionRichTextBox.Location = new System.Drawing.Point(172, 181);
-            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.DescriptionRichTextBox.Location = new System.Drawing.Point(229, 219);
+            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DescriptionRichTextBox.Name = "DescriptionRichTextBox";
             this.DescriptionRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.DescriptionRichTextBox.Size = new System.Drawing.Size(453, 145);
+            this.DescriptionRichTextBox.Size = new System.Drawing.Size(602, 178);
             this.DescriptionRichTextBox.TabIndex = 9;
             this.DescriptionRichTextBox.Text = "";
             // 
@@ -73,30 +73,28 @@
             this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayout.SetColumnSpan(this.TitleTextBox, 5);
-            this.TitleTextBox.Location = new System.Drawing.Point(172, 109);
-            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TitleTextBox.Location = new System.Drawing.Point(229, 132);
+            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TitleTextBox.Size = new System.Drawing.Size(453, 20);
+            this.TitleTextBox.Size = new System.Drawing.Size(602, 22);
             this.TitleTextBox.TabIndex = 8;
             // 
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(172, 154);
-            this.DescriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DescriptionLabel.Location = new System.Drawing.Point(229, 187);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(60, 13);
+            this.DescriptionLabel.Size = new System.Drawing.Size(79, 17);
             this.DescriptionLabel.TabIndex = 7;
             this.DescriptionLabel.Text = "Description";
             // 
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Location = new System.Drawing.Point(172, 78);
-            this.TitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(229, 95);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(27, 13);
+            this.TitleLabel.Size = new System.Drawing.Size(35, 17);
             this.TitleLabel.TabIndex = 6;
             this.TitleLabel.Text = "Title";
             // 
@@ -105,12 +103,13 @@
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.DeleteButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.Firebrick;
-            this.DeleteButton.Location = new System.Drawing.Point(527, 384);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DeleteButton.Location = new System.Drawing.Point(702, 469);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(98, 28);
+            this.DeleteButton.Size = new System.Drawing.Size(129, 34);
             this.DeleteButton.TabIndex = 12;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -120,11 +119,13 @@
             // 
             this.SubmitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SubmitButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.SubmitButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.SubmitButton.Location = new System.Drawing.Point(528, 349);
+            this.SubmitButton.Location = new System.Drawing.Point(703, 427);
+            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(96, 30);
+            this.SubmitButton.Size = new System.Drawing.Size(127, 36);
             this.SubmitButton.TabIndex = 13;
             this.SubmitButton.Text = "SubmitButton";
             this.SubmitButton.UseVisualStyleBackColor = true;
@@ -151,7 +152,7 @@
             this.tableLayout.Controls.Add(this.SubmitButton, 5, 8);
             this.tableLayout.Controls.Add(this.EditButton, 5, 2);
             this.tableLayout.Location = new System.Drawing.Point(0, 2);
-            this.tableLayout.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayout.Name = "tableLayout";
             this.tableLayout.RowCount = 11;
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.930643F));
@@ -163,9 +164,9 @@
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.56491F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.248581F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.407973F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayout.Size = new System.Drawing.Size(799, 448);
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayout.Size = new System.Drawing.Size(1065, 551);
             this.tableLayout.TabIndex = 14;
             // 
             // label2
@@ -175,20 +176,21 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(316, 38);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(420, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 21);
+            this.label2.Size = new System.Drawing.Size(220, 28);
             this.label2.TabIndex = 6;
             this.label2.Text = "KnowledgeBase";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShowPost
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tableLayout);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ShowPost";
             this.Text = "ShowPost";
             this.tableLayout.ResumeLayout(false);

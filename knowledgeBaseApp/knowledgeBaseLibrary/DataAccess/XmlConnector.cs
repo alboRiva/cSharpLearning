@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -96,18 +95,18 @@ namespace knowledgeBaseLibrary.DataAccess
         /// </summary>
         /// <param name="tags"></param>
         /// <returns></returns>
-        public IEnumerable<Post> GetPostList(IEnumerable<string> tags)
+        public IEnumerable<Post> GetPostList(IEnumerable<string> tags,int pageNumber = 0, int itemsPerPage = Int32.MaxValue)
         {
             //Loads Posts in memory 
             LoadRepository();
 
-            //if arguments is null -> display first 100 elements of repository
+            //TODO: "enumerate to array" warning?
             if (tags == null || !tags.Any())
-                return _repository.Take(100);
+                return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
             //Return all the posts which contain at least one tag
             return _repository.Where(post => {
                 return post.Tags.Any(t => tags.Any(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
-                });
+                }).Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
         }
 
         private void LoadRepository()
@@ -130,14 +129,14 @@ namespace knowledgeBaseLibrary.DataAccess
 
         private Post DecodePostFromXmlElement(XElement item)
         {
-            Guid id = new Guid(item.Attribute("id").Value);
+            Guid id = new Guid(item.Attribute("id")?.Value);
             string dateTime = item.Attribute("lastModificationTime")?.Value;
             DateTime lastModificationDate = DateTime.Parse(dateTime,CultureInfo.InvariantCulture,DateTimeStyles.AdjustToUniversal);
 
             return new Post(id
-                    , item.Attribute("author").Value
-                    , item.Element("title").Value
-                    , item.Element("description").Value
+                    , item.Attribute("author")?.Value
+                    , item.Element("title")?.Value
+                    , item.Element("description")?.Value
                     , lastModificationDate);
         }
 
@@ -154,11 +153,11 @@ namespace knowledgeBaseLibrary.DataAccess
         }
 
         //Gets a post without calling LoadRepository() 
-        public Post GetPostFromRepo(Guid Id)
+        public Post GetPostFromRepo(Guid id)
         {
             foreach(var post in _repository)
             {
-                if (post.Id.Equals(Id))
+                if (post.Id.Equals(id))
                     return post;
             }
 

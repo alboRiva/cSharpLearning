@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Base;
+using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
 
@@ -22,13 +23,16 @@ namespace knowledgeBaseUI
             _dataConnection = dataConnection;     
             //TODO: don't load all records - make display of records fast -> done: I display first 100 entries of db
             //TODO: Unit Testing?
-            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            RefreshData();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var showPost = new ShowPost(null,_dataConnection);
-            showPost.Show();
+            var showPost = new PostDetails(null,_dataConnection);
+            //ShowDialog -> posso controllare il valore di ritorno
+            DialogResult diagRes = showPost.ShowDialog();
+            if(diagRes == DialogResult.OK)
+                RefreshData();
         }
 
 
@@ -39,8 +43,10 @@ namespace knowledgeBaseUI
             if (post == null)
                 return;
 
-            ShowPost showPost = new ShowPost(post,_dataConnection);
-            showPost.Show();
+            PostDetails showPost = new PostDetails(post,_dataConnection);
+            DialogResult diagRes = showPost.ShowDialog();
+            if (diagRes == DialogResult.OK)
+                RefreshData();
         }
 
         private void Refresh_Click(object sender, EventArgs e)
@@ -48,22 +54,16 @@ namespace knowledgeBaseUI
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
         }
 
-        //TODO: is it necessary?
-        private void tableLayout_MouseHover(object sender, EventArgs e)
-        {
-          //  GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
-        }
-
         private void searchBarInput_TextChanged(object sender, EventArgs e)
         {
-            var filtered = _dataConnection.GetPostList(GetTagsFromTitle(searchBarInput.Text));
+            var filtered = _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text));
             GridControlResults.DataSource = filtered;          
         }
 
-        //TODO: improve tag extraction
-        private IEnumerable<string> GetTagsFromTitle(string searchText)
+
+        private void RefreshData()
         {
-            return searchText.Split(' ', '\t', '\r', '\n' /*, ...*/);
+            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
         }
     }
 
