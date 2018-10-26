@@ -25,9 +25,12 @@ namespace KnowledgeBaseTest
             ExtractAndCheckTags(inputString,expectedOutput,false);
         }
 
+        [TestMethod]
         public void GetTagsFromStringWithVariantsCheckOnDuplicates()
         {
-            Assert.IsTrue(false);
+            string inputString = "nuova nuove";
+            List<string> expectedOutput = new List<string>{"nu","nuo","nuov","nuova","nuove"};
+            ExtractAndCheckTags(inputString, expectedOutput, true);
         }
 
         private void ExtractAndCheckTags(string inputString, IEnumerable<string> expectedOutput, bool useVariants, string reason="")

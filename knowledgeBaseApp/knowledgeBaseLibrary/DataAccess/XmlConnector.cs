@@ -100,7 +100,6 @@ namespace knowledgeBaseLibrary.DataAccess
             //Loads Posts in memory 
             LoadRepository();
 
-            //TODO: "enumerate to array" warning?
             if (tags == null || !tags.Any())
                 return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
             //Return all the posts which contain at least one tag

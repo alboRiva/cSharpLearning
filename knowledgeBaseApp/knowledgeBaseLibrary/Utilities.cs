@@ -15,7 +15,7 @@ namespace knowledgeBaseLibrary
             tags.AddRange(extractedTags);
             if (useStringVariations)
             {
-                extractedTags = tags.Where(t => t.Length >= 3).SelectMany(t => GetStringVariations(t)).ToList();
+                extractedTags = tags.Where(t => t.Length >= 3).SelectMany(t => GetStringVariations(t)).Distinct().ToList();
                 tags.AddRange(extractedTags);
             }
             return tags;

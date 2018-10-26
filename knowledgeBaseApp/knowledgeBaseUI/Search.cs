@@ -20,9 +20,8 @@ namespace knowledgeBaseUI
         public Search(IDataConnection dataConnection)
         {
             InitializeComponent();
+            SetButtonsIcons();
             _dataConnection = dataConnection;     
-            //TODO: don't load all records - make display of records fast -> done: I display first 100 entries of db
-            //TODO: Unit Testing?
             RefreshData();
         }
 
@@ -64,6 +63,14 @@ namespace knowledgeBaseUI
         private void RefreshData()
         {
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+        }
+
+        private void SetButtonsIcons()
+        {
+            AddButton.Image =
+                Image.FromFile(
+                    @"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Add.ico");
+            RefreshButton.Image = Image.FromFile(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Refresh.ico");
         }
     }
 

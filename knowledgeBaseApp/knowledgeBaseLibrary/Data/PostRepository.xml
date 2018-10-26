@@ -1,38 +1,532 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="86c87116-7181-4df7-ae81-638ac3bacbc0" author="rivaa" lastModificationTime="2018-10-17T08:18:54.2675530Z">
-    <title><![CDATA[nuova]]></title>
-    <description><![CDATA[nuova]]></description>
+  <post id="3ed1f817-cf61-46db-95b2-ebc3720d161a" author="rivaa" lastModificationTime="2018-10-26T13:00:52.3631322Z">
+    <title><![CDATA[Typecasting in C#]]></title>
+    <description><![CDATA[There are various conversion operators. The (typename) expression form can do three different things:
+
+An unboxing conversion (e.g. from a boxed integer to int)
+A user-defined conversion (e.g. casting XAttribute to string)
+A reference conversion within a type hierarchy (e.g. casting object to string)
+All of these may fail at execution time, in which case an exception will be thrown.
+
+The as operator, on the other hand, never throws an exception - instead, the result of the conversion is null if it fails:
+
+object x = new object();
+string y = x as string; // Now y is null because x isn't a string
+It can be used for unboxing to a nullable value type:
+
+object x = 10; // Boxed int
+float? y = x as float?; // Now y has a null value because x isn't a boxed float
+There are also implicit conversions, e.g. from int to long:
+
+int x = 10;
+long y = x; // Implicit conversion
+Does that cover everything you were interested in?]]></description>
     <tags>
-      <tag>nuova</tag>
-      <tag>nuov</tag>
-      <tag>nuo</tag>
-      <tag>nu</tag>
+      <tag>Typecasting</tag>
+      <tag>in</tag>
+      <tag>C#</tag>
+      <tag>Typecastin</tag>
+      <tag>Typecasti</tag>
+      <tag>Typecast</tag>
+      <tag>Typecas</tag>
+      <tag>Typeca</tag>
+      <tag>Typec</tag>
+      <tag>Type</tag>
+      <tag>Typ</tag>
+      <tag>Ty</tag>
     </tags>
   </post>
-  <post id="0917f9bb-5bc9-4c73-8ca8-9d0be17f5a33" author="rivaa" lastModificationTime="2018-10-17T08:35:28.0542060Z">
-    <title><![CDATA[prova ]]></title>
-    <description><![CDATA[test]]></description>
+  <post id="ac8aebd0-9a16-41a9-98d5-fa51e1948191" author="rivaa" lastModificationTime="2018-10-26T13:02:55.7908207Z">
+    <title><![CDATA[What is a NullReferenceException, and how do I fix it?]]></title>
+    <description><![CDATA[You are trying to use something that is null (or Nothing in VB.NET). This means you either set it to null, or you never set it to anything at all.
+
+Like anything else, null gets passed around. If it is null in method "A", it could be that method "B" passed a null to method "A".
+
+null can have different meanings:
+
+Object variables which are uninitialized and hence point to nothing. In this case, if you access properties or methods of such objects, it causes a NullReferenceException.
+The developer is using null intentionally to indicate there is no meaningful value available. Note that C# has the concept of nullable datatypes for variables (like database tables can have nullable fields) - you can assign null to them to indicate there is no value stored in it, for example int? a = null; where the question mark indicates it is allowed to store null in variable a. You can check that either with if (a.HasValue) {...} or with if (a==null) {...}. Nullable variables, like a this example, allow to access the value via a.Value explicitly, or just as normal via a. 
+Note that accessing it via a.Value throws an InvalidOperationException instead of a NullReferenceException if a is null - you should do the check beforehand, i.e. if you have another on-nullable variable int b; then you should do assignments like if (a.HasValue) { b = a.Value; } or shorter if (a != null) { b = a; }.
+The rest of this article goes into more detail and shows mistakes that many programmers often make which can lead to a NullReferenceException.
+
+More Specifically
+The runtime throwing a NullReferenceException always means the same thing: you are trying to use a reference, and the reference is not initialized (or it was once initialized, but is no longer initialized).
+
+This means the reference is null, and you cannot access members (such as methods) through a null reference. The simplest case:
+
+string foo = null;
+foo.ToUpper();
+This will throw a NullReferenceException at the second line because you can't call the instance method ToUpper() on a string reference pointing to null.
+
+Debugging
+How do you find the source of a NullReferenceException? Apart from looking at the exception itself, which will be thrown exactly at the location where it occurs, the general rules of debugging in Visual Studio apply: place strategic breakpoints and inspect your variables, either by hovering the mouse over their names, opening a (Quick)Watch window or using the various debugging panels like Locals and Autos.
+
+If you want to find out where the reference is or isn't set, right-click its name and select "Find All References". You can then place a breakpoint at every found location and run your program with the debugger attached. Every time the debugger breaks on such a breakpoint, you need to determine whether you expect the reference to be non-null, inspect the variable and and verify that it points to an instance when you expect it to.
+
+By following the program flow this way, you can find the location where the instance should not be null, and why it isn't properly set.
+
+Examples
+Some common scenarios where the exception can be thrown:
+
+Generic
+ref1.ref2.ref3.member
+If ref1 or ref2 or ref3 is null, then you'll get a NullReferenceException. If you want to solve the problem, then find out which one is null by rewriting the expression to its simpler equivalent:
+
+var r1 = ref1;
+var r2 = r1.ref2;
+var r3 = r2.ref3;
+r3.member
+Specifically, in HttpContext.Current.User.Identity.Name, the HttpContext.Current could be null, or the User property could be null, or the Identity property could be null.
+
+Indirect
+public class Person {
+    public int Age { get; set; }
+}
+public class Book {
+    public Person Author { get; set; }
+}
+public class Example {
+    public void Foo() {
+        Book b1 = new Book();
+        int authorAge = b1.Author.Age; // You never initialized the Author property.
+                                       // there is no Person to get an Age from.
+    }
+}
+If you want to avoid the child (Person) null reference, you could initialize it in the parent (Book) object's constructor.
+
+Nested Object Initializers
+The same applies to nested object initializers:
+
+Book b1 = new Book { Author = { Age = 45 } };
+This translates to
+
+Book b1 = new Book();
+b1.Author.Age = 45;
+While the new keyword is used, it only creates a new instance of Book, but not a new instance of Person, so the Author the property is still null.
+
+Nested Collection Initializers
+public class Person {
+    public ICollection<Book> Books { get; set; }
+}
+public class Book {
+    public string Title { get; set; }
+}
+The nested collection initializers behave the same:
+
+Person p1 = new Person {
+    Books = {
+        new Book { Title = "Title1" },
+        new Book { Title = "Title2" },
+    }
+};
+This translates to
+
+Person p1 = new Person();
+p1.Books.Add(new Book { Title = "Title1" });
+p1.Books.Add(new Book { Title = "Title2" });
+The new Person only creates an instance of Person, but the Books collection is still null. The collection initializer syntax does not create a collection for p1.Books, it only translates to the p1.Books.Add(...) statements.
+
+Array
+int[] numbers = null;
+int n = numbers[0]; // numbers is null. There is no array to index.
+Array Elements
+Person[] people = new Person[5];
+people[0].Age = 20 // people[0] is null. The array was allocated but not
+                   // initialized. There is no Person to set the Age for.
+Jagged Arrays
+long[][] array = new long[1][];
+array[0][0] = 3; // is null because only the first dimension is yet initialized.
+                 // Use array[0] = new long[2]; first.
+Collection/List/Dictionary
+Dictionary<string, int> agesForNames = null;
+int age = agesForNames["Bob"]; // agesForNames is null.
+                               // There is no Dictionary to perform the lookup.
+Range Variable (Indirect/Deferred)
+public class Person {
+    public string Name { get; set; }
+}
+var people = new List<Person>();
+people.Add(null);
+var names = from p in people select p.Name;
+string firstName = names.First(); // Exception is thrown here, but actually occurs
+                                  // on the line above.  "p" is null because the
+                                  // first element we added to the list is null.
+Events
+public class Demo
+{
+    public event EventHandler StateChanged;
+
+    protected virtual void OnStateChanged(EventArgs e)
+    {        
+        StateChanged(this, e); // Exception is thrown here 
+                               // if no event handlers have been attached
+                               // to StateChanged event
+    }
+}
+Bad Naming Conventions:
+If you named fields differently from locals, you might have realized that you never initialized the field.
+
+public class Form1 {
+    private Customer customer;
+
+    private void Form1_Load(object sender, EventArgs e) {
+        Customer customer = new Customer();
+        customer.Name = "John";
+    }
+
+    private void Button_Click(object sender, EventArgs e) {
+        MessageBox.Show(customer.Name);
+    }
+}
+This can be solved by following the convention to prefix fields with an underscore:
+
+private Customer _customer;
+ASP.NET Page Life cycle:
+public partial class Issues_Edit : System.Web.UI.Page
+{
+    protected TestIssue myIssue;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            // Only called on first load, not when button clicked
+            myIssue = new TestIssue(); 
+        }
+    }
+
+    protected void SaveButton_Click(object sender, EventArgs e)
+    {
+        myIssue.Entry = "NullReferenceException here!";
+    }
+}
+ASP.NET Session Values
+// if the "FirstName" session value has not yet been set,
+// then this line will throw a NullReferenceException
+string firstName = Session["FirstName"].ToString();
+ASP.NET MVC empty view models
+If the exception occurs when referencing a property of @Model in an ASP.NET MVC view, you need to understand that the Model gets set in your action method, when you return a view. When you return an empty model (or model property) from your controller, the exception occurs when the views access it:
+
+// Controller
+public class Restaurant:Controller
+{
+    public ActionResult Search()
+    {
+         return View();  // Forgot the provide a Model here.
+    }
+}
+
+// Razor view 
+@foreach (var restaurantSearch in Model.RestaurantSearch)  // Throws.
+{
+}
+
+<p>@Model.somePropertyName</p> <!-- Also throws -->
+WPF Control Creation Order and Events
+WPF controls are created during the call to InitializeComponent in the order they appear in the visual tree. A NullReferenceException will be raised in the case of early-created controls with event handlers, etc. , that fire during InitializeComponent which reference late-created controls.
+
+For example :
+
+<Grid>
+    <!-- Combobox declared first -->
+    <ComboBox Name="comboBox1" 
+              Margin="10"
+              SelectedIndex="0" 
+              SelectionChanged="comboBox1_SelectionChanged">
+        <ComboBoxItem Content="Item 1" />
+        <ComboBoxItem Content="Item 2" />
+        <ComboBoxItem Content="Item 3" />
+    </ComboBox>
+
+    <!-- Label declared later -->
+    <Label Name="label1" 
+           Content="Label"
+           Margin="10" />
+</Grid>
+Here comboBox1 is created before label1. If comboBox1_SelectionChanged attempts to reference `label1, it will not yet have been created.
+
+private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    label1.Content = comboBox1.SelectedIndex.ToString(); // NullReference here!!
+}
+Changing the order of the declarations in the XAML (i.e., listing label1 before comboBox1, ignoring issues of design philosophy, would at least resolve the NullReferenceException here.
+
+Cast with as
+var myThing = someObject as Thing;
+This doesn't throw an InvalidCastException but returns a null when the cast fails (and when someObject is itself null). So be aware of that.
+
+LINQ FirstOrDefault() and SingleOrDefault()
+The plain versions First() and Single() throw exceptions when there is nothing. The "OrDefault" versions return null in that case. So be aware of that.
+
+foreach
+foreach throws when you try to iterate null collection. Usually caused by unexpected null result from methods that return collections.
+
+ List<int> list = null;    
+ foreach(var v in list) { } // exception
+More realistic example - select nodes from XML document. Will throw if nodes are not found but initial debugging shows that all properties valid:
+
+ foreach (var node in myData.MyXml.DocumentNode.SelectNodes("//Data"))
+Ways to Avoid
+Explicitly check for null and ignore null values.
+If you expect the reference sometimes to be null, you can check for it being null before accessing instance members:
+
+void PrintName(Person p) {
+    if (p != null) {
+        Console.WriteLine(p.Name);
+    }
+}
+Explicitly check for null and provide a default value.
+Methods call you expect to return an instance can return null, for example when the object being sought cannot be found. You can choose to return a default value when this is the case:
+
+string GetCategory(Book b) {
+    if (b == null)
+        return "Unknown";
+    return b.Category;
+}
+Explicitly check for null from method calls and throw a custom exception.
+You can also throw a custom exception, only to catch it in the calling code:
+
+string GetCategory(string bookTitle) {
+    var book = library.FindBook(bookTitle);  // This may return null
+    if (book == null)
+        throw new BookNotFoundException(bookTitle);  // Your custom exception
+    return book.Category;
+}
+Use Debug.Assert if a value should never be null, to catch the problem earlier than the exception occurs.
+When you know during development that a method maybe can, but never should return null, you can use Debug.Assert() to break as soon as possible when it does occur:
+
+string GetTitle(int knownBookID) {
+    // You know this should never return null.
+    var book = library.GetBook(knownBookID);  
+
+    // Exception will occur on the next line instead of at the end of this method.
+    Debug.Assert(book != null, "Library didn't return a book for known book ID.");
+
+    // Some other code
+
+    return book.Title; // Will never throw NullReferenceException in Debug mode.
+}
+Though this check will not end up in your release build, causing it to throw the NullReferenceException again when book == null at runtime in release mode.
+
+Use GetValueOrDefault() for nullable value types to provide a default value when they are null.
+DateTime? appointment = null;
+Console.WriteLine(appointment.GetValueOrDefault(DateTime.Now));
+// Will display the default value provided (DateTime.Now), because appointment is null.
+
+appointment = new DateTime(2022, 10, 20);
+Console.WriteLine(appointment.GetValueOrDefault(DateTime.Now));
+// Will display the appointment date, not the default
+Use the null coalescing operator: ?? [C#] or If() [VB].
+The shorthand to providing a default value when a null is encountered:
+
+IService CreateService(ILogger log, Int32? frobPowerLevel)
+{
+    var serviceImpl = new MyService(log ?? NullLog.Instance);
+
+    // Note that the above "GetValueOrDefault()" can also be rewritten to use
+    // the coalesce operator:
+    serviceImpl.FrobPowerLevel = frobPowerLevel ?? 5;
+}
+Use the null condition operator: ?. or ?[x] for arrays (available in C# 6 and VB.NET 14):
+This is also sometimes called the safe navigation or Elvis (after its shape) operator. If the expression on the left side of the operator is null, then the right side will not be evaluated, and null is returned instead. That means cases like this:
+
+var title = person.Title.ToUpper();
+If the person does not have a title, this will throw an exception because it is trying to call ToUpper on a property with a null value.
+
+In C# 5 and below, this can be guarded with:
+
+var title = person.Title == null ? null : person.Title.ToUpper();
+Now the title variable will be null instead of throwing an exception. C# 6 introduces a shorter syntax for this:
+
+var title = person.Title?.ToUpper();
+This will result in the title variable being null, and the call to ToUpper is not made if person.Title is null.]]></description>
     <tags>
-      <tag>prova</tag>
-      <tag>prov</tag>
-      <tag>pro</tag>
-      <tag>pr</tag>
+      <tag>What</tag>
+      <tag>is</tag>
+      <tag>a</tag>
+      <tag>NullReferenceException,</tag>
+      <tag>and</tag>
+      <tag>how</tag>
+      <tag>do</tag>
+      <tag>I</tag>
+      <tag>fix</tag>
+      <tag>it?</tag>
+      <tag>Wha</tag>
+      <tag>Wh</tag>
+      <tag>NullReferenceException</tag>
+      <tag>NullReferenceExceptio</tag>
+      <tag>NullReferenceExcepti</tag>
+      <tag>NullReferenceExcept</tag>
+      <tag>NullReferenceExcep</tag>
+      <tag>NullReferenceExce</tag>
+      <tag>NullReferenceExc</tag>
+      <tag>NullReferenceEx</tag>
+      <tag>NullReferenceE</tag>
+      <tag>NullReference</tag>
+      <tag>NullReferenc</tag>
+      <tag>NullReferen</tag>
+      <tag>NullRefere</tag>
+      <tag>NullRefer</tag>
+      <tag>NullRefe</tag>
+      <tag>NullRef</tag>
+      <tag>NullRe</tag>
+      <tag>NullR</tag>
+      <tag>Null</tag>
+      <tag>Nul</tag>
+      <tag>Nu</tag>
+      <tag>an</tag>
+      <tag>ho</tag>
+      <tag>fi</tag>
+      <tag>it</tag>
     </tags>
   </post>
-  <post id="4c64adac-8912-4855-afdc-6905b6faf402" author="rivaa" lastModificationTime="2018-10-18T13:25:12.0197825Z">
-    <title><![CDATA[Titolo nuovo]]></title>
-    <description><![CDATA[descrizione]]></description>
+  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-26T13:37:30.9232188Z">
+    <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
+    <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
+
+ExcelLibrary
+
+This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
+
+It's very simple, small and easy to use. Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
+
+ExcelLibrary seems to still only work for the older Excel format (.xls files), but may be adding support in the future for newer 2007/2010 formats.
+
+You can also use EPPlus, which works only for Excel 2007/2010 format files (.xlsx files).
+
+There are a few known bugs with each library as noted in the comments. In all, EPPlus seems to be the best choice as time goes on. It seems to be more actively updated and documented as well.
+
+Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivot Tables and ExcelLibrary may have some support (Pivot table issue in ExcelLibrary)
+
+Here are a couple links for quick reference:
+ExcelLibrary - GNU Lesser GPL
+EPPlus - GNU Lesser General Public License (LGPL)]]></description>
     <tags>
-      <tag>Titolo</tag>
-      <tag>nuovo</tag>
-      <tag>Titol</tag>
-      <tag>Tito</tag>
-      <tag>Tit</tag>
-      <tag>Ti</tag>
-      <tag>nuov</tag>
-      <tag>nuo</tag>
-      <tag>nu</tag>
+      <tag>Create</tag>
+      <tag>Excel</tag>
+      <tag>(.XLS</tag>
+      <tag>and</tag>
+      <tag>.XLSX)</tag>
+      <tag>file</tag>
+      <tag>from</tag>
+      <tag>C#</tag>
+      <tag>Creat</tag>
+      <tag>Crea</tag>
+      <tag>Cre</tag>
+      <tag>Cr</tag>
+      <tag>Exce</tag>
+      <tag>Exc</tag>
+      <tag>Ex</tag>
+      <tag>(.XL</tag>
+      <tag>(.X</tag>
+      <tag>(.</tag>
+      <tag>an</tag>
+      <tag>.XLSX</tag>
+      <tag>.XLS</tag>
+      <tag>.XL</tag>
+      <tag>.X</tag>
+      <tag>fil</tag>
+      <tag>fi</tag>
+      <tag>fro</tag>
+      <tag>fr</tag>
+    </tags>
+  </post>
+  <post id="602998ec-edc1-4d08-a138-76adf6e90187" author="rivaa" lastModificationTime="2018-10-26T13:37:43.6172728Z">
+    <title><![CDATA[Case insensitive 'Contains(string)']]></title>
+    <description><![CDATA[To test if the string paragraph contains the string word (thanks @QuarterMeister)
+culture.CompareInfo.IndexOf(paragraph, word, CompareOptions.IgnoreCase) >= 0
+Where culture is the instance of CultureInfo describing the language that the text is written in.
+
+This solution is transparent about the definition of case-insensitivity, which is language dependent. For example, the English language uses the characters I and i for the upper and lower case versions of the ninth letter, whereas the Turkish language uses these characters for the eleventh and twelfth letters of its 29 letter-long alphabet. The Turkish upper case version of 'i' is the unfamiliar character 'İ'.
+
+Thus the strings tin and TIN are the same word in English, but different words in Turkish. As I understand, one means 'spirit' and the other is an onomatopoeia word. (Turks, please correct me if I'm wrong, or suggest a better example)
+
+To summarise, you can only answer the question 'are these two strings the same but in different cases' if you know what language the text is in. If you don't know, you'll have to take a punt. Given English's hegemony in software, you should probably resort to CultureInfo.InvariantCulture, because it'll be wrong in familiar ways.]]></description>
+    <tags>
+      <tag>Case</tag>
+      <tag>insensitive</tag>
+      <tag>'Contains(string)'</tag>
+      <tag>Cas</tag>
+      <tag>Ca</tag>
+      <tag>insensitiv</tag>
+      <tag>insensiti</tag>
+      <tag>insensit</tag>
+      <tag>insensi</tag>
+      <tag>insens</tag>
+      <tag>insen</tag>
+      <tag>inse</tag>
+      <tag>ins</tag>
+      <tag>in</tag>
+      <tag>'Contains(string)</tag>
+      <tag>'Contains(string</tag>
+      <tag>'Contains(strin</tag>
+      <tag>'Contains(stri</tag>
+      <tag>'Contains(str</tag>
+      <tag>'Contains(st</tag>
+      <tag>'Contains(s</tag>
+      <tag>'Contains(</tag>
+      <tag>'Contains</tag>
+      <tag>'Contain</tag>
+      <tag>'Contai</tag>
+      <tag>'Conta</tag>
+      <tag>'Cont</tag>
+      <tag>'Con</tag>
+      <tag>'Co</tag>
+      <tag>'C</tag>
+    </tags>
+  </post>
+  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-26T13:37:57.4476613Z">
+    <title><![CDATA[What is the difference between String and string in C#?]]></title>
+    <description><![CDATA[string is an alias in C# for System.String.
+So technically, there is no difference. It's like int vs. System.Int32.
+As far as guidelines, it's generally recommended to use string any time you're referring to an object.
+
+e.g.
+
+string place = "world";
+Likewise, I think it's generally recommended to use String if you need to refer specifically to the class.
+
+e.g.
+
+string greet = String.Format("Hello {0}!", place);]]></description>
+    <tags>
+      <tag>What</tag>
+      <tag>is</tag>
+      <tag>the</tag>
+      <tag>difference</tag>
+      <tag>between</tag>
+      <tag>String</tag>
+      <tag>and</tag>
+      <tag>string</tag>
+      <tag>in</tag>
+      <tag>C#?</tag>
+      <tag>Wha</tag>
+      <tag>Wh</tag>
+      <tag>th</tag>
+      <tag>differenc</tag>
+      <tag>differen</tag>
+      <tag>differe</tag>
+      <tag>differ</tag>
+      <tag>diffe</tag>
+      <tag>diff</tag>
+      <tag>dif</tag>
+      <tag>di</tag>
+      <tag>betwee</tag>
+      <tag>betwe</tag>
+      <tag>betw</tag>
+      <tag>bet</tag>
+      <tag>be</tag>
+      <tag>Strin</tag>
+      <tag>Stri</tag>
+      <tag>Str</tag>
+      <tag>St</tag>
+      <tag>an</tag>
+      <tag>strin</tag>
+      <tag>stri</tag>
+      <tag>str</tag>
+      <tag>st</tag>
+      <tag>C#</tag>
     </tags>
   </post>
 </posts>

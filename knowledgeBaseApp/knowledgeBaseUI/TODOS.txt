@@ -1,5 +1,5 @@
 ﻿-GUI search stile google - 2 icone per refresh e add ()
 -valori sensati per provare il programma
--unit test
--Distinct per i tags
+-Distinct per i tags -- done and tested
+-Conferma eliminazione?
 -SQL dopo tutto

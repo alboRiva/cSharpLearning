@@ -36,8 +36,6 @@ namespace knowledgeBaseUI
         private void SpawnShowPostForm()
         {
             this.Text = "Show/edit post";
-            TitleTextBox.Enabled = false;
-            DescriptionRichTextBox.Enabled = false;
             SubmitButton.Enabled = false;          
             TitleTextBox.Text = _post.Title;
             DescriptionRichTextBox.Text = _post.Description;
@@ -52,23 +50,28 @@ namespace knowledgeBaseUI
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            try
+
+            var confirmResult = MessageBox.Show("Are you sure to delete this post?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                _dataConnection.DeletePost(_post);
-                MessageBox.Show(this,"Post eliminato dal database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                try
+                {
+                    _dataConnection.DeletePost(_post);
+                    MessageBox.Show(this, "Post eliminato dal database", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    throw;
+                }
+                this.Close();
             }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception.Message);
-                throw;
-            }
-            this.Close();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            DescriptionRichTextBox.Enabled = true;
-            TitleTextBox.Enabled = true;
             SubmitButton.Enabled = true;
         }
 
@@ -106,7 +109,5 @@ namespace knowledgeBaseUI
 
             return true;
         }
-
-  
     }
 }
