@@ -68,9 +68,10 @@
             // 
             // DescriptionLabel
             // 
+            this.DescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLabel.Location = new System.Drawing.Point(189, 131);
+            this.DescriptionLabel.Location = new System.Drawing.Point(189, 133);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(110, 25);
             this.DescriptionLabel.TabIndex = 7;
@@ -78,9 +79,10 @@
             // 
             // TitleLabel
             // 
+            this.TitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLabel.Location = new System.Drawing.Point(189, 30);
+            this.TitleLabel.Location = new System.Drawing.Point(189, 38);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(49, 25);
             this.TitleLabel.TabIndex = 6;
@@ -123,11 +125,10 @@
             // 
             // EditButton
             // 
-            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.EditButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.EditButton.Location = new System.Drawing.Point(727, 32);
+            this.EditButton.Location = new System.Drawing.Point(727, 35);
             this.EditButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(147, 31);
@@ -138,12 +139,11 @@
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SubmitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SubmitButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.SubmitButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.SubmitButton.Location = new System.Drawing.Point(728, 438);
+            this.SubmitButton.Location = new System.Drawing.Point(728, 439);
             this.SubmitButton.Margin = new System.Windows.Forms.Padding(4);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(145, 32);
@@ -154,12 +154,11 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.DeleteButton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.DeleteButton.Location = new System.Drawing.Point(728, 480);
+            this.DeleteButton.Location = new System.Drawing.Point(728, 481);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(145, 32);

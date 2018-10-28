@@ -381,57 +381,6 @@ This will result in the title variable being null, and the call to ToUpper is no
       <tag>it</tag>
     </tags>
   </post>
-  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-26T13:37:30.9232188Z">
-    <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
-    <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
-
-ExcelLibrary
-
-This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
-
-It's very simple, small and easy to use. Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
-
-ExcelLibrary seems to still only work for the older Excel format (.xls files), but may be adding support in the future for newer 2007/2010 formats.
-
-You can also use EPPlus, which works only for Excel 2007/2010 format files (.xlsx files).
-
-There are a few known bugs with each library as noted in the comments. In all, EPPlus seems to be the best choice as time goes on. It seems to be more actively updated and documented as well.
-
-Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivot Tables and ExcelLibrary may have some support (Pivot table issue in ExcelLibrary)
-
-Here are a couple links for quick reference:
-ExcelLibrary - GNU Lesser GPL
-EPPlus - GNU Lesser General Public License (LGPL)]]></description>
-    <tags>
-      <tag>Create</tag>
-      <tag>Excel</tag>
-      <tag>(.XLS</tag>
-      <tag>and</tag>
-      <tag>.XLSX)</tag>
-      <tag>file</tag>
-      <tag>from</tag>
-      <tag>C#</tag>
-      <tag>Creat</tag>
-      <tag>Crea</tag>
-      <tag>Cre</tag>
-      <tag>Cr</tag>
-      <tag>Exce</tag>
-      <tag>Exc</tag>
-      <tag>Ex</tag>
-      <tag>(.XL</tag>
-      <tag>(.X</tag>
-      <tag>(.</tag>
-      <tag>an</tag>
-      <tag>.XLSX</tag>
-      <tag>.XLS</tag>
-      <tag>.XL</tag>
-      <tag>.X</tag>
-      <tag>fil</tag>
-      <tag>fi</tag>
-      <tag>fro</tag>
-      <tag>fr</tag>
-    </tags>
-  </post>
   <post id="602998ec-edc1-4d08-a138-76adf6e90187" author="rivaa" lastModificationTime="2018-10-26T13:37:43.6172728Z">
     <title><![CDATA[Case insensitive 'Contains(string)']]></title>
     <description><![CDATA[To test if the string paragraph contains the string word (thanks @QuarterMeister)
@@ -527,6 +476,54 @@ string greet = String.Format("Hello {0}!", place);]]></description>
       <tag>str</tag>
       <tag>st</tag>
       <tag>C#</tag>
+    </tags>
+  </post>
+  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-26T14:26:27.8178641Z">
+    <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
+    <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
+This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
+
+It's very simple, small and easy to use. Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
+
+ExcelLibrary seems to still only work for the older Excel format (.xls files), but may be adding support in the future for newer 2007/2010 formats.
+
+You can also use EPPlus, which works only for Excel 2007/2010 format files (.xlsx files).
+
+There are a few known bugs with each library as noted in the comments. In all, EPPlus seems to be the best choice as time goes on. It seems to be more actively updated and documented as well.
+
+Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivot Tables and ExcelLibrary may have some support (Pivot table issue in ExcelLibrary)
+
+Here are a couple links for quick reference:
+ExcelLibrary - GNU Lesser GPL
+EPPlus - GNU Lesser General Public License (LGPL)]]></description>
+    <tags>
+      <tag>Create</tag>
+      <tag>Excel</tag>
+      <tag>(.XLS</tag>
+      <tag>and</tag>
+      <tag>.XLSX)</tag>
+      <tag>file</tag>
+      <tag>from</tag>
+      <tag>C#</tag>
+      <tag>Creat</tag>
+      <tag>Crea</tag>
+      <tag>Cre</tag>
+      <tag>Cr</tag>
+      <tag>Exce</tag>
+      <tag>Exc</tag>
+      <tag>Ex</tag>
+      <tag>(.XL</tag>
+      <tag>(.X</tag>
+      <tag>(.</tag>
+      <tag>an</tag>
+      <tag>.XLSX</tag>
+      <tag>.XLS</tag>
+      <tag>.XL</tag>
+      <tag>.X</tag>
+      <tag>fil</tag>
+      <tag>fi</tag>
+      <tag>fro</tag>
+      <tag>fr</tag>
     </tags>
   </post>
 </posts>

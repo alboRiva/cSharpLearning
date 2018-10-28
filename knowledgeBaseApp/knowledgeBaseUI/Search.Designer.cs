@@ -191,7 +191,7 @@ namespace knowledgeBaseUI
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayout.Size = new System.Drawing.Size(1063, 582);
+            this.tableLayout.Size = new System.Drawing.Size(1074, 582);
             this.tableLayout.TabIndex = 6;
             // 
             // searchBarInput
