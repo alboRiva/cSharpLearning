@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
+using knowledgeBaseLibrary.Exceptions;
 
 namespace knowledgeBaseUI
 {
@@ -84,15 +85,30 @@ namespace knowledgeBaseUI
                 _post = new Post(Environment.UserName,TitleTextBox.Text,DescriptionRichTextBox.Text);
             else
                 _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,DateTime.UtcNow);
+
             try
             {
-                _dataConnection.AddOrUpdatePost(_post);
-                MessageBox.Show(this,"Post modificato e aggiunto con successo al database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.Close();
+                try
+                {
+                    _dataConnection.AddOrUpdatePost(_post);
+                    //MessageBox.Show(this,"Post modificato e aggiunto con successo al database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch (ModifiedByOtherUserException ex)
+                {
+                    if (MessageBox.Show(this,
+                            "The post was modified by some other user. Do you want to overwrite those changes?", this.Text,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                        return;
+
+                    _dataConnection.AddOrUpdatePost(_post, true);
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this,$"Fallimento nell'inserimento del post: {ex.Message}",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(this, $"Fallimento nell'inserimento del post: {ex.Message}", this.Text,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>

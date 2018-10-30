@@ -425,57 +425,9 @@ To summarise, you can only answer the question 'are these two strings the same b
       <tag>'C</tag>
     </tags>
   </post>
-  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-26T14:26:27.8178641Z">
-    <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
-    <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
-This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
-
-It's very simple, small and easy to use. Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
-
-ExcelLibrary seems to still only work for the older Excel format (.xls files), but may be adding support in the future for newer 2007/2010 formats.
-
-You can also use EPPlus, which works only for Excel 2007/2010 format files (.xlsx files).
-
-There are a few known bugs with each library as noted in the comments. In all, EPPlus seems to be the best choice as time goes on. It seems to be more actively updated and documented as well.
-
-Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivot Tables and ExcelLibrary may have some support (Pivot table issue in ExcelLibrary)
-
-Here are a couple links for quick reference:
-ExcelLibrary - GNU Lesser GPL
-EPPlus - GNU Lesser General Public License (LGPL)]]></description>
-    <tags>
-      <tag>Create</tag>
-      <tag>Excel</tag>
-      <tag>(.XLS</tag>
-      <tag>and</tag>
-      <tag>.XLSX)</tag>
-      <tag>file</tag>
-      <tag>from</tag>
-      <tag>C#</tag>
-      <tag>Creat</tag>
-      <tag>Crea</tag>
-      <tag>Cre</tag>
-      <tag>Cr</tag>
-      <tag>Exce</tag>
-      <tag>Exc</tag>
-      <tag>Ex</tag>
-      <tag>(.XL</tag>
-      <tag>(.X</tag>
-      <tag>(.</tag>
-      <tag>an</tag>
-      <tag>.XLSX</tag>
-      <tag>.XLS</tag>
-      <tag>.XL</tag>
-      <tag>.X</tag>
-      <tag>fil</tag>
-      <tag>fi</tag>
-      <tag>fro</tag>
-      <tag>fr</tag>
-    </tags>
-  </post>
-  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-30T10:12:28.5366629Z">
+  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-30T10:29:33.7472389Z">
     <title><![CDATA[What is the difference between String and string in C#?]]></title>
-    <description><![CDATA[string is an alias in C# for System.String.
+    <description><![CDATA[string is an alias in C# 
 So technically, there is no difference. It's like int vs. System.Int32.
 As far as guidelines, it's generally recommended to use string any time you're referring to an object.
 
@@ -523,6 +475,115 @@ string greet = String.Format("Hello {0}!", place);]]></description>
       <tag>str</tag>
       <tag>st</tag>
       <tag>C#</tag>
+    </tags>
+  </post>
+  <post id="e6f88000-51fc-45ae-b514-8703a184da98" author="rivaa" lastModificationTime="2018-10-30T10:31:23.7713080Z">
+    <title><![CDATA[Controvalorizzazione FX Option]]></title>
+    <description><![CDATA[Errore in controvalorizzazione Fx option nel caso in cui si censisca una divisa:
+- EUR
+- USD
+]]></description>
+    <tags>
+      <tag>Controvalorizzazione</tag>
+      <tag>FX</tag>
+      <tag>Option</tag>
+      <tag>Controvalorizzazion</tag>
+      <tag>Controvalorizzazio</tag>
+      <tag>Controvalorizzazi</tag>
+      <tag>Controvalorizzaz</tag>
+      <tag>Controvalorizza</tag>
+      <tag>Controvalorizz</tag>
+      <tag>Controvaloriz</tag>
+      <tag>Controvalori</tag>
+      <tag>Controvalor</tag>
+      <tag>Controvalo</tag>
+      <tag>Controval</tag>
+      <tag>Controva</tag>
+      <tag>Controv</tag>
+      <tag>Contro</tag>
+      <tag>Contr</tag>
+      <tag>Cont</tag>
+      <tag>Con</tag>
+      <tag>Co</tag>
+      <tag>Optio</tag>
+      <tag>Opti</tag>
+      <tag>Opt</tag>
+      <tag>Op</tag>
+    </tags>
+  </post>
+  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-30T10:32:36.0947043Z">
+    <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
+    <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
+This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
+
+It's very simple, small and easy to use. Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
+
+ExcelLibrary seems to still only work for the older Excel format (.xls files), but may be adding support in the future for newer 2007/2010 formats.
+
+You can also use EPPlus, which works only for Excel 2007/2010 format files (.xlsx files).
+
+There are a few known bugs with each library as noted in the comments. In all, EPPlus seems to be the best choice as time goes on. It seems to be more actively updated and documented as well.
+
+Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivot Tables and ExcelLibrary may have some support (Pivot table issue in ExcelLibrary)
+
+Here are a couple links for quick reference:
+ExcelLibrary - GNU Lesser GPL
+EPPlus - GNU Lesser General Public License (LGPL)
+Prvoa]]></description>
+    <tags>
+      <tag>Create</tag>
+      <tag>Excel</tag>
+      <tag>(.XLS</tag>
+      <tag>and</tag>
+      <tag>.XLSX)</tag>
+      <tag>file</tag>
+      <tag>from</tag>
+      <tag>C#</tag>
+      <tag>Creat</tag>
+      <tag>Crea</tag>
+      <tag>Cre</tag>
+      <tag>Cr</tag>
+      <tag>Exce</tag>
+      <tag>Exc</tag>
+      <tag>Ex</tag>
+      <tag>(.XL</tag>
+      <tag>(.X</tag>
+      <tag>(.</tag>
+      <tag>an</tag>
+      <tag>.XLSX</tag>
+      <tag>.XLS</tag>
+      <tag>.XL</tag>
+      <tag>.X</tag>
+      <tag>fil</tag>
+      <tag>fi</tag>
+      <tag>fro</tag>
+      <tag>fr</tag>
+    </tags>
+  </post>
+  <post id="bf14a5e3-e8c7-4303-81a7-53da56d93350" author="rivaa" lastModificationTime="2018-10-30T10:48:42.5188172Z">
+    <title><![CDATA[Prova di inserimento]]></title>
+    <description><![CDATA[Questa e' una prova
+
+mia!
+
+Concorrenza
+fd]]></description>
+    <tags>
+      <tag>Prova</tag>
+      <tag>di</tag>
+      <tag>inserimento</tag>
+      <tag>Prov</tag>
+      <tag>Pro</tag>
+      <tag>Pr</tag>
+      <tag>inseriment</tag>
+      <tag>inserimen</tag>
+      <tag>inserime</tag>
+      <tag>inserim</tag>
+      <tag>inseri</tag>
+      <tag>inser</tag>
+      <tag>inse</tag>
+      <tag>ins</tag>
+      <tag>in</tag>
     </tags>
   </post>
 </posts>

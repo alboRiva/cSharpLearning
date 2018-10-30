@@ -18,7 +18,7 @@ namespace knowledgeBaseLibrary.DataAccess
             _connectionString = connectionString;
             LoadRepository();
         }
-        public void AddOrUpdatePost(Post sumbittedPost)
+        public void AddOrUpdatePost(Post sumbittedPost, bool forceSaveIfInConflict = false)
         {
             throw new NotImplementedException();
         }

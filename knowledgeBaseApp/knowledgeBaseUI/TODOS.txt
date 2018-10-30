@@ -2,4 +2,14 @@
 -NULL del database e' DBnull.Value -> per testare NULL dal db
 -convertire .ico in .bmp
 -view/edit/delete tasto destro
+-richTextBox DevExpress
+-Generare entries 2-3k
+-ricerca in descrizione
+-data con ora
+-menu contestuale sulla griglia
+-usare entry in ricerca nella add immediatamente
+-semplificare pulsanti (save e conferme)
+-dapper
+-concorrenza da verificare
+-Controllo stesso titolo all'inserimento
 

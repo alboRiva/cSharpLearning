@@ -50,6 +50,14 @@ namespace knowledgeBaseLibrary.Models
             Tags = Utilities.GetTagsListFromString(title,true);
         }
 
+        public void CopyData(Post post)
+        {
+            Author = post.Author;
+            Title = post.Title;
+            Description = post.Description;
+            LastModifiedTime = DateTime.UtcNow;
+            Tags = Utilities.GetTagsListFromString(Title, true);
+        }
 
         public override int GetHashCode()
         {
