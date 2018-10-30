@@ -425,59 +425,6 @@ To summarise, you can only answer the question 'are these two strings the same b
       <tag>'C</tag>
     </tags>
   </post>
-  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-26T13:37:57.4476613Z">
-    <title><![CDATA[What is the difference between String and string in C#?]]></title>
-    <description><![CDATA[string is an alias in C# for System.String.
-So technically, there is no difference. It's like int vs. System.Int32.
-As far as guidelines, it's generally recommended to use string any time you're referring to an object.
-
-e.g.
-
-string place = "world";
-Likewise, I think it's generally recommended to use String if you need to refer specifically to the class.
-
-e.g.
-
-string greet = String.Format("Hello {0}!", place);]]></description>
-    <tags>
-      <tag>What</tag>
-      <tag>is</tag>
-      <tag>the</tag>
-      <tag>difference</tag>
-      <tag>between</tag>
-      <tag>String</tag>
-      <tag>and</tag>
-      <tag>string</tag>
-      <tag>in</tag>
-      <tag>C#?</tag>
-      <tag>Wha</tag>
-      <tag>Wh</tag>
-      <tag>th</tag>
-      <tag>differenc</tag>
-      <tag>differen</tag>
-      <tag>differe</tag>
-      <tag>differ</tag>
-      <tag>diffe</tag>
-      <tag>diff</tag>
-      <tag>dif</tag>
-      <tag>di</tag>
-      <tag>betwee</tag>
-      <tag>betwe</tag>
-      <tag>betw</tag>
-      <tag>bet</tag>
-      <tag>be</tag>
-      <tag>Strin</tag>
-      <tag>Stri</tag>
-      <tag>Str</tag>
-      <tag>St</tag>
-      <tag>an</tag>
-      <tag>strin</tag>
-      <tag>stri</tag>
-      <tag>str</tag>
-      <tag>st</tag>
-      <tag>C#</tag>
-    </tags>
-  </post>
   <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-26T14:26:27.8178641Z">
     <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
     <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
@@ -524,6 +471,58 @@ EPPlus - GNU Lesser General Public License (LGPL)]]></description>
       <tag>fi</tag>
       <tag>fro</tag>
       <tag>fr</tag>
+    </tags>
+  </post>
+  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-30T10:12:28.5366629Z">
+    <title><![CDATA[What is the difference between String and string in C#?]]></title>
+    <description><![CDATA[string is an alias in C# for System.String.
+So technically, there is no difference. It's like int vs. System.Int32.
+As far as guidelines, it's generally recommended to use string any time you're referring to an object.
+
+e.g.
+
+string place = "world";
+Likewise, I think it's generally recommended to use String if you need to refer specifically to the class.
+
+e.g
+string greet = String.Format("Hello {0}!", place);]]></description>
+    <tags>
+      <tag>What</tag>
+      <tag>is</tag>
+      <tag>the</tag>
+      <tag>difference</tag>
+      <tag>between</tag>
+      <tag>String</tag>
+      <tag>and</tag>
+      <tag>string</tag>
+      <tag>in</tag>
+      <tag>C#?</tag>
+      <tag>Wha</tag>
+      <tag>Wh</tag>
+      <tag>th</tag>
+      <tag>differenc</tag>
+      <tag>differen</tag>
+      <tag>differe</tag>
+      <tag>differ</tag>
+      <tag>diffe</tag>
+      <tag>diff</tag>
+      <tag>dif</tag>
+      <tag>di</tag>
+      <tag>betwee</tag>
+      <tag>betwe</tag>
+      <tag>betw</tag>
+      <tag>bet</tag>
+      <tag>be</tag>
+      <tag>Strin</tag>
+      <tag>Stri</tag>
+      <tag>Str</tag>
+      <tag>St</tag>
+      <tag>an</tag>
+      <tag>strin</tag>
+      <tag>stri</tag>
+      <tag>str</tag>
+      <tag>st</tag>
+      <tag>C#</tag>
     </tags>
   </post>
 </posts>

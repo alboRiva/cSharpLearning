@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
-using Autofac;
+﻿using Autofac;
 using knowledgeBaseLibrary.DataAccess;
 using System.Configuration;
 

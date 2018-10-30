@@ -58,7 +58,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     {
 
                         Console.WriteLine("\t{0}\t{1}\t{2}",
-                            reader[0], reader[1], reader[2]);
+                            reader.GetGuid(0), reader[1], reader[2]);
                     }
 
                     reader.Close();

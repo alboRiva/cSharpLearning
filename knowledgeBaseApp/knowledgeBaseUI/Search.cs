@@ -42,7 +42,7 @@ namespace knowledgeBaseUI
             if (post == null)
                 return;
 
-            PostDetails showPost = new PostDetails(post,_dataConnection);
+            PostDetailsTest showPost = new PostDetailsTest(post,_dataConnection);
             DialogResult diagRes = showPost.ShowDialog();
             if (diagRes == DialogResult.OK)
                 RefreshData();

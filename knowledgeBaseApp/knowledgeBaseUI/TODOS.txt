@@ -1,5 +1,5 @@
-﻿-GUI search stile google - 2 icone per refresh e add () -- done
--valori sensati per provare il programma -- done
--Distinct per i tags -- done and tested
--Conferma eliminazione? -- done
--SQL dopo tutto
+﻿-data e ora in SEARCH
+-NULL del database e' DBnull.Value -> per testare NULL dal db
+-convertire .ico in .bmp
+-view/edit/delete tasto destro
+
