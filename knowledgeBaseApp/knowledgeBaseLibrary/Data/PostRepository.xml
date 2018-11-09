@@ -1,42 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <posts>
-  <post id="3ed1f817-cf61-46db-95b2-ebc3720d161a" author="rivaa" lastModificationTime="2018-10-26T13:00:52.3631322Z">
-    <title><![CDATA[Typecasting in C#]]></title>
-    <description><![CDATA[There are various conversion operators. The (typename) expression form can do three different things:
-
-An unboxing conversion (e.g. from a boxed integer to int)
-A user-defined conversion (e.g. casting XAttribute to string)
-A reference conversion within a type hierarchy (e.g. casting object to string)
-All of these may fail at execution time, in which case an exception will be thrown.
-
-The as operator, on the other hand, never throws an exception - instead, the result of the conversion is null if it fails:
-
-object x = new object();
-string y = x as string; // Now y is null because x isn't a string
-It can be used for unboxing to a nullable value type:
-
-object x = 10; // Boxed int
-float? y = x as float?; // Now y has a null value because x isn't a boxed float
-There are also implicit conversions, e.g. from int to long:
-
-int x = 10;
-long y = x; // Implicit conversion
-Does that cover everything you were interested in?]]></description>
-    <tags>
-      <tag>Typecasting</tag>
-      <tag>in</tag>
-      <tag>C#</tag>
-      <tag>Typecastin</tag>
-      <tag>Typecasti</tag>
-      <tag>Typecast</tag>
-      <tag>Typecas</tag>
-      <tag>Typeca</tag>
-      <tag>Typec</tag>
-      <tag>Type</tag>
-      <tag>Typ</tag>
-      <tag>Ty</tag>
-    </tags>
-  </post>
   <post id="ac8aebd0-9a16-41a9-98d5-fa51e1948191" author="rivaa" lastModificationTime="2018-10-26T13:02:55.7908207Z">
     <title><![CDATA[What is a NullReferenceException, and how do I fix it?]]></title>
     <description><![CDATA[You are trying to use something that is null (or Nothing in VB.NET). This means you either set it to null, or you never set it to anything at all.
@@ -616,24 +579,24 @@ Prvoa]]></description>
       <tag>Se</tag>
     </tags>
   </post>
-  <post id="548eaf26-d487-4afd-953d-a5dc5eada757" author="rivaa" lastModificationTime="2018-11-09T13:34:12.1476817Z">
-    <title><![CDATA[Prova inserimento]]></title>
-    <description><![CDATA[prova exception]]></description>
+  <post id="0078f867-450d-4f9a-bc93-55b85ecae858" author="rivaa" lastModificationTime="2018-11-09T14:53:34.9553299Z">
+    <title><![CDATA[new]]></title>
+    <description><![CDATA[item]]></description>
     <tags>
-      <tag>Prova</tag>
-      <tag>inserimento</tag>
-      <tag>Prov</tag>
-      <tag>Pro</tag>
-      <tag>Pr</tag>
-      <tag>inseriment</tag>
-      <tag>inserimen</tag>
-      <tag>inserime</tag>
-      <tag>inserim</tag>
-      <tag>inseri</tag>
-      <tag>inser</tag>
-      <tag>inse</tag>
-      <tag>ins</tag>
-      <tag>in</tag>
+      <tag>new</tag>
+      <tag>ne</tag>
+    </tags>
+  </post>
+  <post id="f72cd7ea-eddc-431e-a973-66e1accc4cc6" author="rivaa" lastModificationTime="2018-11-09T15:09:53.0652349Z">
+    <title><![CDATA[new title]]></title>
+    <description><![CDATA[swag]]></description>
+    <tags>
+      <tag>new</tag>
+      <tag>title</tag>
+      <tag>ne</tag>
+      <tag>titl</tag>
+      <tag>tit</tag>
+      <tag>ti</tag>
     </tags>
   </post>
 </posts>

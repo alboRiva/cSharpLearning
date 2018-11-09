@@ -73,6 +73,26 @@ namespace knowledgeBaseUI
             RefreshButton.Image = Image.FromFile(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Refresh.ico");
         }
 
+        private void ShowItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.AddButton_Click(sender,e);
+        }
+   
+        
+
+        private void GridControlResults_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                ContextMenu.ShowPopup(Control.MousePosition);
+        }
+
+        private void DeleteItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+
+
+            //_dataConnection.DeletePost(post);
+        }
     }
 
 }

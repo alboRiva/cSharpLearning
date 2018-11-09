@@ -91,13 +91,18 @@ namespace knowledgeBaseUI
                 catch (ModifiedByOtherUserException ex)
                 {
                     if (MessageBox.Show(this,
-                            "The post was modified by some other user. Do you want to overwrite those changes?", this.Text,
+                            "The post was modified by some other user. Do you want to overwrite those changes?",
+                            this.Text,
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                         return;
 
                     _dataConnection.AddOrUpdatePost(_post, true);
                     this.Close();
                     return;
+                }
+                catch (TitleAlreadyPresentInDBException ex)
+                {
+                    MessageBox.Show(this,ex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);                   
                 }
             }
             catch (Exception ex)
@@ -117,6 +122,7 @@ namespace knowledgeBaseUI
             if (TitleTextBox.Text.Equals("") || DescriptionRichTextBox.Text.Equals(""))
             {
                 MessageBox.Show(this,"Inserire un titolo e una descrizione",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                
                 return false;
             }
 

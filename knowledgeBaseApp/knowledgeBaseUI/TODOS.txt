@@ -4,9 +4,9 @@
 -Generare entries 2-3k
 -ricerca in descrizione
 -menu contestuale sulla griglia -view/edit/delete tasto destro
--usare entry in ricerca nella add immediatamente
--semplificare pulsanti (save e conferme)
+-usare entry in ricerca nella add immediatamente -- done
+-semplificare pulsanti (save e conferme) -- done
 -dapper
--concorrenza da verificare
--Controllo stesso titolo all'inserimento
+-concorrenza da verificare -- done - sistemata perche' non funzionava (update di LastModified was misplaced)
+-Controllo stesso titolo all'inserimento -- done MA non voglio che si chiuda la finestra PostDetails
 

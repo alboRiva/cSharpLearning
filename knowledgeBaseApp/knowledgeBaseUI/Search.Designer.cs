@@ -31,6 +31,7 @@ namespace knowledgeBaseUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AddButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.GridControlResults = new DevExpress.XtraGrid.GridControl();
@@ -42,8 +43,19 @@ namespace knowledgeBaseUI
             this.LastModifiedTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.searchBarInput = new System.Windows.Forms.TextBox();
             this.Title = new System.Windows.Forms.Label();
+            this.ContextMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ShowItem = new DevExpress.XtraBars.BarStaticItem();
+            this.DeleteItem = new DevExpress.XtraBars.BarStaticItem();
+            this.AddItem = new DevExpress.XtraBars.BarStaticItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContextMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
@@ -90,6 +102,7 @@ namespace knowledgeBaseUI
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.searchGridControl});
+            this.GridControlResults.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GridControlResults_MouseUp);
             // 
             // searchGridControl
             // 
@@ -180,6 +193,82 @@ namespace knowledgeBaseUI
             this.Title.Text = "SEARCH";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ContextMenu
+            // 
+            this.ContextMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddItem)});
+            this.ContextMenu.Manager = this.barManager1;
+            this.ContextMenu.MenuAppearance.MenuCaption.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContextMenu.Name = "ContextMenu";
+            // 
+            // ShowItem
+            // 
+            this.ShowItem.Caption = "Show";
+            this.ShowItem.Id = 0;
+            this.ShowItem.Name = "ShowItem";
+            this.ShowItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowItem_ItemClick);
+            // 
+            // DeleteItem
+            // 
+            this.DeleteItem.Caption = "Delete";
+            this.DeleteItem.Id = 1;
+            this.DeleteItem.Name = "DeleteItem";
+            this.DeleteItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItem_ItemClick);
+            // 
+            // AddItem
+            // 
+            this.AddItem.Caption = "Add Item";
+            this.AddItem.Id = 2;
+            this.AddItem.Name = "AddItem";
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ShowItem,
+            this.DeleteItem,
+            this.AddItem});
+            this.barManager1.MaxItemId = 3;
+            this.barManager1.PopupShowMode = DevExpress.XtraBars.PopupShowMode.Classic;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1074, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 578);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1074, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 578);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1074, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 578);
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -191,12 +280,18 @@ namespace knowledgeBaseUI
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.searchBarInput);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Search";
             this.Text = "KnowledgeBase";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContextMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +309,14 @@ namespace knowledgeBaseUI
         private DevExpress.XtraGrid.Columns.GridColumn LastModifiedTime;
         private System.Windows.Forms.TextBox searchBarInput;
         private System.Windows.Forms.Label Title;
+        private DevExpress.XtraBars.PopupMenu ContextMenu;
+        private DevExpress.XtraBars.BarStaticItem ShowItem;
+        private DevExpress.XtraBars.BarStaticItem DeleteItem;
+        private DevExpress.XtraBars.BarStaticItem AddItem;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }
