@@ -8,7 +8,7 @@ namespace knowledgeBaseLibrary.DataAccess
     public interface IDataConnection
     {
 
-        void AddOrUpdatePost(Post sumbittedPost);
+        void AddOrUpdatePost(Post sumbittedPost, bool forceSaveIfInConflict = false);
 
         void DeletePost(Post post);
 

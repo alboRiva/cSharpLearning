@@ -425,18 +425,16 @@ To summarise, you can only answer the question 'are these two strings the same b
       <tag>'C</tag>
     </tags>
   </post>
-  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-10-30T10:29:33.7472389Z">
+  <post id="eedaf74d-a564-440e-9880-1032c5ee05c1" author="rivaa" lastModificationTime="2018-11-09T13:13:50.1272516Z">
     <title><![CDATA[What is the difference between String and string in C#?]]></title>
     <description><![CDATA[string is an alias in C# 
 So technically, there is no difference. It's like int vs. System.Int32.
 As far as guidelines, it's generally recommended to use string any time you're referring to an object.
 
-e.g.
 
 string place = "world";
 Likewise, I think it's generally recommended to use String if you need to refer specifically to the class.
 
-e.g
 string greet = String.Format("Hello {0}!", place);]]></description>
     <tags>
       <tag>What</tag>
@@ -477,12 +475,13 @@ string greet = String.Format("Hello {0}!", place);]]></description>
       <tag>C#</tag>
     </tags>
   </post>
-  <post id="e6f88000-51fc-45ae-b514-8703a184da98" author="rivaa" lastModificationTime="2018-10-30T10:31:23.7713080Z">
+  <post id="e6f88000-51fc-45ae-b514-8703a184da98" author="rivaa" lastModificationTime="2018-11-09T13:13:38.1920315Z">
     <title><![CDATA[Controvalorizzazione FX Option]]></title>
     <description><![CDATA[Errore in controvalorizzazione Fx option nel caso in cui si censisca una divisa:
 - EUR
 - USD
-]]></description>
+-
+-]]></description>
     <tags>
       <tag>Controvalorizzazione</tag>
       <tag>FX</tag>
@@ -560,17 +559,68 @@ Prvoa]]></description>
       <tag>fr</tag>
     </tags>
   </post>
-  <post id="bf14a5e3-e8c7-4303-81a7-53da56d93350" author="rivaa" lastModificationTime="2018-10-30T10:48:42.5188172Z">
-    <title><![CDATA[Prova di inserimento]]></title>
-    <description><![CDATA[Questa e' una prova
-
-mia!
-
-Concorrenza
-fd]]></description>
+  <post id="d8ef672b-5192-4d71-a61e-a5735e4e71e6" author="rivaa" lastModificationTime="2018-11-09T13:08:37.5417620Z">
+    <title><![CDATA[Prova inserimento titolo nuovo post direttamente da SearchBarInput]]></title>
+    <description><![CDATA[Test prova]]></description>
     <tags>
       <tag>Prova</tag>
+      <tag>inserimento</tag>
+      <tag>titolo</tag>
+      <tag>nuovo</tag>
+      <tag>post</tag>
+      <tag>direttamente</tag>
+      <tag>da</tag>
+      <tag>SearchBarInput</tag>
+      <tag>Prov</tag>
+      <tag>Pro</tag>
+      <tag>Pr</tag>
+      <tag>inseriment</tag>
+      <tag>inserimen</tag>
+      <tag>inserime</tag>
+      <tag>inserim</tag>
+      <tag>inseri</tag>
+      <tag>inser</tag>
+      <tag>inse</tag>
+      <tag>ins</tag>
+      <tag>in</tag>
+      <tag>titol</tag>
+      <tag>tito</tag>
+      <tag>tit</tag>
+      <tag>ti</tag>
+      <tag>nuov</tag>
+      <tag>nuo</tag>
+      <tag>nu</tag>
+      <tag>pos</tag>
+      <tag>po</tag>
+      <tag>direttament</tag>
+      <tag>direttamen</tag>
+      <tag>direttame</tag>
+      <tag>direttam</tag>
+      <tag>diretta</tag>
+      <tag>dirett</tag>
+      <tag>diret</tag>
+      <tag>dire</tag>
+      <tag>dir</tag>
       <tag>di</tag>
+      <tag>SearchBarInpu</tag>
+      <tag>SearchBarInp</tag>
+      <tag>SearchBarIn</tag>
+      <tag>SearchBarI</tag>
+      <tag>SearchBar</tag>
+      <tag>SearchBa</tag>
+      <tag>SearchB</tag>
+      <tag>Search</tag>
+      <tag>Searc</tag>
+      <tag>Sear</tag>
+      <tag>Sea</tag>
+      <tag>Se</tag>
+    </tags>
+  </post>
+  <post id="548eaf26-d487-4afd-953d-a5dc5eada757" author="rivaa" lastModificationTime="2018-11-09T13:34:12.1476817Z">
+    <title><![CDATA[Prova inserimento]]></title>
+    <description><![CDATA[prova exception]]></description>
+    <tags>
+      <tag>Prova</tag>
       <tag>inserimento</tag>
       <tag>Prov</tag>
       <tag>Pro</tag>

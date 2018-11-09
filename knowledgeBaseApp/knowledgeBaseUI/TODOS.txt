@@ -1,12 +1,9 @@
-﻿-data e ora in SEARCH
+﻿-data e ora in SEARCH --done
 -NULL del database e' DBnull.Value -> per testare NULL dal db
--convertire .ico in .bmp
--view/edit/delete tasto destro
 -richTextBox DevExpress
 -Generare entries 2-3k
 -ricerca in descrizione
--data con ora
--menu contestuale sulla griglia
+-menu contestuale sulla griglia -view/edit/delete tasto destro
 -usare entry in ricerca nella add immediatamente
 -semplificare pulsanti (save e conferme)
 -dapper

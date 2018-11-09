@@ -148,6 +148,8 @@ namespace knowledgeBaseUI
             // LastModifiedTime
             // 
             this.LastModifiedTime.Caption = "LastModified";
+            this.LastModifiedTime.DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss";
+            this.LastModifiedTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.LastModifiedTime.FieldName = "LastModifiedTime";
             this.LastModifiedTime.MinWidth = 27;
             this.LastModifiedTime.Name = "LastModifiedTime";

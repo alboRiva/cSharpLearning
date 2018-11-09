@@ -27,7 +27,7 @@ namespace knowledgeBaseUI
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var showPost = new PostDetails(null,_dataConnection);
+            var showPost = new PostDetailsTest(searchBarInput.Text,_dataConnection);
             //ShowDialog -> posso controllare il valore di ritorno
             DialogResult diagRes = showPost.ShowDialog();
             if(diagRes == DialogResult.OK)
@@ -72,6 +72,7 @@ namespace knowledgeBaseUI
                     @"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Add.ico");
             RefreshButton.Image = Image.FromFile(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Refresh.ico");
         }
+
     }
 
 }

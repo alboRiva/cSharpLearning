@@ -19,7 +19,7 @@ namespace knowledgeBaseLibrary.DataAccess
             FileName = fileName;
             LoadRepository();
         }
-        public void AddOrUpdatePost(Post submittedPost, bool forceSaveIfInConflictforceSave = false)
+        public void AddOrUpdatePost(Post submittedPost, bool forceSaveIfInConflict = false)
         {
             //Loads repository of posts in memory
             using (FileStream file = new FileStream(FileName,FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read))
@@ -39,11 +39,12 @@ namespace knowledgeBaseLibrary.DataAccess
                 else
                 {
                     //Check if submittedPost is effectively the last modified - if so, add it to the db 
-                    if (!forceSaveIfInConflictforceSave &&
+                    if (!forceSaveIfInConflict &&
                         DateTime.Compare(GetPostFromRepo(submittedPost.Id).LastModifiedTime,
                             submittedPost.LastModifiedTime) > 0)
                         throw new Exceptions.ModifiedByOtherUserException($"The status of the element was changed by some other user after the read");
                     
+                    submittedPost.LastModifiedTime = DateTime.UtcNow;
                     _repository[_repository.IndexOf(submittedPost)].CopyData(submittedPost);
                     //Removes the old copy of the post based on guid comparison
                     //////    _repository.Remove(submittedPost);

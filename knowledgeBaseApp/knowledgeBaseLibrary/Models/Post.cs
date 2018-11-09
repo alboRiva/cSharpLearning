@@ -16,7 +16,7 @@ namespace knowledgeBaseLibrary.Models
 
         public String Title { get; set; }
         public String Description { get; set; }
-        public DateTime LastModifiedTime { get; private set; }
+        public DateTime LastModifiedTime { get;  set; }
         /// <summary>
         /// List of tags associated to the post
         /// </summary>
