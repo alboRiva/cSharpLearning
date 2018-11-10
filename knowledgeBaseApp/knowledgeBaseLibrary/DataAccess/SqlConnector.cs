@@ -20,9 +20,44 @@ namespace knowledgeBaseLibrary.DataAccess
             _connectionString = connectionString;
             LoadRepository();
         }
-        public void AddOrUpdatePost(Post sumbittedPost, bool forceSaveIfInConflict = false)
+        public void AddOrUpdatePost(Post submittedPost, bool forceSaveIfInConflict = false)
         {
-            throw new NotImplementedException();
+            using (IDbConnection connection = new SqlConnection(_connectionString))
+            {
+                //Loads repository of posts in memory
+                LoadRepository();
+
+                //checks if the submitted post is new or the user wants to edit an existing one
+                bool newPost = submittedPost.Id.Equals(Guid.Empty) &&
+                               submittedPost.LastModifiedTime.Equals(DateTime.MinValue);
+
+                if (newPost)
+                {
+                    if (_repository.Select(t => t.Title).Contains(submittedPost.Title))
+                    {
+                        throw new Exceptions.TitleAlreadyPresentInDBException("The title is already present in the database");
+                    }
+                    Post post = new Post(Guid.NewGuid(), submittedPost.Author, submittedPost.Title, submittedPost.Description, DateTime.UtcNow);
+                    connection.Execute("dbo.Posts_AddRecord", SetDynamicParameters(post),
+                        commandType: CommandType.StoredProcedure);
+                }
+                else
+                {
+                    //Check if submittedPost is effectively the last modified - if so, add it to the db 
+                    if (!forceSaveIfInConflict &&
+                        DateTime.Compare(GetPostFromRepo(submittedPost.Id).LastModifiedTime,
+                            submittedPost.LastModifiedTime) > 0)
+                        throw new Exceptions.ModifiedByOtherUserException($"The status of the element was changed by some other user after the read");
+
+                    //update lastmodified
+                    submittedPost.LastModifiedTime = DateTime.UtcNow;
+                    //TODO: update tags
+                    connection.Execute("dbo.Posts_UpdateRecord", SetDynamicParameters(submittedPost),
+                        commandType: CommandType.StoredProcedure);
+
+                }
+               
+            }
         }
 
         public void DeletePost(Post post)
@@ -133,6 +168,18 @@ namespace knowledgeBaseLibrary.DataAccess
             //}
         }
 
+        private DynamicParameters SetDynamicParameters(Post post)
+        {
+            var p = new DynamicParameters();
+            p.Add("@Id", post.Id);
+            p.Add("@Author", post.Author);
+            p.Add("@Title", post.Title);
+            p.Add("@Description", post.Description);
+            p.Add("@LastModificationTime", post.LastModifiedTime);
+            //TODO: fix to p.add("@Tags", post.Tags);
+            p.Add("@Tags", "tag1 tag2 tag3 tag4");
+            return p;
+        }
         private void LoadRepository()
         {
             //PopulateDb();
@@ -143,6 +190,17 @@ namespace knowledgeBaseLibrary.DataAccess
                 var postList = connection.Query<Post>("dbo.Posts_GetAllPosts", commandType: CommandType.StoredProcedure).ToList();
                 _repository.AddRange(postList);
             }
+        }
+
+        public Post GetPostFromRepo(Guid id)
+        {
+            foreach (var post in _repository)
+            {
+                if (post.Id.Equals(id))
+                    return post;
+            }
+
+            return null;
         }
     }
 }
