@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Base;
 using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
@@ -88,10 +89,11 @@ namespace knowledgeBaseUI
 
         private void DeleteItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+           // var item = e.Item;
+            //var view = (DevExpress.XtraBars.BarManager)sender;
             
 
-
-            //_dataConnection.DeletePost(post);
+           // _dataConnection.DeletePost(post);
         }
     }
 

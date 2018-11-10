@@ -473,7 +473,7 @@ string greet = String.Format("Hello {0}!", place);]]></description>
       <tag>Op</tag>
     </tags>
   </post>
-  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-10-30T10:32:36.0947043Z">
+  <post id="ed85f91f-56a6-4889-a62a-bc92d9a62d9d" author="rivaa" lastModificationTime="2018-11-09T22:50:18.4859234Z">
     <title><![CDATA[Create Excel (.XLS and .XLSX) file from C#]]></title>
     <description><![CDATA[You can use a library called ExcelLibrary. It's a free, open source library posted on Google Code:
 This looks to be a port of the PHP ExcelWriter that you mentioned above. It will not write to the new .xlsx format yet, but they are working on adding that functionality in.
@@ -491,7 +491,7 @@ Also, as noted by @АртёмЦарионов below, EPPlus has support for Pivo
 Here are a couple links for quick reference:
 ExcelLibrary - GNU Lesser GPL
 EPPlus - GNU Lesser General Public License (LGPL)
-Prvoa]]></description>
+]]></description>
     <tags>
       <tag>Create</tag>
       <tag>Excel</tag>
@@ -577,26 +577,6 @@ Prvoa]]></description>
       <tag>Sear</tag>
       <tag>Sea</tag>
       <tag>Se</tag>
-    </tags>
-  </post>
-  <post id="0078f867-450d-4f9a-bc93-55b85ecae858" author="rivaa" lastModificationTime="2018-11-09T14:53:34.9553299Z">
-    <title><![CDATA[new]]></title>
-    <description><![CDATA[item]]></description>
-    <tags>
-      <tag>new</tag>
-      <tag>ne</tag>
-    </tags>
-  </post>
-  <post id="f72cd7ea-eddc-431e-a973-66e1accc4cc6" author="rivaa" lastModificationTime="2018-11-09T15:09:53.0652349Z">
-    <title><![CDATA[new title]]></title>
-    <description><![CDATA[swag]]></description>
-    <tags>
-      <tag>new</tag>
-      <tag>title</tag>
-      <tag>ne</tag>
-      <tag>titl</tag>
-      <tag>tit</tag>
-      <tag>ti</tag>
     </tags>
   </post>
 </posts>

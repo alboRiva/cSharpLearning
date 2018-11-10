@@ -47,7 +47,8 @@ namespace knowledgeBaseLibrary.Models
             Description = description;
             //LastModifiedTime = DateTime.UtcNow;
             LastModifiedTime = DateTime.MinValue;
-            Tags = Utilities.GetTagsListFromString(title,true);
+            //Generate tags from title and description
+            Tags = Utilities.GetTagsListFromString(title+description,true);
         }
 
         public void CopyData(Post post)

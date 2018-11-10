@@ -1,12 +1,13 @@
 ﻿-data e ora in SEARCH --done
--NULL del database e' DBnull.Value -> per testare NULL dal db
--richTextBox DevExpress
--Generare entries 2-3k
--ricerca in descrizione
--menu contestuale sulla griglia -view/edit/delete tasto destro
+-ricerca in descrizione -- done
 -usare entry in ricerca nella add immediatamente -- done
 -semplificare pulsanti (save e conferme) -- done
--dapper
 -concorrenza da verificare -- done - sistemata perche' non funzionava (update di LastModified was misplaced)
 -Controllo stesso titolo all'inserimento -- done MA non voglio che si chiuda la finestra PostDetails
+-menu contestuale sulla griglia -view/edit/delete tasto destro
+-Generare entries 2-3k
+-richTextBox DevExpress
+-NULL del database e' DBnull.Value -> per testare NULL dal db
+-sql server project su visual studio
+-dapper e SQLs
 

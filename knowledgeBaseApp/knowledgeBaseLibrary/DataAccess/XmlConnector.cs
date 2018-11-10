@@ -28,10 +28,7 @@ namespace knowledgeBaseLibrary.DataAccess
                 LoadRepository(file);
                 //Riposiziona il file all'inizio
                 file.Seek(0, SeekOrigin.Begin);
-                if (_repository.Select(t => t.Title).Contains(submittedPost.Title))
-                {
-                    throw new Exceptions.TitleAlreadyPresentInDBException("The title is already present in the database");
-                }
+                
 
                 //checks if the submitted post is new or the user wants to edit an existing one
                 bool newPost = submittedPost.Id.Equals(Guid.Empty) &&
@@ -39,10 +36,14 @@ namespace knowledgeBaseLibrary.DataAccess
 
                 if (newPost)
                 {
+                    if (_repository.Select(t => t.Title).Contains(submittedPost.Title))
+                    {
+                        throw new Exceptions.TitleAlreadyPresentInDBException("The title is already present in the database");
+                    }
                     _repository.Add(new Post(Guid.NewGuid(), submittedPost.Author, submittedPost.Title, submittedPost.Description, DateTime.UtcNow));
                 }
                 else
-                {
+                {                  
                     //Check if submittedPost is effectively the last modified - if so, add it to the db 
                     if (!forceSaveIfInConflict &&
                         DateTime.Compare(GetPostFromRepo(submittedPost.Id).LastModifiedTime,
