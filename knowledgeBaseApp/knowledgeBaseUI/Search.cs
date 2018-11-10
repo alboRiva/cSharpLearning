@@ -46,7 +46,11 @@ namespace knowledgeBaseUI
             PostDetailsTest showPost = new PostDetailsTest(post,_dataConnection);
             DialogResult diagRes = showPost.ShowDialog();
             if (diagRes == DialogResult.OK)
+            {
                 RefreshData();
+                //TODO: SQl ricarica il db ma con tanti record non rallento troppo l'app?
+                //RefreshDataFromDb();
+            }
         }
 
         private void Refresh_Click(object sender, EventArgs e)
@@ -89,6 +93,7 @@ namespace knowledgeBaseUI
 
         private void DeleteItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //TODO: menu contestuale
            // var item = e.Item;
             //var view = (DevExpress.XtraBars.BarManager)sender;
             

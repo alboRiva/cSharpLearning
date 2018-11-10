@@ -128,5 +128,6 @@ namespace knowledgeBaseUI
 
             return true;
         }
+
     }
 }

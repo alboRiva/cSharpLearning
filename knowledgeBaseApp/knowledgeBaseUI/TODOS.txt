@@ -5,9 +5,13 @@
 -concorrenza da verificare -- done - sistemata perche' non funzionava (update di LastModified was misplaced)
 -Controllo stesso titolo all'inserimento -- done MA non voglio che si chiuda la finestra PostDetails
 -menu contestuale sulla griglia -view/edit/delete tasto destro
--Generare entries 2-3k
+-Generare entries 2-3k --done
 -richTextBox DevExpress -- done
--NULL del database e' DBnull.Value -> per testare NULL dal db
--sql server project su visual studio
--dapper e SQLs
+-sql server project su visual studio -- ?
+-dapper e SQLs --done
 -rename PostDetailsTest
+
+
+--ridimensionare debug sql
+--Script per sincronizzare le repo?
+

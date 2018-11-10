@@ -89,7 +89,7 @@ namespace knowledgeBaseLibrary.DataAccess
 
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = int.MaxValue)
         {
-            //LoadRepository();
+            LoadRepository();
 
             if (tags == null || !tags.Any())
                 return _repository.Skip(pageNumber * itemsPerPage).Take(itemsPerPage);
@@ -107,7 +107,7 @@ namespace knowledgeBaseLibrary.DataAccess
                 
                 var parameters = new List<DynamicParameters>();
 
-                for (int i = 0; i < 2000; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     //Generate values
                     var guid = Guid.NewGuid();
