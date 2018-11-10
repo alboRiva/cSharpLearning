@@ -39,7 +39,7 @@ namespace knowledgeBaseUI
             this.Text = "Show/edit post";
             SubmitButton.Enabled = true;          
             TitleTextBox.Text = _post.Title;
-            DescriptionRichTextBox.Text = _post.Description;
+            RichEditControlDescription.Text = _post.Description;
         }
 
         private void SpawnNewPostForm(string title)
@@ -76,9 +76,9 @@ namespace knowledgeBaseUI
                 return;
 
             if(_post == null)
-                _post = new Post(Environment.UserName,TitleTextBox.Text,DescriptionRichTextBox.Text);
+                _post = new Post(Environment.UserName,TitleTextBox.Text, RichEditControlDescription.Text);
             else
-                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,_post.LastModifiedTime);
+                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, RichEditControlDescription.Text,_post.LastModifiedTime);
 
             try
             {
@@ -119,7 +119,7 @@ namespace knowledgeBaseUI
         /// <returns></returns>
         private bool FormValidation()
         {
-            if (TitleTextBox.Text.Equals("") || DescriptionRichTextBox.Text.Equals(""))
+            if (TitleTextBox.Text.Equals("") || RichEditControlDescription.Text.Equals(""))
             {
                 MessageBox.Show(this,"Inserire un titolo e una descrizione",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 
