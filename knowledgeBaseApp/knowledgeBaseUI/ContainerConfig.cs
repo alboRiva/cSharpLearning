@@ -9,11 +9,11 @@ namespace knowledgeBaseUI
         public static IContainer Configure()
         {
             //Needed to add a reference to System.Configuration.dll in project
-            var connectionString = ConfigurationManager.AppSettings["connectionStringXml"];
+            var connectionString = ConfigurationManager.AppSettings["connectionStringSql"];
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ApplicationInjection>().As<IApplicationInjection>();
-            builder.RegisterInstance(new XmlConnector(
+            builder.RegisterInstance(new SqlConnector(
                     connectionString))
                 .As<IDataConnection>();
 

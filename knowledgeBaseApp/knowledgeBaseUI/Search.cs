@@ -22,7 +22,7 @@ namespace knowledgeBaseUI
         {
             InitializeComponent();
             SetButtonsIcons();
-            _dataConnection = dataConnection;     
+            _dataConnection = dataConnection; 
             RefreshData();
         }
 
@@ -55,7 +55,7 @@ namespace knowledgeBaseUI
         }
 
         private void searchBarInput_TextChanged(object sender, EventArgs e)
-        {
+       {
             var filtered = _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text));
             GridControlResults.DataSource = filtered;          
         }
@@ -63,7 +63,7 @@ namespace knowledgeBaseUI
 
         private void RefreshData()
         {
-            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>(),0,100);
         }
 
         private void SetButtonsIcons()

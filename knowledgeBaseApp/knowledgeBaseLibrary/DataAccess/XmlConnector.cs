@@ -108,7 +108,8 @@ namespace knowledgeBaseLibrary.DataAccess
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags,int pageNumber = 0, int itemsPerPage = Int32.MaxValue)
         {
             //Loads Posts in memory 
-            LoadRepository();
+            //TODO: test if works without updating _repository
+           // LoadRepository();
 
             if (tags == null || !tags.Any())
                 return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);

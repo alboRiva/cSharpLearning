@@ -51,6 +51,24 @@ namespace knowledgeBaseLibrary.Models
             Tags = Utilities.GetTagsListFromString(title+description,true);
         }
 
+        /// <summary>
+        /// Constructor for Sql db mapping
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="author"></param>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <param name="lastModifiedTime"></param>
+        public Post(Guid Id, string Title, string Description, DateTime LastModificationTime, string Author, string Tags) 
+        {
+            this.Id = Id;
+            this.Title = Title;
+            this.LastModifiedTime = LastModificationTime;
+            this.Description = Description;
+            this.Tags = Tags.Split(' ').ToList();
+            this.Author = Author;
+        }
+
         public void CopyData(Post post)
         {
             Author = post.Author;
