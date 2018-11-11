@@ -48,7 +48,7 @@ namespace knowledgeBaseUI
             if (diagRes == DialogResult.OK)
             {
                 RefreshData();
-                //TODO: SQl ricarica il db ma con tanti record non rallento troppo l'app?
+                //TODO: SQl ricarica il db ma co
                 //RefreshDataFromDb();
             }
         }
@@ -94,11 +94,11 @@ namespace knowledgeBaseUI
         private void DeleteItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //TODO: menu contestuale
-           // var item = e.Item;
-            //var view = (DevExpress.XtraBars.BarManager)sender;
-            
+            var item = e.Item;
+            var view = (DevExpress.XtraBars.BarManager)sender;
 
-           // _dataConnection.DeletePost(post);
+
+            //dataConnection.DeletePost(post);
         }
     }
 

@@ -94,11 +94,11 @@ namespace knowledgeBaseUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridControlResults.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.GridControlResults.Location = new System.Drawing.Point(164, 115);
+            this.GridControlResults.Location = new System.Drawing.Point(39, 112);
             this.GridControlResults.MainView = this.searchGridControl;
             this.GridControlResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridControlResults.Name = "GridControlResults";
-            this.GridControlResults.Size = new System.Drawing.Size(861, 426);
+            this.GridControlResults.Size = new System.Drawing.Size(986, 429);
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.searchGridControl});
@@ -174,7 +174,7 @@ namespace knowledgeBaseUI
             // 
             this.searchBarInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBarInput.Location = new System.Drawing.Point(164, 63);
+            this.searchBarInput.Location = new System.Drawing.Point(39, 63);
             this.searchBarInput.Margin = new System.Windows.Forms.Padding(4);
             this.searchBarInput.Name = "searchBarInput";
             this.searchBarInput.Size = new System.Drawing.Size(477, 22);
@@ -186,7 +186,7 @@ namespace knowledgeBaseUI
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.Title.Location = new System.Drawing.Point(34, 61);
+            this.Title.Location = new System.Drawing.Point(34, 23);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(83, 28);
             this.Title.TabIndex = 8;
