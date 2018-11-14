@@ -64,11 +64,11 @@ namespace knowledgeBaseLibrary.DataAccess
                 {
                     connection.Execute(sqlCommand, new
                         {
-                            submittedPost.Id,
-                            submittedPost.Author,
-                            submittedPost.Title,
-                            submittedPost.Description,
-                            submittedPost.LastModifiedTime,
+                            post.Id,
+                            post.Author,
+                            post.Title,
+                            post.Description,
+                            post.LastModifiedTime,
                     },
                         commandType: CommandType.StoredProcedure);
                 }
