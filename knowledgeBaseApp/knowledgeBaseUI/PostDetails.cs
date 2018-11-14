@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
+using knowledgeBaseLibrary.Exceptions;
 
 namespace knowledgeBaseUI
 {
@@ -21,31 +22,31 @@ namespace knowledgeBaseUI
         {
             InitializeComponent();
             _dataConnection = dataConnection;
+            if (selectedItem == null)
+                return;
             _post = selectedItem;
-            //Se post e' null -> l'utente vuole inserire un nuovo post da zero
-            if (_post == null)
-            {
-                SpawnNewPostForm();
-            }
-            else
-            {
-                SpawnShowPostForm();
-            }            
+            SpawnShowPostForm();          
         }
 
+        public PostDetails(string title, IDataConnection dataConnection)
+        {
+            InitializeComponent();
+            _dataConnection = dataConnection;
+            SpawnNewPostForm(title);
+        }
         private void SpawnShowPostForm()
         {
             this.Text = "Show/edit post";
-            SubmitButton.Enabled = false;          
+            SubmitButton.Enabled = true;          
             TitleTextBox.Text = _post.Title;
-            DescriptionRichTextBox.Text = _post.Description;
+            RichEditControlDescription.Text = _post.Description;
         }
 
-        private void SpawnNewPostForm()
+        private void SpawnNewPostForm(string title)
         {
             this.Text = "New post";
+            TitleTextBox.Text = title;
             DeleteButton.Hide();
-            EditButton.Hide();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -59,7 +60,6 @@ namespace knowledgeBaseUI
                 try
                 {
                     _dataConnection.DeletePost(_post);
-                    MessageBox.Show(this, "Post eliminato dal database", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exception)
                 {
@@ -70,30 +70,48 @@ namespace knowledgeBaseUI
             }
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            SubmitButton.Enabled = true;
-        }
-
         private void SubmitEdited_Click(object sender, EventArgs e)
         {
             if (!FormValidation())
                 return;
 
             if(_post == null)
-                _post = new Post(Environment.UserName,TitleTextBox.Text,DescriptionRichTextBox.Text);
+                _post = new Post(Environment.UserName,TitleTextBox.Text, RichEditControlDescription.Text);
             else
-                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text,DescriptionRichTextBox.Text,DateTime.UtcNow);
+                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, RichEditControlDescription.Text,_post.LastModifiedTime);
+
             try
             {
-                _dataConnection.AddOrUpdatePost(_post);
-                MessageBox.Show(this,"Post modificato e aggiunto con successo al database",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.Close();
+                try
+                {
+                    _dataConnection.AddOrUpdatePost(_post);
+                    this.Close();
+                    return;
+                }
+                catch (ModifiedByOtherUserException ex)
+                {
+                    if (MessageBox.Show(this,
+                            "The post was modified by some other user. Do you want to overwrite those changes?",
+                            this.Text,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                        return;
+
+                    _dataConnection.AddOrUpdatePost(_post, true);
+                    this.Close();
+                    return;
+                }
+                catch (TitleAlreadyPresentInDBException ex)
+                {
+                    MessageBox.Show(this,ex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);                   
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this,$"Fallimento nell'inserimento del post: {ex.Message}",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(this, $"Fallimento nell'inserimento del post: {ex.Message}", this.Text,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
         }
         /// <summary>
         /// Returns true if form is valid
@@ -101,13 +119,15 @@ namespace knowledgeBaseUI
         /// <returns></returns>
         private bool FormValidation()
         {
-            if (TitleTextBox.Text.Equals("") || DescriptionRichTextBox.Text.Equals(""))
+            if (TitleTextBox.Text.Equals("") || RichEditControlDescription.Text.Equals(""))
             {
                 MessageBox.Show(this,"Inserire un titolo e una descrizione",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                
                 return false;
             }
 
             return true;
         }
+
     }
 }

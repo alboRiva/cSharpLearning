@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,8 @@ using DevExpress.XtraGrid.Views.Base;
 using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
+using DevExpress.Xpf;
+
 
 namespace knowledgeBaseUI
 {
@@ -24,11 +27,24 @@ namespace knowledgeBaseUI
             SetButtonsIcons();
             _dataConnection = dataConnection; 
             RefreshData();
+            //Queries db while typing and refreshing keystrokes updates every x milliseconds
+            IDisposable subscription =
+                Observable
+                    .FromEventPattern(
+                        h => searchBarInput.TextChanged += h,
+                        h => searchBarInput.TextChanged -= h)
+                    .Select(x => searchBarInput.Text)
+                    .Throttle(TimeSpan.FromMilliseconds(500))
+                    .Select(x => Observable.Start(() =>
+                        _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
+                    .Switch()
+                    .ObserveOn(this)
+                    .Subscribe(x => GridControlResults.DataSource = x);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var showPost = new PostDetailsTest(searchBarInput.Text,_dataConnection);
+            var showPost = new PostDetails(searchBarInput.Text,_dataConnection);
             //ShowDialog -> posso controllare il valore di ritorno
             DialogResult diagRes = showPost.ShowDialog();
             if(diagRes == DialogResult.OK)
@@ -38,36 +54,28 @@ namespace knowledgeBaseUI
 
         private void SearchGridControl_DoubleClick(object sender, EventArgs e)
         {
-            var view = (DevExpress.XtraGrid.Views.Grid.GridView) sender;
-            Post post = view.GetFocusedRow() as Post;
+            //var view = (DevExpress.XtraGrid.Views.Grid.GridView) sender;
+
+            Post post = searchGridControl.GetFocusedRow() as Post;
             if (post == null)
                 return;
 
-            PostDetailsTest showPost = new PostDetailsTest(post,_dataConnection);
+            PostDetails showPost = new PostDetails(post,_dataConnection);
             DialogResult diagRes = showPost.ShowDialog();
             if (diagRes == DialogResult.OK)
             {
                 RefreshData();
-                //TODO: SQl ricarica il db ma co
-                //RefreshDataFromDb();
             }
         }
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            RefreshData();
         }
-
-        private void searchBarInput_TextChanged(object sender, EventArgs e)
-       {
-            var filtered = _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text));
-            GridControlResults.DataSource = filtered;          
-        }
-
 
         private void RefreshData()
         {
-            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>(),0,100);
+            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
         }
 
         private void SetButtonsIcons()
@@ -82,23 +90,32 @@ namespace knowledgeBaseUI
         {
             this.AddButton_Click(sender,e);
         }
-   
-        
+
+        private void DeleteSelectedRow(object sender, ItemClickEventArgs e)
+        {
+            if (searchGridControl.GetFocusedRow() is Post post)
+            {
+                _dataConnection.DeletePost(post);
+                //TODO: msg box
+                RefreshData();
+                popupMenu1.HidePopup();
+            }
+        }
+
+        private void popupMenu_NewClicked(object sender, ItemClickEventArgs e)
+        {
+            this.AddButton_Click(sender, e);
+        }
 
         private void GridControlResults_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-                ContextMenu.ShowPopup(Control.MousePosition);
+                popupMenu1.ShowPopup(Control.MousePosition);
         }
 
-        private void DeleteItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void ShowNewClicked(object sender, ItemClickEventArgs e)
         {
-            //TODO: menu contestuale
-            var item = e.Item;
-            var view = (DevExpress.XtraBars.BarManager)sender;
-
-
-            //dataConnection.DeletePost(post);
+            SearchGridControl_DoubleClick(sender,e);
         }
     }
 

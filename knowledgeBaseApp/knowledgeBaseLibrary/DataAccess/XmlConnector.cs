@@ -115,7 +115,7 @@ namespace knowledgeBaseLibrary.DataAccess
                 return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
             //Return all the posts which contain at least one tag
             return _repository.Where(post => {
-                return post.Tags.Any(t => tags.Any(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
+                return post.Tags.Any(t => tags.All(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
                 }).Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
         }
 

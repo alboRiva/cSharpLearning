@@ -48,25 +48,15 @@ namespace knowledgeBaseLibrary.Models
             //LastModifiedTime = DateTime.UtcNow;
             LastModifiedTime = DateTime.MinValue;
             //Generate tags from title and description
-            Tags = Utilities.GetTagsListFromString(title+description,true);
+            Tags = Utilities.GetTagsListFromString(title + " " + description,true);
         }
 
         /// <summary>
-        /// Constructor for Sql db mapping
+        /// default ctor
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="author"></param>
-        /// <param name="title"></param>
-        /// <param name="description"></param>
-        /// <param name="lastModifiedTime"></param>
-        public Post(Guid Id, string Title, string Description, DateTime LastModificationTime, string Author, string Tags) 
+        public Post() 
         {
-            this.Id = Id;
-            this.Title = Title;
-            this.LastModifiedTime = LastModificationTime;
-            this.Description = Description;
-            this.Tags = Tags.Split(' ').ToList();
-            this.Author = Author;
+            Id = Guid.NewGuid();
         }
 
         public void CopyData(Post post)

@@ -7,11 +7,15 @@
 -menu contestuale sulla griglia -view/edit/delete tasto destro
 -Generare entries 2-3k --done
 -richTextBox DevExpress -- done
--sql server project su visual studio -- ?
 -dapper e SQLs --done
--rename PostDetailsTest
+-rename PostDetailsTest -- done
 
 
---ridimensionare debug sql
---Script per sincronizzare le repo?
+--sql server project su visual studio -- ?
+--Script per sincronizzare i db?
+--Salvare in modo tale che si preservino le modifiche sui testi dei post -- HTML ?  HTMLText property
 
+--lunedi 12
+--UniqueIdentifier sul titolo nel db - constraints violation c# if(ex.Number == 2627) catch SqlException --done
+--HTML format nella save --done
+--MENU CONTESTUALE -- done
