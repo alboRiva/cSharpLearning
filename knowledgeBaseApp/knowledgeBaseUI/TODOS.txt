@@ -11,11 +11,11 @@
 -rename PostDetailsTest -- done
 
 
---sql server project su visual studio -- ?
---Script per sincronizzare i db?
---Salvare in modo tale che si preservino le modifiche sui testi dei post -- HTML ?  HTMLText property
+--Script per sincronizzare i db 
 
---lunedi 12
 --UniqueIdentifier sul titolo nel db - constraints violation c# if(ex.Number == 2627) catch SqlException --done
 --HTML format nella save --done
 --MENU CONTESTUALE -- done
+
+--InfiniteScroll - display HTML in plainText - Impaginazione con display in plainText solo sulla 
+	pagina corrente e quella successiva?

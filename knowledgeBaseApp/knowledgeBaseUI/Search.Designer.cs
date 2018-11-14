@@ -122,6 +122,7 @@ namespace knowledgeBaseUI
             this.searchGridControl.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.searchGridControl.OptionsBehavior.Editable = false;
             this.searchGridControl.OptionsBehavior.ReadOnly = true;
+            this.searchGridControl.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.searchGridControl_CustomColumnDisplayText);
             this.searchGridControl.DoubleClick += new System.EventHandler(this.SearchGridControl_DoubleClick);
             // 
             // colTitle

@@ -39,7 +39,7 @@ namespace knowledgeBaseUI
             this.Text = "Show/edit post";
             SubmitButton.Enabled = true;          
             TitleTextBox.Text = _post.Title;
-            RichEditControlDescription.Text = _post.Description;
+            RichEditControlDescription.HtmlText = _post.Description;
         }
 
         private void SpawnNewPostForm(string title)
@@ -76,9 +76,9 @@ namespace knowledgeBaseUI
                 return;
 
             if(_post == null)
-                _post = new Post(Environment.UserName,TitleTextBox.Text, RichEditControlDescription.Text);
+                _post = new Post(Environment.UserName,TitleTextBox.Text, RichEditControlDescription.HtmlText);
             else
-                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, RichEditControlDescription.Text,_post.LastModifiedTime);
+                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, RichEditControlDescription.HtmlText,_post.LastModifiedTime);
 
             try
             {

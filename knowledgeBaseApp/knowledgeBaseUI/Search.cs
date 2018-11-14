@@ -14,6 +14,7 @@ using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
 using DevExpress.Xpf;
+using HtmlAgilityPack;
 
 
 namespace knowledgeBaseUI
@@ -115,6 +116,16 @@ namespace knowledgeBaseUI
         private void ShowNewClicked(object sender, ItemClickEventArgs e)
         {
             SearchGridControl_DoubleClick(sender,e);
+        }
+
+        private void searchGridControl_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            string htmlText =  (e.Value) as string;
+            HtmlAgilityPack.HtmlDocument converter= new HtmlAgilityPack.HtmlDocument();
+            if (htmlText != null)
+            {
+                //e.DisplayText = converter.Ht;
+            }
         }
     }
 
