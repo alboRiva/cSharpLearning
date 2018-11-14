@@ -96,7 +96,6 @@ namespace knowledgeBaseUI
             if (searchGridControl.GetFocusedRow() is Post post)
             {
                 _dataConnection.DeletePost(post);
-                //TODO: msg box
                 RefreshData();
                 popupMenu1.HidePopup();
             }

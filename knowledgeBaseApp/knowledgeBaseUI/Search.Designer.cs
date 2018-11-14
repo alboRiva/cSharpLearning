@@ -51,11 +51,11 @@ namespace knowledgeBaseUI
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barSubItem_New = new DevExpress.XtraBars.BarSubItem();
             this.barStaticItem_Show = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem_Delete = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItem_NewPost = new DevExpress.XtraBars.BarStaticItem();
+            this.barSubItem_New = new DevExpress.XtraBars.BarSubItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -210,7 +210,7 @@ namespace knowledgeBaseUI
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barStaticItem_Show,
             this.barStaticItem_Delete,
-            this.barStaticItem1});
+            this.barStaticItem_NewPost});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 4;
             this.barManager1.StatusBar = this.bar3;
@@ -278,13 +278,6 @@ namespace knowledgeBaseUI
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 503);
             // 
-            // barSubItem_New
-            // 
-            this.barSubItem_New.Caption = "New";
-            this.barSubItem_New.Id = 0;
-            this.barSubItem_New.Name = "barSubItem_New";
-            this.barSubItem_New.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.popupMenu_NewClicked);
-            // 
             // barStaticItem_Show
             // 
             this.barStaticItem_Show.Caption = "Show/Edit";
@@ -299,20 +292,27 @@ namespace knowledgeBaseUI
             this.barStaticItem_Delete.Name = "barStaticItem_Delete";
             this.barStaticItem_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteSelectedRow);
             // 
+            // barStaticItem_NewPost
+            // 
+            this.barStaticItem_NewPost.Caption = "New Post";
+            this.barStaticItem_NewPost.Id = 3;
+            this.barStaticItem_NewPost.Name = "barStaticItem_NewPost";
+            this.barStaticItem_NewPost.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.popupMenu_NewClicked);
+            // 
+            // barSubItem_New
+            // 
+            this.barSubItem_New.Caption = "New";
+            this.barSubItem_New.Id = 0;
+            this.barSubItem_New.Name = "barSubItem_New";
+            // 
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem_Show),
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem_Delete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem_NewPost)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
-            // 
-            // barStaticItem1
-            // 
-            this.barStaticItem1.Caption = "New Post";
-            this.barStaticItem1.Id = 3;
-            this.barStaticItem1.Name = "barStaticItem1";
             // 
             // Search
             // 
@@ -366,6 +366,6 @@ namespace knowledgeBaseUI
         private DevExpress.XtraBars.BarStaticItem barStaticItem_Show;
         private DevExpress.XtraBars.BarStaticItem barStaticItem_Delete;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem_NewPost;
     }
 }
