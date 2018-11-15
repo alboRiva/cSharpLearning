@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using knowledgeBaseLibrary.Exceptions;
@@ -176,15 +177,19 @@ namespace knowledgeBaseLibrary.DataAccess
 
         public void DeletePost(Post post)
         {
-            LoadRepository();
-            _repository.Remove(post);
-           
-            using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
+            var confirmResult = MessageBox.Show("Are you sure to delete this post?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                XDocument docx = DecodeXDocFromPosts(_repository);
-                docx.Save(file);
+                LoadRepository();
+                _repository.Remove(post);
+                using (FileStream file = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.Read))
+                {
+                    XDocument docx = DecodeXDocFromPosts(_repository);
+                    docx.Save(file);
+                }
             }
-
         }
 
     }

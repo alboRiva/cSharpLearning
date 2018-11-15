@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraRichEdit.Export;
+using DevExpress.XtraRichEdit.Export.Html;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
 using knowledgeBaseLibrary.Exceptions;
@@ -75,10 +77,17 @@ namespace knowledgeBaseUI
             if (!FormValidation())
                 return;
 
+            var options = new HtmlDocumentExporterOptions();
+            options.ExportRootTag = ExportRootTag.Body;
+            options.CssPropertiesExportType = CssPropertiesExportType.Inline;
+            options.DefaultCharacterPropertiesExportToCss = false;
+            var exporter = new HtmlExporter(RichEditControlDescription.Model, options);
+            string formattedDescription = exporter.Export();
+
             if(_post == null)
-                _post = new Post(Environment.UserName,TitleTextBox.Text, RichEditControlDescription.HtmlText);
+                _post = new Post(Environment.UserName,TitleTextBox.Text, formattedDescription);
             else
-                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, RichEditControlDescription.HtmlText,_post.LastModifiedTime);
+                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, formattedDescription,_post.LastModifiedTime);
 
             try
             {

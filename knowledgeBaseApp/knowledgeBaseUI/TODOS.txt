@@ -19,3 +19,8 @@
 
 --InfiniteScroll - display HTML in plainText - Impaginazione con display in plainText solo sulla 
 	pagina corrente e quella successiva?
+
+
+	--base div hr li margin tab table td ui --html tag support rich text editor 
+
+	--TEXT index

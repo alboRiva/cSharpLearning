@@ -22,7 +22,6 @@ namespace knowledgeBaseLibrary.DataAccess
             //PopulateDb(2000);
         }
 
-        //TODO: fix DateTime problem with Sql on new post creation
         public void AddOrUpdatePost(Post submittedPost, bool forceSaveIfInConflict = false)
         {
             using (IDbConnection connection = new SqlConnection(_connectionString))

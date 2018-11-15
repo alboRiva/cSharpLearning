@@ -121,10 +121,9 @@ namespace knowledgeBaseUI
         private void searchGridControl_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
             string htmlText =  (e.Value) as string;
-            HtmlAgilityPack.HtmlDocument converter= new HtmlAgilityPack.HtmlDocument();
             if (htmlText != null)
             {
-                //e.DisplayText = converter.Ht;
+
             }
         }
     }

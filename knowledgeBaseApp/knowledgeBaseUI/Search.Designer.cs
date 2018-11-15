@@ -38,6 +38,7 @@ namespace knowledgeBaseUI
             this.searchGridControl = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAuthor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LastModifiedTime = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,6 +59,7 @@ namespace knowledgeBaseUI
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
@@ -102,6 +104,8 @@ namespace knowledgeBaseUI
             this.GridControlResults.MainView = this.searchGridControl;
             this.GridControlResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridControlResults.Name = "GridControlResults";
+            this.GridControlResults.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemRichTextEdit1});
             this.GridControlResults.Size = new System.Drawing.Size(986, 429);
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -138,12 +142,20 @@ namespace knowledgeBaseUI
             // colDescription
             // 
             this.colDescription.Caption = "Description";
+            this.colDescription.ColumnEdit = this.repositoryItemRichTextEdit1;
             this.colDescription.FieldName = "Description";
             this.colDescription.MinWidth = 25;
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 1;
             this.colDescription.Width = 450;
+            // 
+            // repositoryItemRichTextEdit1
+            // 
+            this.repositoryItemRichTextEdit1.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemRichTextEdit1.DocumentFormat = DevExpress.XtraRichEdit.DocumentFormat.Html;
+            this.repositoryItemRichTextEdit1.Name = "repositoryItemRichTextEdit1";
+            this.repositoryItemRichTextEdit1.ShowCaretInReadOnly = false;
             // 
             // colId
             // 
@@ -336,6 +348,7 @@ namespace knowledgeBaseUI
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
@@ -368,5 +381,6 @@ namespace knowledgeBaseUI
         private DevExpress.XtraBars.BarStaticItem barStaticItem_Delete;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem_NewPost;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
     }
 }
