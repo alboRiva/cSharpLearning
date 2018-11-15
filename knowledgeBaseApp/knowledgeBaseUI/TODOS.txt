@@ -24,3 +24,6 @@
 	--base div hr li margin tab table td ui --html tag support rich text editor 
 
 	--TEXT index
+
+--TODO: test with HTML database text formatting 
+Test serach time with 20k records 

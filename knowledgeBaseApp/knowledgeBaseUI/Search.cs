@@ -25,6 +25,7 @@ namespace knowledgeBaseUI
         public Search(IDataConnection dataConnection)
         {
             InitializeComponent();
+            //barDockControlTop.Hide();
             SetButtonsIcons();
             _dataConnection = dataConnection; 
             RefreshData();
