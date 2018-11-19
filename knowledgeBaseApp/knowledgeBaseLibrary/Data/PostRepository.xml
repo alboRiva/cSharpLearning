@@ -1054,25 +1054,26 @@ EPPlus - GNU Lesser General Public License (LGPL)
       <tag>(L</tag>
     </tags>
   </post>
-  <post id="7bf4c158-d4be-4c7c-a9c2-44acdd0bfdb8" author="rivaa" lastModificationTime="2018-11-15T09:31:00.2871976Z">
+  <post id="7bf4c158-d4be-4c7c-a9c2-44acdd0bfdb8" author="rivaa" lastModificationTime="2018-11-19T15:28:32.1673622Z">
     <title><![CDATA[Test RichTextControl]]></title>
     <description><![CDATA[<body>
-	<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:#FF0000;">&middot;Rich text control test --</span></p></body>
+	<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:#FF0000;">&middot;Rich text control test --</span></p><table border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+		<tr>
+			<td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;yolo</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="196" style="width:147pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td></tr>
+		<tr>
+			<td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="196" style="width:147pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td></tr>
+		<tr>
+			<td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="196" style="width:147pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td></tr>
+		<tr>
+			<td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="196" style="width:147pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td></tr>
+		<tr>
+			<td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="195" style="width:146.25pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td><td valign="top" width="196" style="width:147pt;padding:0pt 5.4pt 0pt 5.4pt;border-top:1pt #000000 solid;border-right:1pt #000000 solid;border-bottom:1pt #000000 solid;border-left:1pt #000000 solid;"><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></td></tr>
+	</table>
+	<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;">&nbsp;</span></p></body>
 ]]></description>
     <tags>
       <tag>Test</tag>
       <tag>RichTextControl</tag>
-      <tag>&lt;body&gt;</tag>
-      <tag>&lt;p</tag>
-      <tag>style="text-align:left;text-indent:0pt;margin:0pt</tag>
-      <tag>0pt</tag>
-      <tag>0pt</tag>
-      <tag>0pt;"&gt;&lt;span</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot;Rich</tag>
-      <tag>text</tag>
-      <tag>control</tag>
-      <tag>test</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;</tag>
       <tag>Tes</tag>
       <tag>Te</tag>
       <tag>RichTextContro</tag>
@@ -1088,144 +1089,6 @@ EPPlus - GNU Lesser General Public License (LGPL)
       <tag>Rich</tag>
       <tag>Ric</tag>
       <tag>Ri</tag>
-      <tag>&lt;body</tag>
-      <tag>&lt;bod</tag>
-      <tag>&lt;bo</tag>
-      <tag>&lt;b</tag>
-      <tag>style="text-align:left;text-indent:0pt;margin:0p</tag>
-      <tag>style="text-align:left;text-indent:0pt;margin:0</tag>
-      <tag>style="text-align:left;text-indent:0pt;margin:</tag>
-      <tag>style="text-align:left;text-indent:0pt;margin</tag>
-      <tag>style="text-align:left;text-indent:0pt;margi</tag>
-      <tag>style="text-align:left;text-indent:0pt;marg</tag>
-      <tag>style="text-align:left;text-indent:0pt;mar</tag>
-      <tag>style="text-align:left;text-indent:0pt;ma</tag>
-      <tag>style="text-align:left;text-indent:0pt;m</tag>
-      <tag>style="text-align:left;text-indent:0pt;</tag>
-      <tag>style="text-align:left;text-indent:0pt</tag>
-      <tag>style="text-align:left;text-indent:0p</tag>
-      <tag>style="text-align:left;text-indent:0</tag>
-      <tag>style="text-align:left;text-indent:</tag>
-      <tag>style="text-align:left;text-indent</tag>
-      <tag>style="text-align:left;text-inden</tag>
-      <tag>style="text-align:left;text-inde</tag>
-      <tag>style="text-align:left;text-ind</tag>
-      <tag>style="text-align:left;text-in</tag>
-      <tag>style="text-align:left;text-i</tag>
-      <tag>style="text-align:left;text-</tag>
-      <tag>style="text-align:left;text</tag>
-      <tag>style="text-align:left;tex</tag>
-      <tag>style="text-align:left;te</tag>
-      <tag>style="text-align:left;t</tag>
-      <tag>style="text-align:left;</tag>
-      <tag>style="text-align:left</tag>
-      <tag>style="text-align:lef</tag>
-      <tag>style="text-align:le</tag>
-      <tag>style="text-align:l</tag>
-      <tag>style="text-align:</tag>
-      <tag>style="text-align</tag>
-      <tag>style="text-alig</tag>
-      <tag>style="text-ali</tag>
-      <tag>style="text-al</tag>
-      <tag>style="text-a</tag>
-      <tag>style="text-</tag>
-      <tag>style="text</tag>
-      <tag>style="tex</tag>
-      <tag>style="te</tag>
-      <tag>style="t</tag>
-      <tag>style="</tag>
-      <tag>style=</tag>
-      <tag>style</tag>
-      <tag>styl</tag>
-      <tag>sty</tag>
-      <tag>st</tag>
-      <tag>0p</tag>
-      <tag>0pt;"&gt;&lt;spa</tag>
-      <tag>0pt;"&gt;&lt;sp</tag>
-      <tag>0pt;"&gt;&lt;s</tag>
-      <tag>0pt;"&gt;&lt;</tag>
-      <tag>0pt;"&gt;</tag>
-      <tag>0pt;"</tag>
-      <tag>0pt;</tag>
-      <tag>0pt</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot;Ric</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot;Ri</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot;R</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot;</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middot</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;middo</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;midd</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;mid</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;mi</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;m</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;&amp;</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"&gt;</tag>
-      <tag>style="color:#000000;background-color:#FF0000;"</tag>
-      <tag>style="color:#000000;background-color:#FF0000;</tag>
-      <tag>style="color:#000000;background-color:#FF0000</tag>
-      <tag>style="color:#000000;background-color:#FF000</tag>
-      <tag>style="color:#000000;background-color:#FF00</tag>
-      <tag>style="color:#000000;background-color:#FF0</tag>
-      <tag>style="color:#000000;background-color:#FF</tag>
-      <tag>style="color:#000000;background-color:#F</tag>
-      <tag>style="color:#000000;background-color:#</tag>
-      <tag>style="color:#000000;background-color:</tag>
-      <tag>style="color:#000000;background-color</tag>
-      <tag>style="color:#000000;background-colo</tag>
-      <tag>style="color:#000000;background-col</tag>
-      <tag>style="color:#000000;background-co</tag>
-      <tag>style="color:#000000;background-c</tag>
-      <tag>style="color:#000000;background-</tag>
-      <tag>style="color:#000000;background</tag>
-      <tag>style="color:#000000;backgroun</tag>
-      <tag>style="color:#000000;backgrou</tag>
-      <tag>style="color:#000000;backgro</tag>
-      <tag>style="color:#000000;backgr</tag>
-      <tag>style="color:#000000;backg</tag>
-      <tag>style="color:#000000;back</tag>
-      <tag>style="color:#000000;bac</tag>
-      <tag>style="color:#000000;ba</tag>
-      <tag>style="color:#000000;b</tag>
-      <tag>style="color:#000000;</tag>
-      <tag>style="color:#000000</tag>
-      <tag>style="color:#00000</tag>
-      <tag>style="color:#0000</tag>
-      <tag>style="color:#000</tag>
-      <tag>style="color:#00</tag>
-      <tag>style="color:#0</tag>
-      <tag>style="color:#</tag>
-      <tag>style="color:</tag>
-      <tag>style="color</tag>
-      <tag>style="colo</tag>
-      <tag>style="col</tag>
-      <tag>style="co</tag>
-      <tag>style="c</tag>
-      <tag>tex</tag>
-      <tag>te</tag>
-      <tag>contro</tag>
-      <tag>contr</tag>
-      <tag>cont</tag>
-      <tag>con</tag>
-      <tag>co</tag>
-      <tag>tes</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/body</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/bod</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/bo</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/b</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;/</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;&lt;</tag>
-      <tag>--&lt;/span&gt;&lt;/p&gt;</tag>
-      <tag>--&lt;/span&gt;&lt;/p</tag>
-      <tag>--&lt;/span&gt;&lt;/</tag>
-      <tag>--&lt;/span&gt;&lt;</tag>
-      <tag>--&lt;/span&gt;</tag>
-      <tag>--&lt;/span</tag>
-      <tag>--&lt;/spa</tag>
-      <tag>--&lt;/sp</tag>
-      <tag>--&lt;/s</tag>
-      <tag>--&lt;/</tag>
-      <tag>--&lt;</tag>
-      <tag>--</tag>
     </tags>
   </post>
   <post id="4955ef21-db46-49db-9828-4e759ea5fefc" author="rivaa" lastModificationTime="2018-11-15T09:30:56.9770030Z">

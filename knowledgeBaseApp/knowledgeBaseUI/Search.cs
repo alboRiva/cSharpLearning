@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Data;
 using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Base;
 using knowledgeBaseLibrary;
@@ -126,6 +127,12 @@ namespace knowledgeBaseUI
             {
 
             }
+        }
+
+        private void virtualServerModeSource1_ConfigurationChanged(object sender, DevExpress.Data.VirtualServerModeRowsEventArgs e)
+        {
+            VirtualServerModeSource virtualServer = (VirtualServerModeSource) sender;
+            
         }
     }
 

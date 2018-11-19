@@ -57,11 +57,13 @@ namespace knowledgeBaseUI
             this.barStaticItem_NewPost = new DevExpress.XtraBars.BarStaticItem();
             this.barSubItem_New = new DevExpress.XtraBars.BarSubItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.virtualServerModeSource1 = new DevExpress.Data.VirtualServerModeSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
@@ -75,7 +77,7 @@ namespace knowledgeBaseUI
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(149, 31);
             this.AddButton.TabIndex = 3;
-            this.AddButton.Text = "AddKnowledge";
+            this.AddButton.Text = "New Post";
             this.AddButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -321,6 +323,10 @@ namespace knowledgeBaseUI
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // virtualServerModeSource1
+            // 
+            this.virtualServerModeSource1.ConfigurationChanged += new System.EventHandler<DevExpress.Data.VirtualServerModeRowsEventArgs>(this.virtualServerModeSource1_ConfigurationChanged);
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,6 +351,7 @@ namespace knowledgeBaseUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,5 +382,6 @@ namespace knowledgeBaseUI
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem_NewPost;
         private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
+        private DevExpress.Data.VirtualServerModeSource virtualServerModeSource1;
     }
 }
