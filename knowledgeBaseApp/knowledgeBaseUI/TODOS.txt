@@ -9,21 +9,13 @@
 -richTextBox DevExpress -- done
 -dapper e SQLs --done
 -rename PostDetailsTest -- done
-
-
 --Script per sincronizzare i db 
-
 --UniqueIdentifier sul titolo nel db - constraints violation c# if(ex.Number == 2627) catch SqlException --done
 --HTML format nella save --done
 --MENU CONTESTUALE -- done
-
 --InfiniteScroll - display HTML in plainText - Impaginazione con display in plainText solo sulla 
 	pagina corrente e quella successiva?
-
-
 	--base div hr li margin tab table td ui --html tag support rich text editor 
-
-	--TEXT index
-
 --TODO: test with HTML database text formatting 
-Test serach time with 20k records 
+--Added delete key shortcut
+

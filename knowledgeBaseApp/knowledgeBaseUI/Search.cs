@@ -37,7 +37,7 @@ namespace knowledgeBaseUI
                         h => searchBarInput.TextChanged += h,
                         h => searchBarInput.TextChanged -= h)
                     .Select(x => searchBarInput.Text)
-                    .Throttle(TimeSpan.FromMilliseconds(500))
+                    .Throttle(TimeSpan.FromMilliseconds(300))
                     .Select(x => Observable.Start(() =>
                         _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
                     .Switch()
@@ -89,11 +89,6 @@ namespace knowledgeBaseUI
             RefreshButton.Image = Image.FromFile(@"C:\Users\rivaa\source\repos\cSharpLearning\knowledgeBaseApp\knowledgeBaseUI\Resources\Refresh.ico");
         }
 
-        private void ShowItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.AddButton_Click(sender,e);
-        }
-
         private void DeleteSelectedRow(object sender, ItemClickEventArgs e)
         {
             if (searchGridControl.GetFocusedRow() is Post post)
@@ -120,19 +115,22 @@ namespace knowledgeBaseUI
             SearchGridControl_DoubleClick(sender,e);
         }
 
-        private void searchGridControl_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        /// <summary>
+        /// Delete shortcut with D or d
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GridControlResults_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string htmlText =  (e.Value) as string;
-            if (htmlText != null)
+            var pressedKey = e.KeyChar.ToString().ToUpper();
+            if (pressedKey.Equals(Keys.D.ToString()))
             {
-
+                if (searchGridControl.GetFocusedRow() is Post post)
+                {
+                    _dataConnection.DeletePost(post);
+                    RefreshData();
+                }
             }
-        }
-
-        private void virtualServerModeSource1_ConfigurationChanged(object sender, DevExpress.Data.VirtualServerModeRowsEventArgs e)
-        {
-            VirtualServerModeSource virtualServer = (VirtualServerModeSource) sender;
-            
         }
     }
 

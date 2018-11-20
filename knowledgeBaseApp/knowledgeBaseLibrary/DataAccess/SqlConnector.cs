@@ -19,9 +19,18 @@ namespace knowledgeBaseLibrary.DataAccess
         public SqlConnector(string connectionString)
         {
             _connectionString = connectionString;
-            //PopulateDb(2000);
+            //--------DB Population values
+            //Title -> 10-25 words, 1 paragraph and 1 sentence
+            //Description -> 200-350 words, 2-3 sentences and 2 paragraphs - Average total of words 1125
+            //PopulateDb(5000);
         }
 
+        /// <summary>
+        /// Update or add a post (if new) - forceSaveIfInConflict=true forces write
+        /// ignoring concurrency (post edit by other user during editing)
+        /// </summary>
+        /// <param name="submittedPost"></param>
+        /// <param name="forceSaveIfInConflict"></param>
         public void AddOrUpdatePost(Post submittedPost, bool forceSaveIfInConflict = false)
         {
             using (IDbConnection connection = new SqlConnection(_connectionString))
@@ -81,9 +90,12 @@ namespace knowledgeBaseLibrary.DataAccess
             }
         }
 
+        /// <summary>
+        /// Delete a post from db by Id
+        /// </summary>
+        /// <param name="post"></param>
         public void DeletePost(Post post)
         {
-            //Delete from db
             var confirmResult = MessageBox.Show("Are you sure to delete this post?",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo);
@@ -96,6 +108,11 @@ namespace knowledgeBaseLibrary.DataAccess
             }
         }
 
+        /// <summary>
+        /// Retrive a single post from db by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Post GetPost(Guid id)
         {
             using (IDbConnection connection = new SqlConnection(_connectionString))
@@ -104,6 +121,13 @@ namespace knowledgeBaseLibrary.DataAccess
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Returns IEnumerable<Post> after query based on tags
+        /// </summary>
+        /// <param name="tags"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <returns></returns>
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = int.MaxValue)
         {
             if (tags == null)
@@ -138,9 +162,9 @@ namespace knowledgeBaseLibrary.DataAccess
                     //Generate values
                     var guid = Guid.NewGuid();
                     string author = Environment.UserName;
-                    string title = Utilities.LoremIpsum(10, 25, 1, 2, 1);
+                    string title = Utilities.LoremIpsum(10, 25, 1, 1, 1);
                     title = title + i;
-                    string description = Utilities.LoremIpsum(100, 250, 10, 30, 2);
+                    string description = Utilities.LoremIpsum(200, 350, 2, 3, 2);
                     DateTime lastModified = new DateTime();
                     lastModified = DateTime.UtcNow;
 

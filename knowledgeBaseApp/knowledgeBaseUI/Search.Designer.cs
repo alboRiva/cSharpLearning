@@ -57,13 +57,11 @@ namespace knowledgeBaseUI
             this.barStaticItem_NewPost = new DevExpress.XtraBars.BarStaticItem();
             this.barSubItem_New = new DevExpress.XtraBars.BarSubItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.virtualServerModeSource1 = new DevExpress.Data.VirtualServerModeSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
@@ -72,10 +70,9 @@ namespace knowledgeBaseUI
             this.AddButton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
             this.AddButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AddButton.Location = new System.Drawing.Point(705, 58);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddButton.Location = new System.Drawing.Point(529, 47);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(149, 31);
+            this.AddButton.Size = new System.Drawing.Size(112, 25);
             this.AddButton.TabIndex = 3;
             this.AddButton.Text = "New Post";
             this.AddButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -88,10 +85,9 @@ namespace knowledgeBaseUI
             this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
             this.RefreshButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RefreshButton.Location = new System.Drawing.Point(876, 58);
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
+            this.RefreshButton.Location = new System.Drawing.Point(657, 47);
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(149, 31);
+            this.RefreshButton.Size = new System.Drawing.Size(112, 25);
             this.RefreshButton.TabIndex = 4;
             this.RefreshButton.Text = "Refresh";
             this.RefreshButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -103,17 +99,18 @@ namespace knowledgeBaseUI
             this.GridControlResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GridControlResults.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.GridControlResults.Location = new System.Drawing.Point(39, 112);
+            this.GridControlResults.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.GridControlResults.Location = new System.Drawing.Point(29, 91);
             this.GridControlResults.MainView = this.searchGridControl;
-            this.GridControlResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridControlResults.Margin = new System.Windows.Forms.Padding(2);
             this.GridControlResults.Name = "GridControlResults";
             this.GridControlResults.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRichTextEdit1});
-            this.GridControlResults.Size = new System.Drawing.Size(986, 429);
+            this.GridControlResults.Size = new System.Drawing.Size(740, 349);
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.searchGridControl});
+            this.GridControlResults.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GridControlResults_KeyPress);
             this.GridControlResults.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GridControlResults_MouseUp);
             // 
             // searchGridControl
@@ -124,35 +121,35 @@ namespace knowledgeBaseUI
             this.colId,
             this.colAuthor,
             this.LastModifiedTime});
+            this.searchGridControl.DetailHeight = 284;
             this.searchGridControl.GridControl = this.GridControlResults;
             this.searchGridControl.Name = "searchGridControl";
             this.searchGridControl.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.searchGridControl.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.searchGridControl.OptionsBehavior.Editable = false;
             this.searchGridControl.OptionsBehavior.ReadOnly = true;
-            this.searchGridControl.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.searchGridControl_CustomColumnDisplayText);
             this.searchGridControl.DoubleClick += new System.EventHandler(this.SearchGridControl_DoubleClick);
             // 
             // colTitle
             // 
             this.colTitle.Caption = "Title";
             this.colTitle.FieldName = "Title";
-            this.colTitle.MinWidth = 25;
+            this.colTitle.MinWidth = 19;
             this.colTitle.Name = "colTitle";
             this.colTitle.Visible = true;
             this.colTitle.VisibleIndex = 0;
-            this.colTitle.Width = 200;
+            this.colTitle.Width = 150;
             // 
             // colDescription
             // 
             this.colDescription.Caption = "Description";
             this.colDescription.ColumnEdit = this.repositoryItemRichTextEdit1;
             this.colDescription.FieldName = "Description";
-            this.colDescription.MinWidth = 25;
+            this.colDescription.MinWidth = 19;
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 1;
-            this.colDescription.Width = 450;
+            this.colDescription.Width = 337;
             // 
             // repositoryItemRichTextEdit1
             // 
@@ -165,19 +162,18 @@ namespace knowledgeBaseUI
             // 
             this.colId.Caption = "Id";
             this.colId.FieldName = "Id";
-            this.colId.MinWidth = 25;
+            this.colId.MinWidth = 19;
             this.colId.Name = "colId";
-            this.colId.Width = 93;
+            this.colId.Width = 70;
             // 
             // colAuthor
             // 
             this.colAuthor.Caption = "Author";
             this.colAuthor.FieldName = "Author";
-            this.colAuthor.MinWidth = 27;
             this.colAuthor.Name = "colAuthor";
             this.colAuthor.Visible = true;
             this.colAuthor.VisibleIndex = 2;
-            this.colAuthor.Width = 98;
+            this.colAuthor.Width = 73;
             // 
             // LastModifiedTime
             // 
@@ -185,20 +181,18 @@ namespace knowledgeBaseUI
             this.LastModifiedTime.DisplayFormat.FormatString = "dd/MM/yyyy hh:mm:ss";
             this.LastModifiedTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.LastModifiedTime.FieldName = "LastModifiedTime";
-            this.LastModifiedTime.MinWidth = 27;
             this.LastModifiedTime.Name = "LastModifiedTime";
             this.LastModifiedTime.Visible = true;
             this.LastModifiedTime.VisibleIndex = 3;
-            this.LastModifiedTime.Width = 79;
+            this.LastModifiedTime.Width = 59;
             // 
             // searchBarInput
             // 
             this.searchBarInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBarInput.Location = new System.Drawing.Point(39, 63);
-            this.searchBarInput.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBarInput.Location = new System.Drawing.Point(29, 51);
             this.searchBarInput.Name = "searchBarInput";
-            this.searchBarInput.Size = new System.Drawing.Size(477, 22);
+            this.searchBarInput.Size = new System.Drawing.Size(359, 20);
             this.searchBarInput.TabIndex = 7;
             // 
             // Title
@@ -206,9 +200,10 @@ namespace knowledgeBaseUI
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.Title.Location = new System.Drawing.Point(34, 23);
+            this.Title.Location = new System.Drawing.Point(26, 19);
+            this.Title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(83, 28);
+            this.Title.Size = new System.Drawing.Size(66, 21);
             this.Title.TabIndex = 8;
             this.Title.Text = "SEARCH";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -261,15 +256,17 @@ namespace knowledgeBaseUI
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1074, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlTop.Size = new System.Drawing.Size(806, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 523);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 418);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1074, 55);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(806, 52);
             // 
             // barDockControlLeft
             // 
@@ -277,15 +274,17 @@ namespace knowledgeBaseUI
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 523);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 418);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1074, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(806, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 523);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 418);
             // 
             // barStaticItem_Show
             // 
@@ -323,16 +322,12 @@ namespace knowledgeBaseUI
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
-            // virtualServerModeSource1
-            // 
-            this.virtualServerModeSource1.ConfigurationChanged += new System.EventHandler<DevExpress.Data.VirtualServerModeRowsEventArgs>(this.virtualServerModeSource1_ConfigurationChanged);
-            // 
             // Search
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1074, 578);
+            this.ClientSize = new System.Drawing.Size(806, 470);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.GridControlResults);
             this.Controls.Add(this.RefreshButton);
@@ -342,7 +337,7 @@ namespace knowledgeBaseUI
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Search";
             this.Text = "KnowledgeBase";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -351,7 +346,6 @@ namespace knowledgeBaseUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualServerModeSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,6 +376,5 @@ namespace knowledgeBaseUI
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem_NewPost;
         private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
-        private DevExpress.Data.VirtualServerModeSource virtualServerModeSource1;
     }
 }

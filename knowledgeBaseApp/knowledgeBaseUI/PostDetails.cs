@@ -77,6 +77,7 @@ namespace knowledgeBaseUI
             if (!FormValidation())
                 return;
 
+            //Only exports part of the generated HTML document by RichEditControlDescription.HTMLText
             var options = new HtmlDocumentExporterOptions();
             options.ExportRootTag = ExportRootTag.Body;
             options.CssPropertiesExportType = CssPropertiesExportType.Inline;
@@ -94,8 +95,7 @@ namespace knowledgeBaseUI
                 try
                 {
                     _dataConnection.AddOrUpdatePost(_post);
-                    this.Close();
-                    return;
+                    Close();
                 }
                 catch (ModifiedByOtherUserException ex)
                 {
@@ -106,8 +106,7 @@ namespace knowledgeBaseUI
                         return;
 
                     _dataConnection.AddOrUpdatePost(_post, true);
-                    this.Close();
-                    return;
+                    Close();
                 }
                 catch (TitleAlreadyPresentInDBException ex)
                 {
@@ -118,23 +117,21 @@ namespace knowledgeBaseUI
             {
                 MessageBox.Show(this, $"Fallimento nell'inserimento del post: {ex.Message}", this.Text,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
 
         }
         /// <summary>
-        /// Returns true if form is valid
+        /// Returns true if form is valid: title and description are not empty
         /// </summary>
         /// <returns></returns>
         private bool FormValidation()
         {
             if (TitleTextBox.Text.Equals("") || RichEditControlDescription.Text.Equals(""))
             {
-                MessageBox.Show(this,"Inserire un titolo e una descrizione",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(this,"Inserire un titolo e una descrizione",Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
                 
                 return false;
             }
-
             return true;
         }
 
