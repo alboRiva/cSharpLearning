@@ -15,5 +15,6 @@
 --MENU CONTESTUALE -- done
 --TODO: test with HTML database text formatting 
 --Added delete key shortcut
+--# records in griglia -- done
 
---# records in griglia
+-Ricerca in memoria veloce - cercare tecniche e strutture dati di support per velocizzare, radice della parola

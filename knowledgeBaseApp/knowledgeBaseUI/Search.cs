@@ -61,18 +61,14 @@ namespace knowledgeBaseUI
 
         private void SearchGridControl_DoubleClick(object sender, EventArgs e)
         {
-            //var view = (DevExpress.XtraGrid.Views.Grid.GridView) sender;
-
             Post post = searchGridControl.GetFocusedRow() as Post;
             if (post == null)
                 return;
 
             PostDetails showPost = new PostDetails(post,_dataConnection);
             DialogResult diagRes = showPost.ShowDialog();
-            if (diagRes == DialogResult.OK)
-            {
-                RefreshData();
-            }
+            if (diagRes == DialogResult.OK)            
+                RefreshData();            
         }
 
         private void Refresh_Click(object sender, EventArgs e)

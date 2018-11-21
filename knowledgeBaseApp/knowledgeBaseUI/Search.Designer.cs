@@ -38,6 +38,7 @@ namespace knowledgeBaseUI
             this.GridControlResults = new DevExpress.XtraGrid.GridControl();
             this.searchGridControl = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,6 +60,7 @@ namespace knowledgeBaseUI
             this.numberOfRecordsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -71,7 +73,7 @@ namespace knowledgeBaseUI
             this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
             this.AddButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AddButton.Location = new System.Drawing.Point(705, 58);
-            this.AddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(149, 31);
             this.AddButton.TabIndex = 3;
@@ -87,7 +89,7 @@ namespace knowledgeBaseUI
             this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
             this.RefreshButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RefreshButton.Location = new System.Drawing.Point(876, 58);
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(149, 31);
             this.RefreshButton.TabIndex = 4;
@@ -107,7 +109,8 @@ namespace knowledgeBaseUI
             this.GridControlResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridControlResults.Name = "GridControlResults";
             this.GridControlResults.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemRichTextEdit1});
+            this.repositoryItemRichTextEdit1,
+            this.repositoryItemTextEdit1});
             this.GridControlResults.Size = new System.Drawing.Size(987, 415);
             this.GridControlResults.TabIndex = 5;
             this.GridControlResults.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -129,10 +132,16 @@ namespace knowledgeBaseUI
             this.searchGridControl.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.searchGridControl.OptionsBehavior.Editable = false;
             this.searchGridControl.OptionsBehavior.ReadOnly = true;
+            this.searchGridControl.OptionsCustomization.AllowRowSizing = true;
+            this.searchGridControl.OptionsFind.AlwaysVisible = true;
+            this.searchGridControl.RowHeight = 60;
+            this.searchGridControl.RowSeparatorHeight = 5;
             this.searchGridControl.DoubleClick += new System.EventHandler(this.SearchGridControl_DoubleClick);
             // 
             // colTitle
             // 
+            this.colTitle.AppearanceCell.Options.UseTextOptions = true;
+            this.colTitle.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.colTitle.Caption = "Title";
             this.colTitle.FieldName = "Title";
             this.colTitle.MinWidth = 25;
@@ -140,6 +149,13 @@ namespace knowledgeBaseUI
             this.colTitle.Visible = true;
             this.colTitle.VisibleIndex = 0;
             this.colTitle.Width = 200;
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemTextEdit1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // colDescription
             // 
@@ -194,7 +210,7 @@ namespace knowledgeBaseUI
             this.searchBarInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBarInput.Location = new System.Drawing.Point(37, 63);
-            this.searchBarInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchBarInput.Margin = new System.Windows.Forms.Padding(4);
             this.searchBarInput.Name = "searchBarInput";
             this.searchBarInput.Size = new System.Drawing.Size(491, 22);
             this.searchBarInput.TabIndex = 7;
@@ -341,6 +357,7 @@ namespace knowledgeBaseUI
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
@@ -374,5 +391,6 @@ namespace knowledgeBaseUI
         private DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit repositoryItemRichTextEdit1;
         private DevExpress.XtraBars.Bar bar3;
         private System.Windows.Forms.Label numberOfRecordsLabel;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
     }
 }
