@@ -42,6 +42,7 @@ namespace knowledgeBaseUI
             SubmitButton.Enabled = true;          
             TitleTextBox.Text = _post.Title;
             RichEditControlDescription.HtmlText = _post.Description;
+            SubmitButton.Focus();
         }
 
         private void SpawnNewPostForm(string title)

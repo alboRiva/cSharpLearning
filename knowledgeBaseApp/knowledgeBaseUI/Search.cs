@@ -37,12 +37,16 @@ namespace knowledgeBaseUI
                         h => searchBarInput.TextChanged += h,
                         h => searchBarInput.TextChanged -= h)
                     .Select(x => searchBarInput.Text)
-                    .Throttle(TimeSpan.FromMilliseconds(300))
+                    .Throttle(TimeSpan.FromMilliseconds(400))
                     .Select(x => Observable.Start(() =>
                         _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
                     .Switch()
                     .ObserveOn(this)
-                    .Subscribe(x => GridControlResults.DataSource = x);
+                    .Subscribe(x =>
+                    {
+                        GridControlResults.DataSource = x;
+                        UpdateNumberOfRecords();
+                    });
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -79,6 +83,12 @@ namespace knowledgeBaseUI
         private void RefreshData()
         {
             GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            UpdateNumberOfRecords();
+        }
+
+        private void UpdateNumberOfRecords()
+        {
+            numberOfRecordsLabel.Text = $"Number of records: {searchGridControl.RowCount}";
         }
 
         private void SetButtonsIcons()
@@ -101,7 +111,8 @@ namespace knowledgeBaseUI
 
         private void popupMenu_NewClicked(object sender, ItemClickEventArgs e)
         {
-            this.AddButton_Click(sender, e);
+            popupMenu1.HidePopup();
+            this.AddButton_Click(sender, e); 
         }
 
         private void GridControlResults_MouseUp(object sender, MouseEventArgs e)
@@ -112,6 +123,7 @@ namespace knowledgeBaseUI
 
         private void ShowNewClicked(object sender, ItemClickEventArgs e)
         {
+            popupMenu1.HidePopup();
             SearchGridControl_DoubleClick(sender,e);
         }
 
