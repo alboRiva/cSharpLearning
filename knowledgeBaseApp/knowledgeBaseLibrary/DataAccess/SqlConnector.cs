@@ -9,12 +9,15 @@ using knowledgeBaseLibrary.Models;
 using Dapper;
 using knowledgeBaseLibrary.Exceptions;
 using System.Windows.Forms;
+using rm.Trie;
+using System.Diagnostics;
 
 namespace knowledgeBaseLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
         private readonly string _connectionString;
+        private Dictionary<Guid,Post> repository = new Dictionary<Guid, Post>();
 
         public SqlConnector(string connectionString)
         {
@@ -66,6 +69,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     //update lastmodified  - important for concurrency 
                     post.LastModifiedTime = DateTime.UtcNow;
                     sqlCommand = "dbo.Posts_UpdateRecord";
+                    
                 }
 
                 try
@@ -79,6 +83,15 @@ namespace knowledgeBaseLibrary.DataAccess
                             post.LastModifiedTime,
                     },
                         commandType: CommandType.StoredProcedure);
+                    
+                    //Update repository based if new or updated post
+                    if (repository.ContainsKey(submittedPost.Id))
+                    {
+                        repository.Remove(submittedPost.Id);
+                    }
+                    Utilities.GenerateTrie(submittedPost);
+                    repository.Add(submittedPost.Id, submittedPost);
+                    
                 }
                 catch (SqlException ex)
                 {
@@ -101,11 +114,13 @@ namespace knowledgeBaseLibrary.DataAccess
                 MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
                 using (IDbConnection connection = new SqlConnection(_connectionString))
-            {
-                var p = new DynamicParameters();
-                p.Add("@Id", post.Id);
-                connection.Execute("dbo.Posts_DeletePost", new {post.Id}, commandType: CommandType.StoredProcedure);
-            }
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@Id", post.Id);
+                    connection.Execute("dbo.Posts_DeletePost", new {post.Id}, commandType: CommandType.StoredProcedure);
+                    //Delete post from memory repository too
+                    repository.Remove(post.Id);
+                }
         }
 
         /// <summary>
@@ -178,6 +193,71 @@ namespace knowledgeBaseLibrary.DataAccess
                     }, commandType: CommandType.StoredProcedure);
                 }
             }
+        }
+
+        /// <summary>
+        /// Retrieves posts containing same prefix as search input text - input text 
+        /// preprocessed in SearchPost(string text)
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public IEnumerable<Post> SearchPost(string text, bool ricercaEsatta = false)
+        {
+            if (repository == null)
+                return null;
+            
+            var results = new List<Post>();
+            string[] words;
+            switch (ricercaEsatta)
+            {
+                case true:
+                    words = text.Split(' ', '\t', '\r', '\n');
+                    foreach (var post in repository.Values)
+                    {
+                        foreach (var word in words)
+                        {
+                            if (post.Tags.HasWord(word))
+                                results.Add(post);
+                        }
+                    }
+
+                    break;
+                case false:
+                    words = Utilities.PreprocessInputText(text);
+                    foreach (var post in repository.Values)
+                    {
+                        foreach (var word in words)
+                        {
+                            if (post.Tags.HasPrefix(word))
+                                results.Add(post);
+                        }
+                    }
+
+                    break;
+            }         
+
+            return results;
+        }
+
+        public void InitializeRepository(IEnumerable<Post> rawPostList)
+        {
+            //TODO: check stopWatch for initialization performance
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            foreach (var post in rawPostList)
+            {
+                //TODO: refactor database - remove tags
+                //TODO: salvare i trie in db?
+                Utilities.GenerateTrie(post);
+                repository.Add(post.Id, post);
+            }
+            watch.Stop();
+            var time = watch.Elapsed;            
+        }
+
+        public IEnumerable<Post> GetRepository()
+        {
+            return repository.Values;
         }
     }
 }

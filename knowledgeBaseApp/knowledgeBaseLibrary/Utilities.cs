@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using knowledgeBaseLibrary.Models;
+using rm.Trie;
+using HtmlAgilityPack;
 
 namespace knowledgeBaseLibrary
 {
@@ -78,5 +82,46 @@ namespace knowledgeBaseLibrary
 
             return result.ToString();
         }
+
+        /// <summary>
+        /// Generates trie from title and description and assigns it to Tags field
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static void GenerateTrie(Post post)
+        {
+            //TODO: searching on title only 
+            //var searchableText = ProprocessTrieInput(post.Title+ " "+post.Description);  
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(post.Description);
+            string result = htmlDoc.DocumentNode.InnerText;
+            var searchableText = PreprocessTrieInput(post.Title + " " + result);
+            var trie = new Trie();
+            foreach (string s in searchableText)
+            {
+                trie.AddWord(s);
+            }            
+            post.Tags = trie;
+        }
+
+
+        public static string[] PreprocessInputText(string inputText)
+        {
+            var processedInputText = inputText.ToLower();
+            var processedText = processedInputText.Split(' ', '\t', '\r', '\n');
+            //TODO: AND is not in Article dictionary
+            //TODO: gestione dei numeri -  non filtrati                                
+            return processedText.Where(t => t.Length > 2).Select(t => t.Remove(t.Length - 1)).ToArray();
+        }
+
+        public static string[] PreprocessTrieInput(string trieInput)
+        {
+            trieInput = trieInput.ToLower();
+            var processedInputText = trieInput.Split(' ', '\t', '\r', '\n');
+            var processedText = processedInputText.Where(t => t.Length > 2).ToArray();
+            return processedText;
+        }
+
     }
 }

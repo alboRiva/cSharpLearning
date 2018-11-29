@@ -15,6 +15,11 @@ namespace knowledgeBaseLibrary.DataAccess
         Post GetPost(Guid id);
 
         IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = Int32.MaxValue);
+        IEnumerable<Post> SearchPost(string text, bool ricercaEsatta);
+        IEnumerable<Post> GetRepository();
+
+        void InitializeRepository(IEnumerable<Post> rawPostList);
+
 
     }
 }

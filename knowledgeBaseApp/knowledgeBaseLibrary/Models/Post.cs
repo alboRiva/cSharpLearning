@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using rm.Trie;
 namespace knowledgeBaseLibrary.Models
 {
     public class Post
@@ -18,9 +19,9 @@ namespace knowledgeBaseLibrary.Models
         public String Description { get; set; }
         public DateTime LastModifiedTime { get;  set; }
         /// <summary>
-        /// List of tags associated to the post
+        /// Suffix trie associated to the post
         /// </summary>
-        public IEnumerable<string> Tags { get; set; } = new List<string>();      //new in C# 6
+        public Trie Tags;   
 
         /// <summary>
         /// Constructor for a Post - Author SubmitDate and LastModified taken care by constructor
@@ -31,6 +32,8 @@ namespace knowledgeBaseLibrary.Models
         {
             Id = id;
             LastModifiedTime = lastModifiedTime;
+            //TODO: need to generate trie in constructor?
+            //Tags = GenerateTrie(title, description);
         }
 
         /// <summary>
@@ -47,8 +50,10 @@ namespace knowledgeBaseLibrary.Models
             Description = description;
             //LastModifiedTime = DateTime.UtcNow;
             LastModifiedTime = DateTime.MinValue;
-            //Generate tags from title and description
-            Tags = Utilities.GetTagsListFromString(title + " " + description,true);
+            //Generate trie from title and description
+            //TODO: search on description -> problem: HTML formatted text
+            //TODO: need for generateTrie in constructor?
+            //Tags = GenerateTrie(this);
         }
 
         /// <summary>
@@ -65,7 +70,7 @@ namespace knowledgeBaseLibrary.Models
             Title = post.Title;
             Description = post.Description;
             LastModifiedTime = DateTime.UtcNow;
-            Tags = Utilities.GetTagsListFromString(Title, true);
+            //Tags = Utilities.GetTagsListFromString(Title, true);
         }
 
         public override int GetHashCode()
@@ -88,6 +93,7 @@ namespace knowledgeBaseLibrary.Models
 
             return false;
         }
+
     }
 }
 

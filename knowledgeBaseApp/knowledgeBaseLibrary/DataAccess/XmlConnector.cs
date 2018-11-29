@@ -89,11 +89,12 @@ namespace knowledgeBaseLibrary.DataAccess
                     writer.WriteStartElement("description");
                     writer.WriteCData(post.Description);
                     writer.WriteEndElement();
-                    writer.WriteStartElement("tags");
-                        foreach (var tag in post.Tags)
-                        {
-                            writer.WriteElementString("tag", tag);
-                        }
+                    //Don't need tags like this anymore
+                    //writer.WriteStartElement("tags");
+                    //    foreach (var tag in post.Tags)
+                    //    {
+                    //        writer.WriteElementString("tag", tag);
+                    //    }
                     writer.WriteEndElement();
                     writer.WriteEndElement();
                 }
@@ -109,15 +110,14 @@ namespace knowledgeBaseLibrary.DataAccess
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags,int pageNumber = 0, int itemsPerPage = Int32.MaxValue)
         {
             //Loads Posts in memory 
-            //TODO: test if works without updating _repository
-           // LoadRepository();
 
-            if (tags == null || !tags.Any())
-                return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
-            //Return all the posts which contain at least one tag
-            return _repository.Where(post => {
-                return post.Tags.Any(t => tags.All(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
-                }).Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
+            //if (tags == null || !tags.Any())
+            //    return _repository.Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
+            ////Return all the posts which contain at least one tag
+            //return _repository.Where(post => {
+            //    return post.Tags.Any(t => tags.All(tt => String.Compare(t, tt, StringComparison.OrdinalIgnoreCase) == 0));
+            //    }).Skip(pageNumber*itemsPerPage).Take(itemsPerPage);
+            return null;
         }
 
         private void LoadRepository()
@@ -192,5 +192,29 @@ namespace knowledgeBaseLibrary.DataAccess
             }
         }
 
+        public IEnumerable<Post> SearchPost(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRepository(IEnumerable<Post> rawPostList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> GetRepository()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> SearchPost(string text, bool ricercaEsatta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InitializeRepository(IEnumerable<Post> rawPostList)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

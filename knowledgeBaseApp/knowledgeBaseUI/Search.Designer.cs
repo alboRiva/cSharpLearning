@@ -38,12 +38,12 @@ namespace knowledgeBaseUI
             this.GridControlResults = new DevExpress.XtraGrid.GridControl();
             this.searchGridControl = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRichTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemRichTextEdit();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAuthor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LastModifiedTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.searchBarInput = new System.Windows.Forms.TextBox();
             this.Title = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -58,10 +58,11 @@ namespace knowledgeBaseUI
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.numberOfRecordsLabel = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
@@ -150,13 +151,6 @@ namespace knowledgeBaseUI
             this.colTitle.VisibleIndex = 0;
             this.colTitle.Width = 200;
             // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.Appearance.Options.UseTextOptions = true;
-            this.repositoryItemTextEdit1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
             // colDescription
             // 
             this.colDescription.Caption = "Description";
@@ -205,6 +199,13 @@ namespace knowledgeBaseUI
             this.LastModifiedTime.VisibleIndex = 3;
             this.LastModifiedTime.Width = 79;
             // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemTextEdit1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // searchBarInput
             // 
             this.searchBarInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -214,6 +215,7 @@ namespace knowledgeBaseUI
             this.searchBarInput.Name = "searchBarInput";
             this.searchBarInput.Size = new System.Drawing.Size(491, 22);
             this.searchBarInput.TabIndex = 7;
+            this.searchBarInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBarInput_KeyDown);
             // 
             // Title
             // 
@@ -335,12 +337,24 @@ namespace knowledgeBaseUI
             this.numberOfRecordsLabel.TabIndex = 13;
             this.numberOfRecordsLabel.Text = "Number of records: 00000";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(549, 63);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(122, 21);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Text = "Ricerca Esatta";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1075, 578);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.numberOfRecordsLabel);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.GridControlResults);
@@ -357,8 +371,8 @@ namespace knowledgeBaseUI
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.GridControlResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
@@ -392,5 +406,6 @@ namespace knowledgeBaseUI
         private DevExpress.XtraBars.Bar bar3;
         private System.Windows.Forms.Label numberOfRecordsLabel;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

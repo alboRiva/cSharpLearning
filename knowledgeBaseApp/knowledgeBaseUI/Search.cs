@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Data;
 using DevExpress.XtraBars;
-using DevExpress.XtraGrid.Views.Base;
-using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
-using DevExpress.Xpf;
-using HtmlAgilityPack;
 
 
 namespace knowledgeBaseUI
@@ -26,27 +15,45 @@ namespace knowledgeBaseUI
         public Search(IDataConnection dataConnection)
         {
             InitializeComponent();
-            //barDockControlTop.Hide();
             SetButtonsIcons();
             _dataConnection = dataConnection; 
-            RefreshData();
+            InitializeData();
+
             //Queries db while typing and refreshing keystrokes updates every x milliseconds
-            IDisposable subscription =
-                Observable
-                    .FromEventPattern(
-                        h => searchBarInput.TextChanged += h,
-                        h => searchBarInput.TextChanged -= h)
-                    .Select(x => searchBarInput.Text)
-                    .Throttle(TimeSpan.FromMilliseconds(400))
-                    .Select(x => Observable.Start(() =>
-                        _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
-                    .Switch()
-                    .ObserveOn(this)
-                    .Subscribe(x =>
-                    {
-                        GridControlResults.DataSource = x;
-                        UpdateNumberOfRecords();
-                    });
+            //IDisposable subscription =
+            //    Observable
+            //        .FromEventPattern(
+            //            h => searchBarInput.TextChanged += h,
+            //            h => searchBarInput.TextChanged -= h)
+            //        .Select(x => searchBarInput.Text)
+            //        .Throttle(TimeSpan.FromMilliseconds(400))
+            //        .Select(x => Observable.Start(() =>
+            //            _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
+            //        .Switch()
+            //        .ObserveOn(this)
+            //        .Subscribe(x =>
+            //        {
+            //            GridControlResults.DataSource = x;
+            //            UpdateNumberOfRecords();
+            //        });
+
+            //Queries db while typing and refreshing keystrokes updates every x milliseconds
+            //IDisposable subscription =
+            //    Observable
+            //        .FromEventPattern(
+            //            h => searchBarInput.TextChanged += h,
+            //            h => searchBarInput.TextChanged -= h)
+            //        .Select(x => searchBarInput.Text)
+            //        .Throttle(TimeSpan.FromMilliseconds(400))
+            //        .Select(x => Observable.Start(() =>
+            //            _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
+            //        .Switch()
+            //        .ObserveOn(this)
+            //        .Subscribe(x =>
+            //        {
+            //            GridControlResults.DataSource = x;
+            //            UpdateNumberOfRecords();
+            //        });
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -78,7 +85,20 @@ namespace knowledgeBaseUI
 
         private void RefreshData()
         {
-            GridControlResults.DataSource = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            //Gets all records from database
+            var rawPostList = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            GridControlResults.DataSource = rawPostList;                        
+            UpdateNumberOfRecords();
+        }
+
+        private void InitializeData()
+        {
+            //Gets all records from database
+            var rawPostList = _dataConnection.GetPostList(Enumerable.Empty<String>());
+            GridControlResults.DataSource = rawPostList;
+            //List of all records in memory - generates a Trie for each post
+            //PREPROCESSING for fast search
+            _dataConnection.InitializeRepository(rawPostList);
             UpdateNumberOfRecords();
         }
 
@@ -139,6 +159,25 @@ namespace knowledgeBaseUI
                     RefreshData();
                 }
             }
+        }
+
+        /// <summary>
+        /// Queries the posts in memory on tries (Tags field)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void searchBarInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            var input = searchBarInput.Text;
+            if(input == "")
+                GridControlResults.DataSource = _dataConnection.GetRepository();
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                GridControlResults.DataSource = _dataConnection.SearchPost(input,checkBox1.Checked);
+                //14 ms
+            }
+            UpdateNumberOfRecords();
         }
     }
 
