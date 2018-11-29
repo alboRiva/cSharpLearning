@@ -143,6 +143,7 @@ namespace knowledgeBaseLibrary.DataAccess
         /// <param name="pageNumber"></param>
         /// <param name="itemsPerPage"></param>
         /// <returns></returns>
+        /// TODO: refactor tags?
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = int.MaxValue)
         {
             if (tags == null)
@@ -159,9 +160,9 @@ namespace knowledgeBaseLibrary.DataAccess
                 if (itemsPerPage != int.MaxValue)
                     skipRows = (pageNumber * itemsPerPage);
 
-                //TableValuesParameter Tags
+                //TableValuesParameter SearchTrie
                 return connection.Query<Post>("dbo.Posts_GetPosts",
-                        new { tags = dt.AsTableValuedParameter("dbo.Tags"), skipRows, takeRows = itemsPerPage },
+                        new { tags = dt.AsTableValuedParameter("dbo.SearchTrie"), skipRows, takeRows = itemsPerPage },
                         commandType: CommandType.StoredProcedure).ToList();
             }
         }
@@ -216,7 +217,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     {
                         foreach (var word in words)
                         {
-                            if (post.Tags.HasWord(word))
+                            if (post.SearchTrie.HasWord(word))
                                 results.Add(post);
                         }
                     }
@@ -228,7 +229,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     {
                         foreach (var word in words)
                         {
-                            if (post.Tags.HasPrefix(word))
+                            if (post.SearchTrie.HasPrefix(word))
                                 results.Add(post);
                         }
                     }
