@@ -16,8 +16,9 @@ namespace knowledgeBaseUI
         public Search(IDataConnection dataConnection)
         {
             InitializeComponent();
-            SetButtonsIcons();
+            SetButtonsIcons();            
             _dataConnection = dataConnection; 
+            
             InitializeData();
 
             //Queries db while typing and refreshing keystrokes updates every x milliseconds
@@ -170,8 +171,13 @@ namespace knowledgeBaseUI
         private void searchBarInput_KeyDown(object sender, KeyEventArgs e)
         {
             var input = searchBarInput.Text;
-            if(input == "")
-                GridControlResults.DataSource = _dataConnection.GetPostList(null);
+            if (input == "")
+            {
+                GridControlResults.DataSource = _dataConnection.GetRepository();
+                //To update Datasource from db
+                //GridControlResults.DataSource = _dataConnection.GetPostList(null);  
+                return;
+            }
 
             if (e.KeyCode == Keys.Enter)
             {

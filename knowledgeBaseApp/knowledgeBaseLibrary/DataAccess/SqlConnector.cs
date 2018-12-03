@@ -17,7 +17,7 @@ namespace knowledgeBaseLibrary.DataAccess
     public class SqlConnector : IDataConnection
     {
         private readonly string _connectionString;
-        private Dictionary<Guid,Post> repository = new Dictionary<Guid, Post>();
+        private readonly Dictionary<Guid,Post> _repository = new Dictionary<Guid, Post>();
 
         public SqlConnector(string connectionString)
         {
@@ -25,7 +25,7 @@ namespace knowledgeBaseLibrary.DataAccess
             //--------DB Population values
             //Title -> 10-25 words, 1 paragraph and 1 sentence
             //Description -> 200-350 words, 2-3 sentences and 2 paragraphs - Average total of words 1125
-            //PopulateDb(5000);
+            //PopulateDb(15000);
         }
 
         /// <summary>
@@ -84,13 +84,13 @@ namespace knowledgeBaseLibrary.DataAccess
                     },
                         commandType: CommandType.StoredProcedure);
                     
-                    //Update repository based if new or updated post
-                    if (repository.ContainsKey(submittedPost.Id))
+                    //Update _repository based if new or updated post
+                    if (_repository.ContainsKey(submittedPost.Id))
                     {
-                        repository.Remove(submittedPost.Id);
+                        _repository.Remove(submittedPost.Id);
                     }
                     Utilities.GenerateTrie(submittedPost);
-                    repository.Add(submittedPost.Id, submittedPost);
+                    _repository.Add(submittedPost.Id, submittedPost);
                     
                 }
                 catch (SqlException ex)
@@ -118,8 +118,8 @@ namespace knowledgeBaseLibrary.DataAccess
                     var p = new DynamicParameters();
                     p.Add("@Id", post.Id);
                     connection.Execute("dbo.Posts_DeletePost", new {post.Id}, commandType: CommandType.StoredProcedure);
-                    //Delete post from memory repository too
-                    repository.Remove(post.Id);
+                    //Delete post from memory _repository too
+                    _repository.Remove(post.Id);
                 }
         }
 
@@ -143,7 +143,6 @@ namespace knowledgeBaseLibrary.DataAccess
         /// <param name="pageNumber"></param>
         /// <param name="itemsPerPage"></param>
         /// <returns></returns>
-        /// TODO: refactor tags?
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = int.MaxValue)
         {
             if (tags == null)
@@ -204,7 +203,7 @@ namespace knowledgeBaseLibrary.DataAccess
         /// <returns></returns>
         public IEnumerable<Post> SearchPost(string text, bool ricercaEsatta = false)
         {
-            if (repository == null)
+            if (_repository == null)
                 return null;
             
             var results = new List<Post>();
@@ -213,7 +212,7 @@ namespace knowledgeBaseLibrary.DataAccess
             {
                 case true:
                     words = text.Split(' ', '\t', '\r', '\n');
-                    foreach (var post in repository.Values)
+                    foreach (var post in _repository.Values)
                     {
                         foreach (var word in words)
                         {
@@ -225,7 +224,7 @@ namespace knowledgeBaseLibrary.DataAccess
                     break;
                 case false:
                     words = Utilities.PreprocessInputText(text);
-                    foreach (var post in repository.Values)
+                    foreach (var post in _repository.Values)
                     {
                         foreach (var word in words)
                         {
@@ -247,18 +246,17 @@ namespace knowledgeBaseLibrary.DataAccess
             watch.Start();
             foreach (var post in rawPostList)
             {
-                //TODO: refactor database - remove tags
-                //TODO: salvare i trie in db?
                 Utilities.GenerateTrie(post);
-                repository.Add(post.Id, post);
+                _repository.Add(post.Id, post);
             }
             watch.Stop();
-            var time = watch.Elapsed;            
+            var time = watch.Elapsed;   
+            //10 secondi di inizializzazione per 30k records
         }
 
         public IEnumerable<Post> GetRepository()
         {
-            return repository.Values;
+            return _repository.Values;
         }
     }
 }

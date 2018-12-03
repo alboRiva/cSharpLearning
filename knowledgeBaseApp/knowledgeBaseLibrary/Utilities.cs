@@ -91,6 +91,7 @@ namespace knowledgeBaseLibrary
         /// <returns></returns>
         public static void GenerateTrie(Post post)
         {
+            //Extracts plain text from formatted HTML test - HTMLAgilityPack Dependency
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(post.Description);
             string result = htmlDoc.DocumentNode.InnerText;
@@ -103,13 +104,16 @@ namespace knowledgeBaseLibrary
             post.SearchTrie = trie;
         }
 
-
+        /// <summary>
+        /// Preprocessa il testo: lowercase, length > 2, elimina ultima lettera
+        /// </summary>
+        /// <param name="inputText"></param>
+        /// <returns></returns>
         public static string[] PreprocessInputText(string inputText)
         {
             var processedInputText = inputText.ToLower();
             var processedText = processedInputText.Split(' ', '\t', '\r', '\n');
-            //TODO: AND is not in Article dictionary
-            //TODO: gestione dei numeri -  non filtrati                                
+            //TODO: AND is not in Article dictionary                                
             return processedText.Where(t => t.Length > 2).Select(t => t.Remove(t.Length - 1)).ToArray();
         }
 

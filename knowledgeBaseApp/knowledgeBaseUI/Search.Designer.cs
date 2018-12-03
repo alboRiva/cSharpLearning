@@ -134,7 +134,7 @@ namespace knowledgeBaseUI
             this.searchGridControl.OptionsBehavior.Editable = false;
             this.searchGridControl.OptionsBehavior.ReadOnly = true;
             this.searchGridControl.OptionsCustomization.AllowRowSizing = true;
-            this.searchGridControl.OptionsFind.AlwaysVisible = true;
+            this.searchGridControl.OptionsFind.AllowFindPanel = false;
             this.searchGridControl.RowHeight = 60;
             this.searchGridControl.RowSeparatorHeight = 5;
             this.searchGridControl.DoubleClick += new System.EventHandler(this.SearchGridControl_DoubleClick);

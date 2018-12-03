@@ -54,7 +54,7 @@ namespace KnowledgeBaseTest
         public void HasWordReturnValues()
         {
             var trie = GetTree();
-            var hasPrefix = trie.HasWord("gatto");
+            var hasPrefix = trie.HasWord("123");
             Assert.IsTrue(hasPrefix, "Word present in trie");
         }
 
@@ -64,6 +64,7 @@ namespace KnowledgeBaseTest
             trie.AddWord("cane");
             trie.AddWord("gatto");
             trie.AddWord("gattone");
+            trie.AddWord("123");
             return trie;
         }
 

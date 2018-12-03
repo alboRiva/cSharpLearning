@@ -32,7 +32,7 @@ namespace knowledgeBaseLibrary.Models
         {
             Id = id;
             LastModifiedTime = lastModifiedTime;
-            //TODO: need to generate trie in constructor?
+            //TODO: generate trie in constructor?
             //SearchTrie = GenerateTrie(title, description);
         }
 
@@ -51,9 +51,7 @@ namespace knowledgeBaseLibrary.Models
             //LastModifiedTime = DateTime.UtcNow;
             LastModifiedTime = DateTime.MinValue;
             //Generate trie from title and description
-            //TODO: search on description -> problem: HTML formatted text
-            //TODO: need for generateTrie in constructor?
-            //SearchTrie = GenerateTrie(this);
+            //TODO: search on description -> problem: HTML formatted text: dou
         }
 
         /// <summary>

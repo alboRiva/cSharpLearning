@@ -18,3 +18,9 @@
 --# records in griglia -- done
 
 -Ricerca in memoria veloce - cercare tecniche e strutture dati di support per velocizzare, radice della parola
+
+--Domande
+-Salvare i trie in database? Come? Risolverebbe il tempo di inizializzazione, oppure architettura client-server?
+-Salvare le descrizioni in plain text per diminuire il carico di lavoro quando si generano i trie?
+-Generare trie nel constructor?
+
