@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -162,7 +163,7 @@ namespace knowledgeBaseUI
         }
 
         /// <summary>
-        /// Queries the posts in memory on tries (Tags field)
+        /// Queries the posts in memory on tries (SearchTrie field)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -170,7 +171,7 @@ namespace knowledgeBaseUI
         {
             var input = searchBarInput.Text;
             if(input == "")
-                GridControlResults.DataSource = _dataConnection.GetRepository();
+                GridControlResults.DataSource = _dataConnection.GetPostList(null);
 
             if (e.KeyCode == Keys.Enter)
             {

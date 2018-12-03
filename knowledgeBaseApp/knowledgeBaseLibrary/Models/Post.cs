@@ -21,7 +21,7 @@ namespace knowledgeBaseLibrary.Models
         /// <summary>
         /// Suffix trie associated to the post
         /// </summary>
-        public Trie Tags;   
+        public Trie SearchTrie;   
 
         /// <summary>
         /// Constructor for a Post - Author SubmitDate and LastModified taken care by constructor
@@ -33,7 +33,7 @@ namespace knowledgeBaseLibrary.Models
             Id = id;
             LastModifiedTime = lastModifiedTime;
             //TODO: need to generate trie in constructor?
-            //Tags = GenerateTrie(title, description);
+            //SearchTrie = GenerateTrie(title, description);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace knowledgeBaseLibrary.Models
             //Generate trie from title and description
             //TODO: search on description -> problem: HTML formatted text
             //TODO: need for generateTrie in constructor?
-            //Tags = GenerateTrie(this);
+            //SearchTrie = GenerateTrie(this);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace knowledgeBaseLibrary.Models
             Title = post.Title;
             Description = post.Description;
             LastModifiedTime = DateTime.UtcNow;
-            //Tags = Utilities.GetTagsListFromString(Title, true);
+            //SearchTrie = Utilities.GetTagsListFromString(Title, true);
         }
 
         public override int GetHashCode()

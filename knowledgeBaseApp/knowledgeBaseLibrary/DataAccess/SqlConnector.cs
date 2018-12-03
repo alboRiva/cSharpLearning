@@ -162,7 +162,7 @@ namespace knowledgeBaseLibrary.DataAccess
 
                 //TableValuesParameter SearchTrie
                 return connection.Query<Post>("dbo.Posts_GetPosts",
-                        new { tags = dt.AsTableValuedParameter("dbo.SearchTrie"), skipRows, takeRows = itemsPerPage },
+                        new { tags = dt.AsTableValuedParameter("dbo.Tags"), skipRows, takeRows = itemsPerPage },
                         commandType: CommandType.StoredProcedure).ToList();
             }
         }

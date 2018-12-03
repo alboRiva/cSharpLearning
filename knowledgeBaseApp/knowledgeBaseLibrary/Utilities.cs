@@ -84,15 +84,13 @@ namespace knowledgeBaseLibrary
         }
 
         /// <summary>
-        /// Generates trie from title and description and assigns it to Tags field
+        /// Generates trie from title and description and assigns it to SearchTrie field
         /// </summary>
         /// <param name="title"></param>
         /// <param name="description"></param>
         /// <returns></returns>
         public static void GenerateTrie(Post post)
         {
-            //TODO: searching on title only 
-            //var searchableText = ProprocessTrieInput(post.Title+ " "+post.Description);  
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(post.Description);
             string result = htmlDoc.DocumentNode.InnerText;
@@ -102,7 +100,7 @@ namespace knowledgeBaseLibrary
             {
                 trie.AddWord(s);
             }            
-            post.Tags = trie;
+            post.SearchTrie = trie;
         }
 
 
