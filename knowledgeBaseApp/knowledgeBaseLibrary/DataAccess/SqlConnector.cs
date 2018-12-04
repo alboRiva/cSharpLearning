@@ -25,7 +25,7 @@ namespace knowledgeBaseLibrary.DataAccess
             //--------DB Population values
             //Title -> 10-25 words, 1 paragraph and 1 sentence
             //Description -> 200-350 words, 2-3 sentences and 2 paragraphs - Average total of words 1125
-            //PopulateDb(15000);
+            //PopulateDb(5000);
         }
 
         /// <summary>
@@ -65,6 +65,7 @@ namespace knowledgeBaseLibrary.DataAccess
                             throw new Exceptions.ModifiedByOtherUserException(
                                 $"The status of the element was changed by some other user after the read");
                     }
+                    //TODO: gestione concorrenza in _repository                    
                     post = submittedPost;
                     //update lastmodified  - important for concurrency 
                     post.LastModifiedTime = DateTime.UtcNow;
@@ -145,6 +146,8 @@ namespace knowledgeBaseLibrary.DataAccess
         /// <returns></returns>
         public IEnumerable<Post> GetPostList(IEnumerable<string> tags, int pageNumber = 0, int itemsPerPage = int.MaxValue)
         {
+            //TODO: GetPostList's only use is now to return the full db - TO BE REMOVED
+            
             if (tags == null)
                 tags = Enumerable.Empty<string>();
 
@@ -217,7 +220,10 @@ namespace knowledgeBaseLibrary.DataAccess
                         foreach (var word in words)
                         {
                             if (post.SearchTrie.HasWord(word))
+                            {
                                 results.Add(post);
+                                break;
+                            }
                         }
                     }
 
@@ -229,7 +235,10 @@ namespace knowledgeBaseLibrary.DataAccess
                         foreach (var word in words)
                         {
                             if (post.SearchTrie.HasPrefix(word))
+                            {
                                 results.Add(post);
+                                break;
+                            }
                         }
                     }
 
@@ -252,6 +261,7 @@ namespace knowledgeBaseLibrary.DataAccess
             watch.Stop();
             var time = watch.Elapsed;   
             //10 secondi di inizializzazione per 30k records
+            //8 secondi per 20k records
         }
 
         public IEnumerable<Post> GetRepository()

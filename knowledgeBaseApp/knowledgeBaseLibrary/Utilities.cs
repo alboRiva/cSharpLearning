@@ -113,7 +113,6 @@ namespace knowledgeBaseLibrary
         {
             var processedInputText = inputText.ToLower();
             var processedText = processedInputText.Split(' ', '\t', '\r', '\n');
-            //TODO: AND is not in Article dictionary                                
             return processedText.Where(t => t.Length > 2).Select(t => t.Remove(t.Length - 1)).ToArray();
         }
 

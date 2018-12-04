@@ -21,6 +21,23 @@
 
 --Domande
 -Salvare i trie in database? Come? Risolverebbe il tempo di inizializzazione, oppure architettura client-server?
--Salvare le descrizioni in plain text per diminuire il carico di lavoro quando si generano i trie?
+-Salvare le descrizioni in plain text per diminuire il carico di lavoro quando si generano i trie? --verifica sui tempi
 -Generare trie nel constructor?
+-Check delle performance dei metodi con metodi di test
+
+--TODO
+-verifica tempi con Descrizione in plain text
+-verifica licenze
+-search ogni 100ms
+-Generare trie in construttore
+-AppConfig per test
+-NON fare select *
+-Dictionary<Guid,Trie>
+-filtrare non per lunghezza ma con Dictionary ita-eng per articoli
+-cambiare Submit e "ricerca esatta" - done
+-Add save shortcut
+-MAJOR REFACTORING dell'app (Interface, stored procedure etc..)
+
+Oggetto Thread nel costruttore del connector - svegliato AutoResetEvent, ManualResetEvent
+Mentre sta lavorando io non devo consentire la ricerca
 

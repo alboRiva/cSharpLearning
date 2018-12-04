@@ -341,11 +341,11 @@ namespace knowledgeBaseUI
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(549, 63);
+            this.checkBox1.Location = new System.Drawing.Point(558, 63);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 21);
+            this.checkBox1.Size = new System.Drawing.Size(113, 21);
             this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "Ricerca Esatta";
+            this.checkBox1.Text = "Exact Search";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Search

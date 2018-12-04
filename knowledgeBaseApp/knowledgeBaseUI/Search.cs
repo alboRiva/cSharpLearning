@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using knowledgeBaseLibrary;
 using knowledgeBaseLibrary.DataAccess;
 using knowledgeBaseLibrary.Models;
 
@@ -17,27 +19,9 @@ namespace knowledgeBaseUI
         {
             InitializeComponent();
             SetButtonsIcons();            
-            _dataConnection = dataConnection; 
-            
+            _dataConnection = dataConnection;          
             InitializeData();
 
-            //Queries db while typing and refreshing keystrokes updates every x milliseconds
-            //IDisposable subscription =
-            //    Observable
-            //        .FromEventPattern(
-            //            h => searchBarInput.TextChanged += h,
-            //            h => searchBarInput.TextChanged -= h)
-            //        .Select(x => searchBarInput.Text)
-            //        .Throttle(TimeSpan.FromMilliseconds(400))
-            //        .Select(x => Observable.Start(() =>
-            //            _dataConnection.GetPostList(Utilities.GetTagsListFromString(searchBarInput.Text))))
-            //        .Switch()
-            //        .ObserveOn(this)
-            //        .Subscribe(x =>
-            //        {
-            //            GridControlResults.DataSource = x;
-            //            UpdateNumberOfRecords();
-            //        });
 
             //Queries db while typing and refreshing keystrokes updates every x milliseconds
             //IDisposable subscription =
@@ -100,6 +84,7 @@ namespace knowledgeBaseUI
             GridControlResults.DataSource = rawPostList;
             //List of all records in memory - generates a Trie for each post
             //PREPROCESSING for fast search
+            //TODO: async
             _dataConnection.InitializeRepository(rawPostList);
             UpdateNumberOfRecords();
         }
@@ -174,6 +159,7 @@ namespace knowledgeBaseUI
             if (input == "")
             {
                 GridControlResults.DataSource = _dataConnection.GetRepository();
+                UpdateNumberOfRecords();
                 //To update Datasource from db
                 //GridControlResults.DataSource = _dataConnection.GetPostList(null);  
                 return;

@@ -19,6 +19,7 @@ namespace knowledgeBaseUI
     {
         private Post _post;
         private readonly IDataConnection _dataConnection;
+        private bool CancelClose = false;
         
         public PostDetails(Post selectedItem, IDataConnection dataConnection)
         {
@@ -73,10 +74,10 @@ namespace knowledgeBaseUI
             }
         }
 
-        private void SubmitEdited_Click(object sender, EventArgs e)
+        private bool SavePost()
         {
             if (!FormValidation())
-                return;
+                return false;
 
             //Only exports part of the generated HTML document by RichEditControlDescription.HTMLText
             var options = new HtmlDocumentExporterOptions();
@@ -86,10 +87,10 @@ namespace knowledgeBaseUI
             var exporter = new HtmlExporter(RichEditControlDescription.Model, options);
             string formattedDescription = exporter.Export();
 
-            if(_post == null)
-                _post = new Post(Environment.UserName,TitleTextBox.Text, formattedDescription);
+            if (_post == null)
+                _post = new Post(Environment.UserName, TitleTextBox.Text, formattedDescription);
             else
-                _post = new Post(_post.Id,_post.Author,TitleTextBox.Text, formattedDescription,_post.LastModifiedTime);
+                _post = new Post(_post.Id, _post.Author, TitleTextBox.Text, formattedDescription, _post.LastModifiedTime);
 
             try
             {
@@ -104,23 +105,27 @@ namespace knowledgeBaseUI
                             "The post was modified by some other user. Do you want to overwrite those changes?",
                             this.Text,
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                        return;
+                        return false;
 
                     _dataConnection.AddOrUpdatePost(_post, true);
                     Close();
                 }
                 catch (TitleAlreadyPresentInDBException ex)
                 {
-                    MessageBox.Show(this,ex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);                   
+                    MessageBox.Show(this, ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, $"Fallimento nell'inserimento del post: {ex.Message}", this.Text,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
+            return true;
         }
+
         /// <summary>
         /// Returns true if form is valid: title and description are not empty
         /// </summary>
@@ -136,5 +141,27 @@ namespace knowledgeBaseUI
             return true;
         }
 
+        private void PostDetails_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult == DialogResult.OK && CancelClose)
+                e.Cancel = false;
+
+            if (DialogResult == DialogResult.Cancel && IsModified())
+                if (MessageBox.Show(this, Text, "The post is modified and not changed. Are you sure to leave data?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    e.Cancel = false;
+        }
+
+        private bool IsModified()
+        {
+            //TODO: check for modifications both empty and edited post
+            return true;
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            CancelClose = false;
+            if (!SavePost())
+                CancelClose = true;
+        }
     }
 }

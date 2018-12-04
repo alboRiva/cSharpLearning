@@ -18,10 +18,12 @@ namespace knowledgeBaseLibrary.Models
         public String Title { get; set; }
         public String Description { get; set; }
         public DateTime LastModifiedTime { get;  set; }
+
         /// <summary>
         /// Suffix trie associated to the post
         /// </summary>
-        public Trie SearchTrie;   
+        //public Trie SearchTrie { get; private set }
+        public Trie SearchTrie;
 
         /// <summary>
         /// Constructor for a Post - Author SubmitDate and LastModified taken care by constructor
